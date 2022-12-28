@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+
+
+.ab {
+	position: absolute;
+	top:10px;
+	left:300px;
+	width:1450px;
+	height:900px;
+}
