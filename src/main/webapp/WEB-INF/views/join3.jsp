@@ -52,7 +52,7 @@
             
             
             <div class="my-4">
-            <button class="w-100 btn btn-lg btn-success" type="button" onclick="location.href='test_dashboard.html'">완료</button>
+            <a class="w-100 btn btn-lg btn-success" type="submit" onclick="script:window.location='dashboard'">완료</a>
             <br>
              </div>
          

@@ -37,22 +37,22 @@
         <!-- 컨테이너 시작 건드리지마 -->	
         
             
-        <form>
+        <form action="joinOk1" method="post">
             <!--  <img class="mb-4" src="/docs/5.2/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
               <div>
               <h1 class="h3 my-5 mb-3 fw-normal text-center">회원가입</h1>
               </div>
-              
+     
               <div class="form-floating my-3">
-                <input type="email" class="form-control" id="floatingInput" placeholder="이메일(계정)">      
+                <input type="email" class="form-control" id="floatingInput" placeholder="이메일(계정)" name="email">      
               </div>   
               
               <div class="form-floating my-3">
-                <input type="text" class="form-control" id="floatingInput" placeholder="이름">      
+                <input type="text" class="form-control" id="floatingInput" placeholder="이름" name="name">      
               </div>      
               
               <div class="form-floating my-3">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="비밀번호(8자리 이상)">      
+                <input type="password" class="form-control" id="floatingPassword" placeholder="비밀번호(8자리 이상)" name="pw">      
               </div>
               
               <div class="form-floating my-3">
@@ -62,7 +62,7 @@
               
               
               <div class="my-4">
-              <a class="w-100 btn btn-lg btn-success" type="submit" href="test_sign_in2labname.html">가입 완료</a>
+              <button class="w-100 btn btn-lg btn-success" type="submit" onclick="script:window.location='join2'">가입 완료</button>
               <br>
                  </div>
              

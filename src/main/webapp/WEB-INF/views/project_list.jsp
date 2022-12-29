@@ -11,9 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>pList</title>
-
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/location.css">
+    <title>프로젝트 리스트</title>
 
     <!-- Custom fonts for this template-->
     <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -26,47 +24,49 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 
+    
 
-	
 </head>
 
 <body>
 
-  
-<%@ include file="include/aside.jsp" %>
-
-
-<div class="ab">
-
-    <div class="my-5" ></div>
-    <div class="container">
-    <h1>프로젝트</h1>
-    </div>
-   
     <!--위에여백-->
     <div class="my-5">
 	</div>
     <!--위에여백-->
 
+
+    <div class="container ">        
+      <h1 class="">프로젝트</h1>
+    </div>
+    
+    <div class="my-3"></div>
+
     <div class="container border rounded py-2">
         <!-- 컨테이너 시작 건드리지마 -->	
         
+        
+
+        
             
         <div class="row ">
-            <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 ">
-                 <div class="input-group">
-                     <input type="text" class="form-control bg-light border-0 small" placeholder="검색"
+          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 ">
+            <div class="input-group">
+              <input type="text" class="form-control bg-light border-0 small" placeholder="검색"
                          aria-label="Search" aria-describedby="basic-addon2">
-                     <div class="input-group-append">
-                         <button class="btn btn-primary" type="button">
-                             <i class="fas fa-search fa-sm"></i>
-                         </button>
-                     </div>
-                 </div>
-             </form>     
-         
-            <button class="btn btn-primary mr-1" type="submit">추가</button>
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="button">
+                  <i class="fas fa-search fa-sm"></i>
+                </button>
+              </div>
+            </div>
+          </form>     
+          
+          <div>
+            <button class="btn btn-primary mr-1" type="button" onclick="script:window.location='project'">추가</button>
             <button class="btn btn-primary mr-1" type="submit">설정</button>
+          </div>
+          
          </div> 
         </div>
       
@@ -147,8 +147,8 @@
           <td>그래프넣을자리</td>
         </tr>
         
-        <tr class="accordion-toggle collapsed" data-toggle="collapse" href="#collapseExample" role="button" 
-            aria-expanded="true" aria-controls="collapseExample" >
+        <tr class="" data-bs-toggle="collapse" href="#collapseExample" role="button" 
+            aria-expanded="false" aria-controls="collapseExample" >
           <th scope="row">3</th>
           <td>진행중</td>
           <td>과제이름은 뭐일까요</td>
@@ -159,11 +159,16 @@
         </tr>
         
         <tr>
-        <td colspan="7" class="collapse" id="collapseExample">
-          <div class="card hiddenRow ">
+        <td colspan="7" class="collapse" id="collapseExample" >
+          <div class="card card-body " role="button" onclick="location.href='test_report_list.html'" >
+            <div>
             ---연구자는 김근호 안주희.<br>
             ---오늘은 던킨도너츠 먹고싶네요<br>
-            ---집 가기전에 사들고 갑니다.
+            ---집 가기전에 사들고 갑니다.<br>
+            
+
+            부서이름도 필요합니다
+          </div>
           </div>
         </td>
         </tr>   
@@ -305,8 +310,6 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
-
-</div>
 
 </body>
 

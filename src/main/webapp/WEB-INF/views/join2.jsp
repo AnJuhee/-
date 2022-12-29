@@ -36,7 +36,7 @@
         <!-- 컨테이너 시작 건드리지마 -->	
         
             
-        <form>
+        <form action="joinOk2" method="post">
   
           <div>
           <h1 class="h3 my-3 mb-3 fw-normal">연구실 입력</h1>
@@ -46,7 +46,7 @@
              
           
           <div class="form-floating my-3">
-            <input type="text" class="form-control" id="floatingInput" placeholder="이름">      
+            <input type="text" class="form-control" id="floatingInput" placeholder="이름" name="rgroup">      
           </div>      
           
           
@@ -54,8 +54,8 @@
           
           
           <div class="my-4">
-            <a class=" btn btn-lg btn-success" type="submit" href="test_sign_in3_member.html">다음</a>
-            <a class=" btn btn-lg btn-success" type="submit" href="test_sign_in1.html">이전</a>
+            <button class=" btn btn-lg btn-success" type="submit" onclick="script:window.location='join3'">다음</button>
+            <a class=" btn btn-lg btn-success" type="button" onclick="script:window.location='join1'">이전</a>
           <br>
            </div>
          

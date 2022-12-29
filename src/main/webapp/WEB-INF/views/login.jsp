@@ -57,7 +57,7 @@
                 <div class="checkbox mb-3">
                     <label>
                     <input type="checkbox" value="remember-me"> 로그인 상태 유지
-                    <a class=" btn btn-lg btn-primary" type="button" href="test_sign_in1.html">회원가입</a>
+                    <button class=" btn btn-lg btn-primary" type="button" onclick="script:window.location='join1'">회원가입</button>
                     </label>
                 </div>
                 
