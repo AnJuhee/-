@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>프로젝트 작성(~!~!~!~!~ 수정해야함~!~!~!~!~)</title>
+    <title>보고서 작성</title>
 
     <!-- Custom fonts for this template-->
     <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -26,6 +26,17 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" >
 
+
+
+    <script>
+        // Ignore this in your implementation
+        window.isMbscDemo = true;
+    </script>
+    
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mobiscroll.javascript.min.css">
+    <script src="${pageContext.request.contextPath}/resources/js/mobiscroll.javascript.min.js"></script>
+    
+
 </head>
 
 <body>
@@ -36,7 +47,7 @@
 
 
     
-	<form action="reportwriter" method="post" name="reportWriter">
+
 
     <div class="container py-2" >
         <!-- 컨테이너 시작 건드리지마 -->	
@@ -82,8 +93,12 @@
                 </div>
 
                 <div class="form-floating col">
-                    <input type="datetime" class="form-control" id="floatingInput_date" placeholder="이름">
-                    <label class="ml-2" for="floatingInput_date">기록일자</label>
+                    <input type="datetime" class="form-control" id="demo-mobile-picker-input" placeholder="이름">
+                    <label class="ml-2" for="floatingInput_date">기록일자
+
+                        
+
+                    </label>
                 </div>
 
                 <div class="form-floating col">
@@ -98,9 +113,11 @@
                     <label for="floatingInput_name">확인자</label>
                 </div>
 
-                <div class="form-floating col">
-                    <input type="datetime" class="form-control" id="floatingInput_date" placeholder="이름">
-                    <label for="floatingInput_date">일자</label>
+                <div class="form-floating col demo-usage-on-input-or-inline">
+                    <input type="datetime" class="form-control" id="floatingInput_date" placeholder="이dldldldldlddl">
+                    <label for="floatingInput_date">일자
+                        
+                    </label>
                 </div>
 
                 <div class="form-floating col">
@@ -114,7 +131,7 @@
 
         <!--버튼-->
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button class="btn btn-primary me-md-2" type="submit">저장</button>
+            <button class="btn btn-primary me-md-2" type="button">저장</button>
             <button class="btn btn-primary" type="button" onclick="history.go(-1)">취소</button>
         </div>
         <!--버튼-->
@@ -139,28 +156,69 @@
         <!-- 컨테이너 끝 -->      
         </div>
 
-		</form>
+
+
+
+    <script>
+        
+        mobiscroll.setOptions({
+        locale: mobiscroll.localeEn,  
+        theme: 'windows',             
+        themeVariant: 'light'         
+    });
+
+    mobiscroll.datepicker('#demo-mobile-picker-input', {
+        controls: ['calendar']        
+    });
+    
+    var instance = mobiscroll.datepicker('#demo-mobile-picker-button', {
+        controls: ['calendar'],       
+        showOnClick: false,           
+        showOnFocus: false,           
+    });
+    
+    instance.setVal(new Date(), true);
+    
+    mobiscroll.datepicker('#demo-mobile-picker-mobiscroll', {
+        controls: ['calendar']        
+    });
+    
+    mobiscroll.datepicker('#demo-mobile-picker-inline', {
+        controls: ['calendar'],       
+        display: 'inline'             
+    });
+    
+    document
+        .getElementById('show-mobile-date-picker')
+        .addEventListener('click', function () {
+            instance.open();
+            return false;
+        });
+    </script>
+
+
+
     
 
     
     
     
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/demo/chart-area-demo.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/demo/chart-pie-demo.js"></script>
 
 </body>
 

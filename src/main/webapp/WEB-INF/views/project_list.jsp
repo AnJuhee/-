@@ -24,23 +24,25 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    
-
 </head>
 
 <body>
-
-    <!--위에여백-->
-    <div class="my-5">
-	</div>
-    <!--위에여백-->
-
-
-    <div class="container ">        
+<div id="wrapper">
+<!-- 사이드바 자리 -->
+	<%@ include file="include/sidebar.jsp" %>
+	<!-- 사이드바 자리 -->
+	
+	<!-- 페이지 전체부분 (topbar 포함) -->
+	<div id="content-wrapper" class="d-flex flex-column">
+	
+	<!-- topbar 자리 -->
+		<%@ include file="include/topbar.jsp" %>	
+	<!-- topbar 자리 -->
+	
+	<div class="container ">        
       <h1 class="">프로젝트</h1>
     </div>
-    
-    <div class="my-3"></div>
+	
 
     <div class="container border rounded py-2">
         <!-- 컨테이너 시작 건드리지마 -->	
@@ -287,7 +289,15 @@
         
         <!-- 컨테이너 끝 -->      
         </div>
+   <!-- 페이지 끝 -->    
+   </div>
 
+    <!--아래여백-->
+    <div class="my-5">
+	</div>
+    <!--아래여백-->
+
+</div> 
 
     
 
@@ -295,21 +305,22 @@
     
     
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/demo/chart-area-demo.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/demo/chart-pie-demo.js"></script>
+
 
 </body>
 
