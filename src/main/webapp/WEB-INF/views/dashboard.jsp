@@ -82,7 +82,8 @@
                        <!-- 카드헤더 드롭다운 -->
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" >
                         
-                        <h6 class="m-0 font-weight-bold text-primary">프로젝트 목록</a></h6>
+                        <h6 class="m-0 font-weight-bold text-primary">
+                        <a href="#" onclick="script:window.location='project_list'">프로젝트 목록</a></h6>
                         
                         
                         <div class="dropdown no-arrow">
@@ -104,7 +105,7 @@
 
                         <!--과제--> 
                         <div class="card border my-2" role="button" data-bs-toggle="collapse" href="#project_content" aria-expanded="false" aria-controls="project_content" id="">
-                        과제이름 어쩌고 냠냠냠
+                        <p class="ml-2">과제이름 어쩌고 냠냠냠</p>
                         </div>
                         <!--과제-->
 

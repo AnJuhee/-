@@ -46,7 +46,9 @@
     <!--위에여백-->
 
 
-    
+    <div class="container ">        
+      <h1 class="">프로젝트 작성</h1>
+    </div>
 
 
     <div class="container py-2" >
@@ -110,19 +112,19 @@
             <div class="row">
                 <div class="form-floating col">
                     <input type="text" class="form-control" id="floatingInput_name" placeholder="이름" value="">
-                    <label for="floatingInput_name">확인자</label>
+                    <label class="ml-2" for="floatingInput_name">확인자</label>
                 </div>
 
                 <div class="form-floating col demo-usage-on-input-or-inline">
                     <input type="datetime" class="form-control" id="floatingInput_date" placeholder="이dldldldldlddl">
-                    <label for="floatingInput_date">일자
+                    <label class="ml-2" for="floatingInput_date">일자
                         
                     </label>
                 </div>
 
                 <div class="form-floating col">
                     <input type="email" class="form-control" id="floatingInput" placeholder="이름">
-                    <label for="floatingInput">서명</label>
+                    <label class="ml-2" for="floatingInput">서명</label>
                 </div>
             </div>
         </div>

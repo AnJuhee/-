@@ -37,7 +37,7 @@
         
             
         <form action="joinOk2" method="post">
-        <input type="hidden" value="${mdto.email }">
+        
   
           <div>
           <h1 class="h3 my-3 mb-3 fw-normal">연구실 입력</h1>

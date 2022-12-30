@@ -31,7 +31,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/joinOk1")
-	public String joinOk1(HttpServletRequest request, HttpSession session,Model model ) {
+	public String joinOk1(HttpServletRequest request) {
 		
 		String email = request.getParameter("email");
 		String name = request.getParameter("name");
@@ -40,25 +40,11 @@ public class MemberController {
 		IDao dao = sqlSession.getMapper(IDao.class);
 		dao.MemberJoin(email, name, pw);
 		
-		session.setAttribute("email", email);
-		MemberDto memberdto = dao.MemberEmail(email);
-		
-		model.addAttribute("mdto", memberdto);
-		model.addAttribute("email", email);
-		
 		return "redirect:join2";
 	}
 	
 	@RequestMapping("/join2")
-	public String join2(HttpSession session, Model model) {
-		
-		String email = (String) session.getAttribute("email");
-		
-		IDao dao = sqlSession.getMapper(IDao.class);
-		
-		MemberDto memberDto = dao.MemberEmail(email);
-		
-		model.addAttribute("mdto", memberDto);
+	public String join2() {
 		
 		return "join2";
 	}
@@ -66,15 +52,9 @@ public class MemberController {
 	@RequestMapping("/joinOk2")
 	public String joinOk2(HttpServletRequest request) {
 		
-		String rgroup = request.getParameter("rgroup");
-		String email = request.getParameter("email");
-		
-		IDao dao = sqlSession.getMapper(IDao.class);
-		
-		dao.MemberJoin2(rgroup,email);
 		
 		
-		return "redirect:join3";
+		return "redirect:dashboard";
 	}
 	
 	@RequestMapping("/join3")
