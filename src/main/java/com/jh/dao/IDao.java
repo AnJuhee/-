@@ -9,7 +9,7 @@ public interface IDao {
 	public int checkUserIdAndPw(String email, String pw); //사이드바 위에 이름가져오기
 	
 //연구노트
-	public void writeReport(String title,String projectid, String writer, String contents, String leadercheck);
+	public void writeProject(String projrct, String startdate, String finishdate, String team, String leader, String researcher);
 	
 	
 }

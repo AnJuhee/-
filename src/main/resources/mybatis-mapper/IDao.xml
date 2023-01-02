@@ -19,8 +19,8 @@
 	</select>
 
 <!-- 연구노트 -->
-	<insert id="writeReport">
-		
+	<insert id="writeProject">
+		INSERT INTO project(projectid, project, startdate, finishdate, team, leader, researcher) VALUES (project_seq.nextval,#{param1},#{param2},#{param3},#{param4},#{parma5},#{param6})
 	</insert>
 
 
