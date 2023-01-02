@@ -47,7 +47,7 @@
              
           
           <div class="form-floating my-3">
-            <input type="text" class="form-control" id="floatingInput" placeholder="이름" name="rgroup" value="">      
+            <input type="text" class="form-control" id="floatingInput" placeholder="이름" name="rname" value="">      
           </div>      
           
           

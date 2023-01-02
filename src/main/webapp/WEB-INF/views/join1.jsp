@@ -62,7 +62,7 @@
               
               
               <div class="my-4">
-              <button class="w-100 btn btn-lg btn-success" type="submit" onclick="script:window.location='join2'">가입 완료</button>
+              <button class="w-100 btn btn-lg btn-success" type="submit" onclick="script:window.location='dashboard'">가입 완료</button>
               <br>
                  </div>
              

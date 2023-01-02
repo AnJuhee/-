@@ -35,20 +35,20 @@
         <!-- 컨테이너 시작 건드리지마 -->	
         
             
-        <form>
+        <form action="loginOk" method="post">
   
     
             <h1 class="h3 my-5 mb-3 fw-normal text-center">연구실 안전관리 시스템</h1>
         
             <div class="form-floating">
-              <input type="email" class="form-control" id="floatingInput" placeholder="이메일(계정)">
+              <input type="email" class="form-control" id="floatingInput" placeholder="이메일(계정)" name="email">
               
             </div>
             
             <br>
             
             <div class="form-floating">
-              <input type="password" class="form-control" id="floatingPassword" placeholder="비밀번호">      
+              <input type="password" class="form-control" id="floatingPassword" placeholder="비밀번호" name="pw">      
             </div>
             
             <br>

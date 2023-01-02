@@ -10,17 +10,17 @@
 		INSERT INTO join(email, name, pw) VALUES (#{param1}, #{param2}, #{param3})
 	</insert>
 	
-	<select id="MemberEmail" resultType="com.jh.dto.MemberDto">
-		select * from join where email=#{param1}
-	</select>
+	<insert id="ResearchJoin">
+		INSERT INTO research(rnum, rname) VALUES (research_seq.nextval, #{param1})
+	</insert>
 	
-	<update id="MemberJoin2">
-		UPDATE join SET RGROUP=#{param1} WHERE email=#{param2}
-	</update>
+	<select id="checkUserIdAndPw" resultType="int">
+		select count(*) from join where email=#{param1} and pw=#{param2}
+	</select>
 
 <!-- 연구노트 -->
 	<insert id="writeReport">
-		INSERT INTO report(title,projectid,writer,contents,leadercheck)  VALUES (#{param1}, #{param2}, #{param3}, #{param4}, #{param5})
+		
 	</insert>
 
 
