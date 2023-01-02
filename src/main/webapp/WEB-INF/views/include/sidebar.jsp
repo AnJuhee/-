@@ -2,20 +2,28 @@
     pageEncoding="UTF-8"%>
 
 
-
+		<% 
+		String sessionId = (String) session.getAttribute("email");
+		//로그인 중이라면 로그인한 아이디가 저장되고 비로그인 중이면 sessionId==null 임
+		%>
 
 
 
 
 <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#" onclick="script:window.location='dashboard'">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">GEUNHO <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">
+	<% if(sessionId == null) { %>
+                김필
+                <%} else { %> 
+                <%= sessionId %>
+                <%} %><sup>2</sup></div>
             </a>
 
             <!-- Divider -->
@@ -100,16 +108,16 @@
 			-->
 			
             <!-- Divider -->
-            <!--  
+              
             <hr class="sidebar-divider d-none d-md-block">
-			-->
+			
 			
             <!-- Sidebar Toggler (Sidebar) -->
-            <!--  
+             
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div> 
-            -->
+            
 
         </ul>
         <!-- End of Sidebar -->
