@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,7 +58,7 @@
               <input type="text" class="form-control bg-light border-0 small" placeholder="검색"
                          aria-label="Search" aria-describedby="basic-addon2">
               <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
+                <button class="btn btn-secondary" type="button">
                   <i class="fas fa-search fa-sm"></i>
                 </button>
               </div>
@@ -65,8 +66,8 @@
           </form>     
           
           <div>
-            <button class="btn btn-primary mr-1" type="button" onclick="script:window.location='project'">추가</button>
-            <button class="btn btn-primary mr-1" type="submit">설정</button>
+            <button class="btn btn-secondary mr-1" type="button" onclick="script:window.location='project'">추가</button>
+            <button class="btn btn-secondary mr-1" type="submit">설정</button>
           </div>
           
          </div> 
@@ -87,14 +88,14 @@
       </thead>
       <tbody>
       
-          
+          <c:forEach items="${pdto }" var="pdto">
            <tr >
              <th scope="row">12</th>
              <td>진행중</td>
-             <td>과제이름은 뭐일까요</td>
-             <td>안주희</td>
-             <td>2022-12-21</td>
-             <td>2023-01-18</td>
+             <td>${pdto.project }</td>
+             <td>${pdto.leader }</td>
+             <td>${pdto.startdate }</td>
+             <td>${pdto.finishdate }</td>
              <td>
                 <div class="row no-gutters align-items-center">
                    <div class="col">
@@ -146,7 +147,24 @@
           <td>안주희</td>
           <td>2022-12-21</td>
           <td>2023-01-18</td>
-          <td>그래프넣을자리</td>
+          <td>
+          <div class="row no-gutters align-items-center">
+                
+                <div class="col">
+                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                </div>
+                
+                
+                <div class="col">
+                    <div class="progress progress-sm mr-2">
+                        <div class="progress-bar bg-info" role="progressbar"
+                            style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                            aria-valuemax="100"></div>
+                    </div>
+                </div>
+                
+            </div>
+            </td>
         </tr>
         
         <tr class="" data-bs-toggle="collapse" href="#collapseExample" role="button" 
@@ -157,12 +175,28 @@
           <td>안주희</td>
           <td>2022-12-21</td>
           <td>2023-01-18</td>
-          <td>그래프넣을자리</td>
+          <td><div class="row no-gutters align-items-center">
+                
+                <div class="col">
+                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                </div>
+                
+                
+                <div class="col">
+                    <div class="progress progress-sm mr-2">
+                        <div class="progress-bar bg-info" role="progressbar"
+                            style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                            aria-valuemax="100"></div>
+                    </div>
+                </div>
+                
+            </div>
+            </td>
         </tr>
         
         <tr>
         <td colspan="7" class="collapse" id="collapseExample" >
-          <div class="card card-body " role="button" onclick="location.href='test_report_list.html'" >
+          <div class="card card-body " role="button" onclick="script:window.location='report_list'" >
             <div>
             ---연구자는 김근호 안주희.<br>
             ---오늘은 던킨도너츠 먹고싶네요<br>
@@ -268,7 +302,7 @@
           <td>2023-01-18</td>
           <td>그래프넣을자리</td>
         </tr>
-        
+        </c:forEach>
             
         
         

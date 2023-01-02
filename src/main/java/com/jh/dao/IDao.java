@@ -1,6 +1,9 @@
 package com.jh.dao;
 
+import java.util.ArrayList;
+
 import com.jh.dto.MemberDto;
+import com.jh.dto.ProjectDto;
 
 public interface IDao {
 //로그인&회원가입
@@ -10,6 +13,6 @@ public interface IDao {
 	
 //연구노트
 	public void writeProject(String projrct, String startdate, String finishdate, String team, String leader, String researcher);
-	
+	public ArrayList<ProjectDto> projectlist(); //프로젝트 리스트 보기
 	
 }

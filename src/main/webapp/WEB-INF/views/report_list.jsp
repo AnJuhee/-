@@ -54,7 +54,7 @@
               <input type="text" class="form-control bg-light border-0 small" placeholder="검색"
                          aria-label="Search" aria-describedby="basic-addon2">
               <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
+                <button class="btn btn-secondary" type="button">
                   <i class="fas fa-search fa-sm"></i>
                 </button>
               </div>
@@ -62,8 +62,8 @@
           </form>     
           
           <div>
-            <button class="btn btn-primary mr-1" type="button" onclick="script:window.location='report'">추가</button>
-            <button class="btn btn-primary mr-1" type="submit">설정</button>
+            <button class="btn btn-secondary mr-1" type="button" onclick="script:window.location='report'">추가</button>
+            <button class="btn btn-secondary mr-1" type="submit">설정</button>
           </div>
           
          </div> 
@@ -113,7 +113,7 @@
         
         <tr>
         <td colspan="7" class="collapse" id="collapseExample" >
-          <div class="card card-body " role="button" onclick="location.href='test_report.html'" >
+          <div class="card card-body " role="button" onclick="location.href='report'" >
             <div>
             두부의 물기는 최대한 없게<br>
             <br>
@@ -124,16 +124,7 @@
           </div>
           </div>
         </td>
-        </tr>   
-        
-        
-        
-        
-        
-        
-            
-        
-        
+        </tr>     
         
         
         </tbody>

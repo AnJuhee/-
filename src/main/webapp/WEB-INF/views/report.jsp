@@ -39,14 +39,17 @@
 
 </head>
 
-<body>
-
-
-
-    <!--위에여백-->
-    <div class="my-5"></div>
-    <!--위에여백-->
-
+<body id="wrapper">
+	<!-- 사이드바 자리 -->
+	<%@ include file="include/sidebar.jsp" %>
+	<!-- 사이드바 자리 -->
+	
+	<!-- 페이지 전체부분 (topbar 포함) -->
+	<div id="content-wrapper" class="d-flex flex-column">
+	
+	<!-- topbar 자리 -->
+		<%@ include file="include/topbar.jsp" %>	
+	<!-- topbar 자리 -->
 
     <div class="container">        
       <h1 class="">보고서 작성</h1>
@@ -55,38 +58,42 @@
 
     <div class="container py-2" >
         <!-- 컨테이너 시작 건드리지마 -->	
+        
         <div class="card">
             <div class="card-body">
-        <div class="card mb-2">
-            <div class="card-body">
-              과제이름 : 마라탕 좋아요. 두부 많이주세요
+                <div class="card mb-2">
+                    <div class="card-body row">
+                        <label class="col-2 col-form-label">과제이름</label>
+                        <label class="col col-form-label ">마라탕을 맛있게 만드는 방법</label>
+                    </div>
+                </div>
+                <div class="card mb-2">
+                    <div class="card-body row">
+                        <label class="col-2 col-form-label">기간</label>
+                        <label class="col col-form-label ">2022-02-02 ~ 2023-11-11</label>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body row">
+                        <label class="col-2 col-form-label">책임자</label>
+                        <label class="col col-form-label ">안주희</label>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="card mb-2">
-            <div class="card-body">
-              1993-04-30 -2022-12-28
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-body">
-              책임자 : 누구
-            </div>
-        </div>
-        </div>
         </div>
         
         <!--위에여백-->
     <div class="my-3"></div>
     <!--위에여백-->
 
-    <div class="mb-2">
+    <div class="card mb-2">
         <div class="card-body">
-        <input class="form-control" type="text" placeholder="제목"> 
+        제목 :  
         </div>
     </div>
 
-        <div class="" >
-            <textarea class="form-control" placeholder="내용입력" id="floatingTextarea" style="height: 400px;"></textarea>            
+        <div class="card" >
+            <div class="card-body"  style="height: 400px;">safasfasfsaf</div>            
         </div>
             
         <div class=" my-3 ">
@@ -106,7 +113,7 @@
                 </div>
 
                 <div class="form-floating col">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="이름">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="이름">
                     <label class="ml-2" for="floatingInput">서명</label>
                 </div>
             </div>
@@ -135,8 +142,8 @@
 
         <!--버튼-->
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button class="btn btn-primary me-md-2" type="button">저장</button>
-            <button class="btn btn-primary" type="button" onclick="history.go(-1)">취소</button>
+            <button class="btn btn-secondary me-md-2" type="button">수정</button>
+            <button class="btn btn-secondary" type="button" onclick="history.go(-1)">목록</button>
         </div>
         <!--버튼-->
             
@@ -159,8 +166,15 @@
         
         <!-- 컨테이너 끝 -->      
         </div>
+   <!-- 페이지 끝 -->    
+   </div>
 
+    <!--아래여백-->
+    <div class="my-5">
+	</div>
+    <!--아래여백-->
 
+</div> 
 
 
     <script>

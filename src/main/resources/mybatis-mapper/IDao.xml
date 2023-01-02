@@ -20,8 +20,12 @@
 
 <!-- 연구노트 -->
 	<insert id="writeProject">
-		INSERT INTO project(projectid, project, startdate, finishdate, team, leader, researcher) VALUES (project_seq.nextval,#{param1},#{param2},#{param3},#{param4},#{parma5},#{param6})
+		INSERT INTO project(projectid, project, startdate, finishdate, team, leader, researcher) VALUES (project_seq.nextval,#{param1},#{param2},#{param3},#{param4},#{param5},#{param6})
 	</insert>
+	
+	<select id="projectlist" resultType="com.jh.dto.ProjectDto">
+		select * from project order by rfbnum desc
+	</select>
 
 
 </mapper>

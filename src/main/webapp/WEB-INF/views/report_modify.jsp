@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>보고서 작성</title>
+    <title>보고서 수정</title>
 
     <!-- Custom fonts for this template-->
     <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -52,94 +52,100 @@
 	<!-- topbar 자리 -->
 
     <div class="container">        
-      <h1 class="">프로젝트 작성</h1>
+      <h1 class="">보고서 작성</h1>
     </div>
 
 
     <div class="container py-2" >
-        <!-- 컨테이너 시작 건드리지마 -->	
-        
-        
-        
-        <form action="projectOK" >
-           
-           
-            <div class=" my-3 ">
-                <div class="row mb-2">
-                    <div class="form-floating col">
-                        <input type="text" class="form-control" id="floatingInput_writer" placeholder="이름" name="project">
-                        <label class="ml-2" for="floatingInput_writer">과제이름</label>
-                    </div>                   
-                </div>
-
-                <div class="row mb-2">
-                    
-
-                    <div class="form-floating col">
-                        <input type="datetime" class="form-control" id="demo-mobile-picker-input" placeholder="이름" name="startdate">
-                        <label class="ml-2" for="floatingInput_date">과제 시작 </label>
+        <!-- 컨테이너 시작 건드리지마 -->
+        	
+        <div class="card">
+            <div class="card-body">
+                <div class="card mb-2">
+                    <div class="card-body row">
+                        <label class="col-2 col-form-label">과제이름</label>
+                        <label class="col col-form-label ">마라탕을 맛있게 만드는 방법</label>
                     </div>
-    
-                    <div class="form-floating col">
-                        <input type="datetime" class="form-control" id="demo-mobile-picker-input" placeholder="이름" name="finishdate">
-                        <label class="ml-2" for="floatingInput_date">과제 종료 </label>
+                </div>
+                <div class="card mb-2">
+                    <div class="card-body row">
+                        <label class="col-2 col-form-label">기간</label>
+                        <label class="col col-form-label ">2022-02-02 ~ 2023-11-11</label>
                     </div>
-                        
                 </div>
-    
-
-                <div class="row mb-2">
-                    <div class="form-floating col">
-                        <input type="text" class="form-control" id="floatingInput_name" placeholder="이름" name="team">
-                        <label class="ml-2" for="floatingInput_name">부서명</label>
-                    </div>    
-                    
+                <div class="card">
+                    <div class="card-body row">
+                        <label class="col-2 col-form-label">책임자</label>
+                        <label class="col col-form-label ">안주희</label>
+                    </div>
                 </div>
-
-                <div class="row mb-2">
-                    <div class="form-floating col">
-                        <input type="text" class="form-control" id="floatingInput_name" placeholder="이름" name="leader">
-                        <label class="ml-2" for="floatingInput_name">책임자</label>
-                    </div>    
-                    
-                </div>
-
-                <div class="row mb-2">
-                    <div class="form-floating col">
-                        <input type="text" class="form-control" id="floatingInput_name" placeholder="이름" name="researcher">
-                        <label class="ml-2" for="floatingInput_name">연구원</label>
-                    </div>    
-                    
-                </div>
-
-                
             </div>
-
+        </div>
         
         <!--위에여백-->
     <div class="my-3"></div>
     <!--위에여백-->
 
-    
+    <div class="mb-2">
+        <div class="card-body">
+        <input class="form-control" type="text" placeholder="제목"> 
+        </div>
+    </div>
 
         <div class="" >
-            <textarea class="form-control" placeholder="관련 보고서" id="floatingTextarea" style="height: 400px;"></textarea>            
+            <textarea class="form-control" placeholder="내용입력" id="floatingTextarea" style="height: 400px;"></textarea>            
         </div>
             
-        
-        
-	<div class="my-3"></div>
+        <div class=" my-3 ">
+            <div class="row mb-2">
+                <div class="form-floating col">
+                    <input type="text" class="form-control" id="floatingInput_name" placeholder="이름" value="">
+                    <label class="ml-2" for="floatingInput_name">기록자</label>
+                </div>
+
+                <div class="form-floating col">
+                    <input type="datetime" class="form-control" id="demo-mobile-picker-input" placeholder="이름">
+                    <label class="ml-2" for="floatingInput_date">기록일자
+
+                        
+
+                    </label>
+                </div>
+
+                <div class="form-floating col">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="이름">
+                    <label class="ml-2" for="floatingInput">서명</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-floating col">
+                    <input type="text" class="form-control" id="floatingInput_name" placeholder="이름" value="">
+                    <label class="ml-2" for="floatingInput_name">확인자</label>
+                </div>
+
+                <div class="form-floating col demo-usage-on-input-or-inline">
+                    <input type="datetime" class="form-control" id="floatingInput_date" placeholder="이dldldldldlddl">
+                    <label class="ml-2" for="floatingInput_date">일자
+                        
+                    </label>
+                </div>
+
+                <div class="form-floating col">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="이름">
+                    <label class="ml-2" for="floatingInput">서명</label>
+                </div>
+            </div>
+        </div>
+
         
 
         <!--버튼-->
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button class="btn btn-secondary me-md-2" type="submit">완료</button>
+            <button class="btn btn-secondary me-md-2" type="button">저장</button>
             <button class="btn btn-secondary" type="button" onclick="history.go(-1)">취소</button>
         </div>
-        
-        </form>
         <!--버튼-->
-            
             
             
                 
