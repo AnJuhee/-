@@ -89,8 +89,10 @@
       <tbody>
       
           <c:forEach items="${pdto }" var="pdto">
-           <tr >
-             <th scope="row">12</th>
+          
+           <tr class="" data-bs-toggle="collapse" href="#collapse${pdto.projectid }" role="button" 
+            aria-expanded="false" aria-controls="${pdto.projectid }" >
+             <th scope="row">${pdto.projectid }</th>
              <td>진행중</td>
              <td>${pdto.project }</td>
              <td>${pdto.leader }</td>
@@ -112,92 +114,10 @@
                </td>
            </tr>
            
-        
-        
-        <tr>
-          <th scope="row">1</th>
-          <td>종료</td>
-          <td>과제이름은 뭐일까요</td>
-          <td>안주희</td>
-          <td>2022-12-21</td>
-          <td>2023-01-18</td>
-          <td>
-              <div class="row no-gutters align-items-center">
-                
-                <div class="col">
-                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                </div>
-                
-                
-                <div class="col">
-                    <div class="progress progress-sm mr-2">
-                        <div class="progress-bar bg-info" role="progressbar"
-                            style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                            aria-valuemax="100"></div>
-                    </div>
-                </div>
-                
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">1</th>
-          <td>진행중</td>
-          <td>과제이름은 뭐일까요</td>
-          <td>안주희</td>
-          <td>2022-12-21</td>
-          <td>2023-01-18</td>
-          <td>
-          <div class="row no-gutters align-items-center">
-                
-                <div class="col">
-                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                </div>
-                
-                
-                <div class="col">
-                    <div class="progress progress-sm mr-2">
-                        <div class="progress-bar bg-info" role="progressbar"
-                            style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                            aria-valuemax="100"></div>
-                    </div>
-                </div>
-                
-            </div>
-            </td>
-        </tr>
-        
-        <tr class="" data-bs-toggle="collapse" href="#collapseExample" role="button" 
-            aria-expanded="false" aria-controls="collapseExample" >
-          <th scope="row">3</th>
-          <td>진행중</td>
-          <td>과제이름은 뭐일까요</td>
-          <td>안주희</td>
-          <td>2022-12-21</td>
-          <td>2023-01-18</td>
-          <td><div class="row no-gutters align-items-center">
-                
-                <div class="col">
-                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                </div>
-                
-                
-                <div class="col">
-                    <div class="progress progress-sm mr-2">
-                        <div class="progress-bar bg-info" role="progressbar"
-                            style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                            aria-valuemax="100"></div>
-                    </div>
-                </div>
-                
-            </div>
-            </td>
-        </tr>
-        
-        <tr>
-        <td colspan="7" class="collapse" id="collapseExample" >
+           <tr>
+        <td colspan="7" class="collapse" id="collapse${pdto.projectid }" >
           <div class="card card-body " role="button" onclick="script:window.location='report_list'" >
-            <div>
+            <div class="">
             ---연구자는 김근호 안주희.<br>
             ---오늘은 던킨도너츠 먹고싶네요<br>
             ---집 가기전에 사들고 갑니다.<br>
@@ -207,102 +127,20 @@
           </div>
           </div>
         </td>
-        </tr>   
+        </tr>  
+        </c:forEach>   
         
         
         
         
         
-        <tr class="accordion-toggle collapsed" 
-            data-mdb-toggle="collapse" data-mdb-parent="#accordion1"
-            href="#collapseOne" aria-controls="collapseOne" role="button"     >
-          <th scope="row">134</th>
-          <td>진행중</td>
-          <td>과제이름은 뭐일까요</td>
-          <td>안주희</td>
-          <td>2022-12-21</td>
-          <td>2023-01-18</td>
-          <td>그래프넣을자리</td>
-        </tr>
-        <tr class="accordion-toggle collapsed" 
-            data-mdb-toggle="collapse" data-mdb-parent="#accordion1"
-            href="#collapseOne" aria-controls="collapseOne" role="button"     >
-          <th scope="row">134</th>
-          <td>진행중</td>
-          <td>과제이름은 뭐일까요</td>
-          <td>안주희</td>
-          <td>2022-12-21</td>
-          <td>2023-01-18</td>
-          <td>그래프넣을자리</td>
-        </tr>
-        <tr class="accordion-toggle collapsed" 
-            data-mdb-toggle="collapse" data-mdb-parent="#accordion1"
-            href="#collapseOne" aria-controls="collapseOne" role="button"     >
-          <th scope="row">134</th>
-          <td>진행중</td>
-          <td>과제이름은 뭐일까요</td>
-          <td>안주희</td>
-          <td>2022-12-21</td>
-          <td>2023-01-18</td>
-          <td>그래프넣을자리</td>
-        </tr>
-        <tr class="accordion-toggle collapsed" 
-            data-mdb-toggle="collapse" data-mdb-parent="#accordion1"
-            href="#collapseOne" aria-controls="collapseOne" role="button"     >
-          <th scope="row">134</th>
-          <td>진행중</td>
-          <td>과제이름은 뭐일까요</td>
-          <td>안주희</td>
-          <td>2022-12-21</td>
-          <td>2023-01-18</td>
-          <td>그래프넣을자리</td>
-        </tr>
-        <tr class="accordion-toggle collapsed" 
-            data-mdb-toggle="collapse" data-mdb-parent="#accordion1"
-            href="#collapseOne" aria-controls="collapseOne" role="button"     >
-          <th scope="row">134</th>
-          <td>진행중</td>
-          <td>과제이름은 뭐일까요</td>
-          <td>안주희</td>
-          <td>2022-12-21</td>
-          <td>2023-01-18</td>
-          <td>그래프넣을자리</td>
-        </tr>
-        <tr class="accordion-toggle collapsed" 
-            data-mdb-toggle="collapse" data-mdb-parent="#accordion1"
-            href="#collapseOne" aria-controls="collapseOne" role="button"     >
-          <th scope="row">134</th>
-          <td>진행중</td>
-          <td>과제이름은 뭐일까요</td>
-          <td>안주희</td>
-          <td>2022-12-21</td>
-          <td>2023-01-18</td>
-          <td>그래프넣을자리</td>
-        </tr>
-        <tr class="accordion-toggle collapsed" 
-            data-mdb-toggle="collapse" data-mdb-parent="#accordion1"
-            href="#collapseOne" aria-controls="collapseOne" role="button"     >
-          <th scope="row">134</th>
-          <td>진행중</td>
-          <td>과제이름은 뭐일까요</td>
-          <td>안주희</td>
-          <td>2022-12-21</td>
-          <td>2023-01-18</td>
-          <td>그래프넣을자리</td>
-        </tr>
         
-        <tr class="accordion-toggle collapsed" 
-            data-mdb-toggle="collapse" data-mdb-parent="#accordion1"
-            href="#collapseOne" aria-controls="collapseOne" role="button"     >
-          <th scope="row">134</th>
-          <td>진행중</td>
-          <td>과제이름은 뭐일까요</td>
-          <td>안주희</td>
-          <td>2022-12-21</td>
-          <td>2023-01-18</td>
-          <td>그래프넣을자리</td>
-        </tr>
-        </c:forEach>
+        
+        
+        
+        
+        
+        
             
         
         

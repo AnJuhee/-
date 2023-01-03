@@ -24,7 +24,7 @@
 	</insert>
 	
 	<select id="projectlist" resultType="com.jh.dto.ProjectDto">
-		select * from project order by rfbnum desc
+		select * from project order by projectid desc
 	</select>
 
 

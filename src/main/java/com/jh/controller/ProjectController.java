@@ -137,6 +137,19 @@ public class ProjectController {
 		
 		return "report";
 	}
+	
+	@RequestMapping("reportOk")
+	public String reportOk(HttpServletRequest request) {
+		
+		String title = request.getParameter("title");
+		String contents = request.getParameter("contents");
+		String writer = request.getParameter("writer");
+		String rdate = request.getParameter("rdate");
+		String leadercheck = request.getParameter("leadercheck");
+		return "report";
+	} 
+	
+	
 	@RequestMapping("/report_list")
 	public String report_list() {
 		

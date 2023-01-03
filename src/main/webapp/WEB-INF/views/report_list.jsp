@@ -84,13 +84,33 @@
       <tbody>
       
           
-           <tr >
-             <th scope="row">12</th>
-             <td>마라탕 만드는 방법</td>
-             <td>김근호</td>
-             <td>2022-02-02</td>
-             <td></td>
+           <c:forEach items="${rdto }" var="pdto">
+          
+           <tr class="" data-bs-toggle="collapse" href="#collapse${}" role="button" 
+            aria-expanded="false" aria-controls="${ }" >
+             <th scope="row">${rdto.projectid }</th>
+             <td>${rdto.title }</td>
+             <td>${rdto.writer }</td>
+             <td>>${rdto.rdate }</td>
+             <td>${rdto.leadercheck }</td>
+             <td>
+                <div class="row no-gutters align-items-center">
+                   <div class="col">
+                       <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">100%</div>
+                   </div>
+                   <div class="col">
+                       <div class="progress progress-sm mr-2">
+                           <div class="progress-bar bg-info" role="progressbar" style="width: 100%" aria-valuenow="50" aria-valuemin="0"
+                               aria-valuemax="100">
+                           </div>
+                       </div>
+                   </div>
+               </div>
+               </td>
            </tr>
+           
+             
+        </c:forEach>  
            
                        
         <tr>

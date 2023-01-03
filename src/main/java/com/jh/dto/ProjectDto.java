@@ -13,7 +13,8 @@ public class ProjectDto {
 
 	private int projectid;
 	private String project;
-	private Timestamp duration;
+	private String startdate;
+	private String finishdate;
 	private String team;
 	private String leader;
 	private String researcher;
