@@ -1,6 +1,5 @@
 package com.jh.dto;
 
-import java.sql.Timestamp;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,11 +10,16 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ReportDto {
 
+	private int rnum;
 	private String title;
 	private int projectid;
 	private String writer;
-	private Timestamp rdate;
+	private String rdate;
 	private String contents;
 	private String leadercheck;
+	private String rsign;
+	private String csign;
+	private String cdate;
+	
 	
 }

@@ -18,7 +18,7 @@
 		select count(*) from join where email=#{param1} and pw=#{param2}
 	</select>
 
-<!-- 연구노트 -->
+<!-- 연구노트(프로젝트) -->
 	<insert id="writeProject">
 		INSERT INTO project(projectid, project, startdate, finishdate, team, leader, researcher) VALUES (project_seq.nextval,#{param1},#{param2},#{param3},#{param4},#{param5},#{param6})
 	</insert>
@@ -26,6 +26,23 @@
 	<select id="projectlist" resultType="com.jh.dto.ProjectDto">
 		select * from project order by projectid desc
 	</select>
+	
+<!-- 연구노트(보고서) -->	
+	<insert id="writeReport">
+		INSERT INTO report(rnum, title, contents, writer, rdate, rsign, leadercheck, cdate, csign) VALUES (report_seq.nextval,#{param1},#{param2},#{param3},#{param4},#{param5},#{param6},#{param7},#{param8})
+	</insert>
+
+	<select id="reportlist" resultType="com.jh.dto.ReportDto">
+		select * from report order by rnum desc
+	</select>
+	
+	<select id="reportView" resultType="com.jh.dto.ReportDto">
+		select * from report where rnum=#{param1}
+	</select>
+	
+	<delete id="reportDelete">
+		delete from report where rnum=#{param1}
+	</delete>
 
 
 </mapper>

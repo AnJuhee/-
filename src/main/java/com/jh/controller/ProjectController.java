@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.jh.dao.IDao;
 import com.jh.dto.MemberDto;
 import com.jh.dto.ProjectDto;
+import com.jh.dto.ReportDto;         
 
 
 @Controller
@@ -146,14 +147,51 @@ public class ProjectController {
 		String writer = request.getParameter("writer");
 		String rdate = request.getParameter("rdate");
 		String leadercheck = request.getParameter("leadercheck");
-		return "report";
+		String rsign = request.getParameter("rsign");
+		String cdate = request.getParameter("cdate");
+		String csign = request.getParameter("csign");
+		
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		dao.writeReport(title, contents, writer, rdate, rsign, leadercheck, cdate, csign);
+		
+		return "redirect:report_list";
 	} 
 	
 	
 	@RequestMapping("/report_list")
-	public String report_list() {
+	public String report_list(Model model) {
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		ArrayList<ReportDto> rdto= dao.reportlist();
+		
+		model.addAttribute("rdto", rdto);
 		
 		return "report_list";
 	}
 
+	@RequestMapping("/reportView")
+	public String reportView(HttpServletRequest request, Model model, HttpSession session) {
+		
+		String rnum = request.getParameter("rnum");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		ReportDto rdto = dao.reportView(rnum);
+		
+		model.addAttribute("rdto", rdto);
+		
+		return "reportView";
+	}
+	@RequestMapping("/reportDelete")
+	public String reportDelete(HttpServletRequest request) {
+		
+		String rnum = request.getParameter("rnum");
+		IDao dao = sqlSession.getMapper(IDao.class);
+		dao.reportDelete(rnum);
+		
+		return "redirect:report_list";
+	}
 }

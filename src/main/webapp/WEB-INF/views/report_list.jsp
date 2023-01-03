@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -84,67 +85,36 @@
       <tbody>
       
           
-           <c:forEach items="${rdto }" var="pdto">
+         <c:forEach items="${rdto }" var="rdto">
           
-           <tr class="" data-bs-toggle="collapse" href="#collapse${}" role="button" 
-            aria-expanded="false" aria-controls="${ }" >
-             <th scope="row">${rdto.projectid }</th>
+           <tr class="" data-bs-toggle="collapse" href="#collapse${rdto.rnum}" role="button" 
+            aria-expanded="false" aria-controls="${rdto.rnum }" >
+             <th scope="row">${rdto.rnum }</th>
              <td>${rdto.title }</td>
              <td>${rdto.writer }</td>
-             <td>>${rdto.rdate }</td>
+             <td>${rdto.rdate }</td>
              <td>${rdto.leadercheck }</td>
-             <td>
-                <div class="row no-gutters align-items-center">
-                   <div class="col">
-                       <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">100%</div>
-                   </div>
-                   <div class="col">
-                       <div class="progress progress-sm mr-2">
-                           <div class="progress-bar bg-info" role="progressbar" style="width: 100%" aria-valuenow="50" aria-valuemin="0"
-                               aria-valuemax="100">
-                           </div>
-                       </div>
-                   </div>
-               </div>
-               </td>
            </tr>
-           
-             
-        </c:forEach>  
-           
-                       
-        <tr>
-          <th scope="row">1</th>
-          <td>마라소스 맛있게</td>
-          <td>안주희</td>
-          <td>2020-02-02</td>
-          <td>안주희</td>
-         
-        </tr>
-        
-        <tr class="" data-bs-toggle="collapse" href="#collapseExample" role="button" 
-            aria-expanded="false" aria-controls="collapseExample" >
-          <th scope="row">3</th>
-          <td>마라탕 무게를 줄이기</td>
-          <td>김근호</td>
-          <td>2022-12-28</td>
-          <td>안주희</td>          
-        </tr>
-        
-        <tr>
-        <td colspan="7" class="collapse" id="collapseExample" >
-          <div class="card card-body " role="button" onclick="location.href='report'" >
-            <div>
-            두부의 물기는 최대한 없게<br>
-            <br>
-            그래도 던킨도나쓰가 맛있지 <br>
+               
+           <tr>
+        	 <td colspan="7" class="collapse" id="collapse${rdto.rnum}" >
+          		<div class="card card-body " role="button" >
+          			<a href="reportView?rnum=${rdto.rnum }" > 
+           		  	<div>
+            		두부의 물기는 최대한 없게<br>
+		            <br>
+		            그래도 던킨도나쓰가 맛있지 <br>
             
 
-            꺅 ~~
-          </div>
-          </div>
-        </td>
-        </tr>     
+            		꺅 ~~
+          		  	</div>
+          		 	</a>
+          	    </div>
+        	</td>
+          </tr> 
+         </c:forEach>  
+        
+     
         
         
         </tbody>
