@@ -185,6 +185,42 @@ public class ProjectController {
 		
 		return "reportView";
 	}
+	
+	@RequestMapping("/reportModify")
+	public String reportModify(HttpServletRequest request, Model model) {
+		
+		String rnum = request.getParameter("rnum");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		ReportDto rdto = dao.reportView(rnum);
+		
+		model.addAttribute("rdto", rdto);
+		
+		return "report_modify";
+	}
+	
+	@RequestMapping("/reportModifyOk")
+	public String reportModifyOk(HttpServletRequest request) {
+		
+		String rnum = request.getParameter("rnum");
+		String title = request.getParameter("title");
+		String contents = request.getParameter("contents");
+		String writer = request.getParameter("writer");
+		String rdate = request.getParameter("rdate");
+		String leadercheck = request.getParameter("leadercheck");
+		String rsign = request.getParameter("rsign");
+		String cdate = request.getParameter("cdate");
+		String csign = request.getParameter("csign");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		dao.reportModify(rnum, title, contents, writer, rdate, rsign, leadercheck, cdate, csign);
+		
+		return "redirect:report_list";
+	}
+	
+	
 	@RequestMapping("/reportDelete")
 	public String reportDelete(HttpServletRequest request) {
 		

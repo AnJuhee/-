@@ -40,9 +40,15 @@
 		select * from report where rnum=#{param1}
 	</select>
 	
+	<update id="reportModify">
+		UPDATE report SET title=#{param2}, contents=#{param3}, writer=#{param4}, rdate=#{param5}, rsign=#{param6}, leadercheck=#{param7}, cdate=#{param8}, csign=#{param9} WHERE rnum=#{param1}
+	</update>
+	
 	<delete id="reportDelete">
-		delete from report where rnum=#{param1}
+		delete from report where rnum=#{param1} 
 	</delete>
+	
+	
 
 
 </mapper>

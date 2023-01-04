@@ -58,6 +58,9 @@
 
     <div class="container py-2" >
         <!-- 컨테이너 시작 건드리지마 -->
+        
+        <form action="reportModifyOk" method="post">
+        <input type="hidden" value="${rdto.rnum }" name="rnum">
         	
         <div class="card">
             <div class="card-body">
@@ -88,52 +91,47 @@
 
     <div class="mb-2">
         <div class="card-body">
-        <input class="form-control" type="text" placeholder="제목"> 
+        <input class="form-control" type="text" placeholder="제목" name="title" value="${rdto.title }"> 
         </div>
     </div>
 
         <div class="" >
-            <textarea class="form-control" placeholder="내용입력" id="floatingTextarea" style="height: 400px;"></textarea>            
+            <textarea class="form-control" placeholder="내용입력" id="floatingTextarea" style="height: 400px;" name="contents">${rdto.contents }</textarea>            
         </div>
             
         <div class=" my-3 ">
+        
             <div class="row mb-2">
                 <div class="form-floating col">
-                    <input type="text" class="form-control" id="floatingInput_name" placeholder="이름" value="">
-                    <label class="ml-2" for="floatingInput_name">기록자</label>
+                    <input type="text" class="form-control" id="floatingInput_name" placeholder="작성자" name="writer" value="${rdto.writer }">
+                    <label class="ml-2" for="floatingInput_name">작성자</label>
                 </div>
 
                 <div class="form-floating col">
-                    <input type="datetime" class="form-control" id="demo-mobile-picker-input" placeholder="이름">
-                    <label class="ml-2" for="floatingInput_date">기록일자
-
-                        
-
-                    </label>
+                    <input type="datetime" class="form-control" id="demo-mobile-picker-input" placeholder="작성일자" name="rdate" value="${rdto.rdate }">
+                    <label class="ml-2" for="floatingInput_date">작성일자</label>
                 </div>
 
                 <div class="form-floating col">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="이름">
-                    <label class="ml-2" for="floatingInput">서명</label>
+                    <input type="text" class="form-control" id="floatingInput" placeholder="작성자 서명" name="rsign" value="${rdto.rsign }">
+                    <label class="ml-2" for="floatingInput">작성자 서명</label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="form-floating col">
-                    <input type="text" class="form-control" id="floatingInput_name" placeholder="이름" value="">
+                    <input type="text" class="form-control" id="floatingInput_name" placeholder="확인자" name="leadercheck" value="${rdto.leadercheck }">
                     <label class="ml-2" for="floatingInput_name">확인자</label>
                 </div>
 
                 <div class="form-floating col demo-usage-on-input-or-inline">
-                    <input type="datetime" class="form-control" id="floatingInput_date" placeholder="이dldldldldlddl">
-                    <label class="ml-2" for="floatingInput_date">일자
-                        
-                    </label>
+                    <input type="datetime" class="form-control" id="floatingInput_date" placeholder="확인일자" name="cdate" value="${rdto.cdate }">
+                    <label class="ml-2" for="floatingInput_date">확인일자</label>
                 </div>
 
                 <div class="form-floating col">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="이름">
-                    <label class="ml-2" for="floatingInput">서명</label>
+                    <input type="text" class="form-control" id="floatingInput" placeholder="확인자 서명" name="csign" value="${rdto.csign }">
+                    <label class="ml-2" for="floatingInput">확인자 서명</label>
                 </div>
             </div>
         </div>
@@ -142,11 +140,11 @@
 
         <!--버튼-->
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button class="btn btn-secondary me-md-2" type="button">저장</button>
+            <button class="btn btn-secondary me-md-2" type="submit">수정완료</button>
             <button class="btn btn-secondary" type="button" onclick="history.go(-1)">취소</button>
         </div>
         <!--버튼-->
-            
+        </form>    
             
                 
             

@@ -77,7 +77,7 @@
           <th scope="col">#</th>
           <th scope="col">제목</th>
           <th scope="col">기록자</th>
-          <th scope="col">일자</th>
+          <th scope="col">작성일자</th>
           <th scope="col">확인자</th>
           
         </tr>

@@ -20,6 +20,7 @@ public interface IDao {
 	public void writeReport(String title, String contents, String writer, String rdate, String rsign, String leadercheck, String cdate, String csign);//새 보고서 작성
 	public ArrayList<ReportDto> reportlist(); //보고서 리스트 보기
 	public ReportDto reportView(String rnum); //선택한 글 보기
-	public void reportDelete(String rnum); //리포트 글 삭제
+	public void reportDelete(String rnum); //보고서 글 삭제
+	public void reportModify(String rnum, String title, String contents, String writer, String rdate, String rsign, String leadercheck, String cdate, String csign);//보고서 수정
 	
 }
