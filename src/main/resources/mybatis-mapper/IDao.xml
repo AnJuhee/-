@@ -28,6 +28,10 @@
 		select * from project order by projectid desc
 	</select>
 	
+	<select id="projectAllCount" resultType="int">
+ 		select count(*) from project
+	</select>
+	
 	
 <!-- 연구노트(보고서) -->	
 	<insert id="writeReport">
@@ -70,16 +74,13 @@
 	
 
 <!-- 프로젝트  게시판 검색 SQL -->
-	<select id="pSearchTitle" resultType="com.jh.dto.ReportDto">
-		SELECT * FROM report WHERE project LIKE '%' || #{param1} || '%' ORDER BY projectid DESC
+	<select id="pSearchTitle" resultType="com.jh.dto.ProjectDto">
+		SELECT * FROM project WHERE project LIKE '%' || #{param1} || '%' ORDER BY projectid DESC
 	</select>
 	
-	<select id="pSearchContents" resultType="com.jh.dto.ReportDto">
-		select * from report where contents like '%' || #{param1} || '%' order by projectid desc
+	<select id="pSearchLeader" resultType="com.jh.dto.ProjectDto">
+		select * from project where leader like '%' || #{param1} || '%' order by projectid desc
 	</select>
-	
-	<select id="pSearchWriter" resultType="com.jh.dto.ReportDto">
-		select * from report where writer like '%' || #{param1} || '%' order by projectid desc
-	</select>
+
 
 </mapper>

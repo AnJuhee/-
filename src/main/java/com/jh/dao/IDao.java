@@ -16,6 +16,7 @@ public interface IDao {
 //연구노트(프로젝트)
 	public void writeProject(String project, String startdate, String finishdate, String team, String leader, String researcher);//새 프로젝트 작성
 	public ArrayList<ProjectDto> projectlist(); //프로젝트 리스트 보기
+	public int projectAllCount();//프로젝트 글의 총 개수
 	
 //연구노트(보고서)
 	public void writeReport(String title, String contents, String writer, String rdate, String rsign, String leadercheck, String cdate, String csign);//새 보고서 작성
@@ -25,8 +26,13 @@ public interface IDao {
 	public void reportModify(String rnum, String title, String contents, String writer, String rdate, String rsign, String leadercheck, String cdate, String csign);//보고서 수정
 	public int reportAllCount();//보고서 글의 총 개수
 	
-//게시판 검색 관련
+//게시판 검색 관련(보고서)
 	public ArrayList<ReportDto> rSearchTitle(String searchKey);
 	public ArrayList<ReportDto> rSearchContents(String searchKey);
 	public ArrayList<ReportDto> rSearchWriter(String searchKey);
+	
+//게시판 검색 관련(보고서)
+	public ArrayList<ProjectDto> pSearchTitle(String searchKey);
+	public ArrayList<ProjectDto> pSearchLeader(String searchKey);
+	
 }

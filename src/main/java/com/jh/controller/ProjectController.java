@@ -107,7 +107,10 @@ public class ProjectController {
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
 		ArrayList<ProjectDto> pdto =  dao.projectlist();
+		int pCount = dao.projectAllCount();
+		
 		model.addAttribute("pdto", pdto);
+		model.addAttribute("pCount",pCount);
 		
 		return "project_list";
 	}
@@ -133,6 +136,30 @@ public class ProjectController {
 		dao.writeProject(project, startdate, finishdate, team, leader, researcher);
 		
 		return "redirect:project_list";
+	}
+	
+	@RequestMapping("/projectSearch")
+	public String projectSearch(HttpServletRequest request, Model model) {
+		
+		String searchOption = request.getParameter("searchOption");
+		//title, content, writer 3개중에 한개의 값을 저장
+		String searchKey = request.getParameter("searchKey");
+		//유저가 입력한 제목/내용/글쓴이 에 포함된 검색 키워드 낱말
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		ArrayList<ProjectDto> pdto = null;
+		
+		if(searchOption.equals("title")) {
+			pdto = dao.pSearchTitle(searchKey);			
+		} else if(searchOption.equals("contents")) {
+			pdto = dao.pSearchLeader(searchKey);
+		}	
+		
+		
+		model.addAttribute("pdto", pdto);
+		model.addAttribute("pCount", pdto.size());//검색 결과 게시물의 개수 반환
+		
+		return "project_list";
 	}
 	
 	@RequestMapping("report")

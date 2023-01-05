@@ -48,20 +48,34 @@
     <div class="container border rounded py-2">
         <!-- 컨테이너 시작 건드리지마 -->	
         
-        
-
-        
-            
+           
         <div class="row ">
-          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 ">
+          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 " action="projectSearch">
             <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="검색"
-                         aria-label="Search" aria-describedby="basic-addon2">
-              <div class="input-group-append">
-                <button class="btn btn-secondary" type="button">
-                  <i class="fas fa-search fa-sm"></i>
-                </button>
-              </div>
+            
+            <div id="total_search">
+              
+          	<div id="total">▷ 총 ${pCount }개의 게시물이 있습니다.</div>
+          	
+         	<div id="search">
+            	<div id="search_select">
+              		<select name="searchOption">
+			            <option value="title">제목</option>
+			            <option value="leader">책임자</option>
+             		</select>
+           		</div>
+           		<input type="text" class="form-control bg-light border-0 small" placeholder="검색"
+                       aria-label="Search" aria-describedby="basic-addon2" name="searchKey">
+                <div class="input-group-append">
+                     <button class="btn btn-secondary" type="submit" >
+                     <i class="fas fa-search fa-sm"></i>
+                     </button>
+               </div>
+           </div>
+           
+           
+        </div>
+              
             </div>
           </form>     
           
