@@ -6,6 +6,7 @@ import com.jh.dto.MemberDto;
 import com.jh.dto.ProjectDto;
 import com.jh.dto.ReportDto;
 
+
 public interface IDao {
 //로그인&회원가입
 	public void MemberJoin(String email, String name, String pw); //회원가입
@@ -22,5 +23,10 @@ public interface IDao {
 	public ReportDto reportView(String rnum); //선택한 글 보기
 	public void reportDelete(String rnum); //보고서 글 삭제
 	public void reportModify(String rnum, String title, String contents, String writer, String rdate, String rsign, String leadercheck, String cdate, String csign);//보고서 수정
+	public int reportAllCount();//보고서 글의 총 개수
 	
+//게시판 검색 관련
+	public ArrayList<ReportDto> rSearchTitle(String searchKey);
+	public ArrayList<ReportDto> rSearchContents(String searchKey);
+	public ArrayList<ReportDto> rSearchWriter(String searchKey);
 }

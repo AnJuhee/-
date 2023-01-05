@@ -12,7 +12,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jh.dao.IDao;
+import com.jh.dto.Criteria;
 import com.jh.dto.MemberDto;
+import com.jh.dto.PageMakerDto;
 import com.jh.dto.ProjectDto;
 import com.jh.dto.ReportDto;         
 
@@ -166,7 +168,9 @@ public class ProjectController {
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
 		ArrayList<ReportDto> rdto= dao.reportlist();
+		int rCount = dao.reportAllCount();
 		
+		model.addAttribute("rCount", rCount);
 		model.addAttribute("rdto", rdto);
 		
 		return "report_list";
@@ -229,5 +233,30 @@ public class ProjectController {
 		dao.reportDelete(rnum);
 		
 		return "redirect:report_list";
+	}
+	@RequestMapping("/reportSearch")
+	public String reportSearch(HttpServletRequest request, Model model) {
+		
+		String searchOption = request.getParameter("searchOption");
+		//title, content, writer 3개중에 한개의 값을 저장
+		String searchKey = request.getParameter("searchKey");
+		//유저가 입력한 제목/내용/글쓴이 에 포함된 검색 키워드 낱말
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		ArrayList<ReportDto> rdto = null;
+		
+		if(searchOption.equals("title")) {
+			rdto = dao.rSearchTitle(searchKey);			
+		} else if(searchOption.equals("contents")) {
+			rdto = dao.rSearchContents(searchKey);
+		} else if(searchOption.equals("writer")) {
+			rdto = dao.rSearchWriter(searchKey);
+		} 	
+		
+		
+		model.addAttribute("rdto", rdto);
+		model.addAttribute("rCount", rdto.size());//검색 결과 게시물의 개수 반환
+		
+		return "report_list";
 	}
 }
