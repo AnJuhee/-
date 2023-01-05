@@ -41,6 +41,10 @@
             <h1 class="h3 my-5 mb-3 fw-normal text-center">연구실 안전관리 시스템</h1>
         
             <div class="form-floating">
+            
+            	<input type="hidden" value="${ldto.name }" name="name">
+            	<input type="hidden" value="${ldto.rgroup }" name="rgroup">
+            
               <input type="email" class="form-control" id="floatingInput" placeholder="이메일(계정)" name="email">
               
             </div>
@@ -69,7 +73,7 @@
             <div class="my-5"></div>
             <div>
             <div class="my-2"></div>
-            <button class="w-100 btn btn-lg btn-success" type="submit">카카오톡으로 시작하기</button>
+            <button class="w-100 btn btn-lg btn-warning" type="submit">카카오톡으로 시작하기</button>
             
             <div class="my-2"></div>
             
@@ -77,7 +81,7 @@
             
             <div class="my-2"></div>
             
-            <a href="#" class="w-100 btn btn-lg btn-warning" type="submit">네이버 계정으로 시작하기</a>
+            <a href="#" class="w-100 btn btn-lg btn-success" type="submit">네이버 계정으로 시작하기</a>
             
             <div class="my-2"></div>
             </div>

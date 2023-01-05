@@ -17,6 +17,10 @@
 	<select id="checkUserIdAndPw" resultType="int">
 		select count(*) from join where email=#{param1} and pw=#{param2}
 	</select>
+	
+	<select id="loginInfo" resultType="com.jh.dto.MemberDto">
+		select * from join where email=#{param1}
+	</select>
 
 
 <!-- 연구노트(프로젝트) -->
