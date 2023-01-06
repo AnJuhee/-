@@ -50,20 +50,20 @@
         
            
         <div class="row ">
-          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 " action="projectSearch">
-            <div class="input-group">
-            
+          <form action="projectSearch" class="col">
+           
             <div id="total_search">
-              
-          	<div id="total">▷ 총 ${pCount }개의 게시물이 있습니다.</div>
-          	
-         	<div id="search">
-            	<div id="search_select">
-              		<select name="searchOption">
-			            <option value="title">제목</option>
-			            <option value="leader">책임자</option>
+            
+         	<div id="search" >
+            	
+              	<select id="search_select" name="searchOption">
+			            <option value="title">과제명</option>
+			            <option value="contents">책임자</option>
+			            
              		</select>
-           		</div>
+           		
+           		<div class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 " >
+           		<div class="input-group">
            		<input type="text" class="form-control bg-light border-0 small" placeholder="검색"
                        aria-label="Search" aria-describedby="basic-addon2" name="searchKey">
                 <div class="input-group-append">
@@ -71,21 +71,20 @@
                      <i class="fas fa-search fa-sm"></i>
                      </button>
                </div>
+               </div>
            </div>
-           
-           
-        </div>
-              
+        	</div>
             </div>
           </form>     
           
-          <div>
+          <div class="col">
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <button class="btn btn-secondary mr-1" type="button" onclick="script:window.location='project'">추가</button>
             <button class="btn btn-secondary mr-1" type="submit">설정</button>
           </div>
+          </div>
           
-         </div> 
-        </div>
+         </div>
       
       <div class="container border rounded my-3" >
       <table class="table table-hover">

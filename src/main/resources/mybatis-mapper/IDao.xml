@@ -85,6 +85,41 @@
 	<select id="pSearchLeader" resultType="com.jh.dto.ProjectDto">
 		select * from project where leader like '%' || #{param1} || '%' order by projectid desc
 	</select>
+	
+<!-- 물품 검색 SQL -->
+	<select id="iSearchName" resultType="com.jh.dto.ProjectDto">
+		SELECT * FROM inventory WHERE iname LIKE '%' || #{param1} || '%' ORDER BY inum DESC
+	</select>
+	
+	<select id="iSearchCategory" resultType="com.jh.dto.ProjectDto">
+		select * from inventory where category like '%' || #{param1} || '%' order by inum desc
+	</select>
+	
+	<select id="iSearchBrand" resultType="com.jh.dto.ProjectDto">
+		SELECT * FROM inventory WHERE brand LIKE '%' || #{param1} || '%' ORDER BY inum DESC
+	</select>
+	
+	<select id="iSearchCasNo" resultType="com.jh.dto.ProjectDto">
+		select * from inventory where casNo like '%' || #{param1} || '%' order by inum desc
+	</select>
+	
+	<select id="iSearchProNum" resultType="com.jh.dto.ProjectDto">
+		SELECT * FROM inventory WHERE pronum LIKE '%' || #{param1} || '%' ORDER BY inum DESC
+	</select>
+	
+	<select id="iSearchMananum" resultType="com.jh.dto.ProjectDto">
+		select * from inventory where mananum like '%' || #{param1} || '%' order by inum desc
+	</select>
+	
+	<select id="iSearchLocation" resultType="com.jh.dto.ProjectDto">
+		select * from inventory where location like '%' || #{param1} || '%' order by inum desc
+	</select>
+	
+<!-- 물품 목록 -->
+	<insert id="writeInventory">
+		INSERT INTO inventory(inum, iname, category, brand, pronum, mananum, casNo, volume, molecular, exdate, location, stock) VALUES (inventory_seq.nextval,#{param1},#{param2},#{param3},#{param4},#{param5},#{param6},#{param7},#{param8}, #{param9}, #{param10}, #{param11})
+	</insert>
+	
 
 
 </mapper>

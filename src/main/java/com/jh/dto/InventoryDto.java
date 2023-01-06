@@ -11,8 +11,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class InventoryDto {
 
+	private int inum;
 	private String casno;
-	private String name;
+	private String iname;
 	private String catecory;
 	private String brand;
 	private String pronum;
@@ -22,4 +23,5 @@ public class InventoryDto {
 	private Timestamp exdate;
 	private Timestamp regdate;
 	private String location;
+	private int molecular;
 }

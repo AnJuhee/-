@@ -2,6 +2,7 @@ package com.jh.dao;
 
 import java.util.ArrayList;
 
+import com.jh.dto.InventoryDto;
 import com.jh.dto.MemberDto;
 import com.jh.dto.ProjectDto;
 import com.jh.dto.ReportDto;
@@ -31,8 +32,20 @@ public interface IDao {
 	public ArrayList<ReportDto> rSearchContents(String searchKey);
 	public ArrayList<ReportDto> rSearchWriter(String searchKey);
 	
-//게시판 검색 관련(보고서)
+//게시판 검색 관련(프로젝트)
 	public ArrayList<ProjectDto> pSearchTitle(String searchKey);
 	public ArrayList<ProjectDto> pSearchLeader(String searchKey);
+	
+//물품 검색 관련
+	public ArrayList<InventoryDto> iSearchName(String searchKey);
+	public ArrayList<InventoryDto> iSearchCategory(String searchKey);
+	public ArrayList<InventoryDto> iSearchBrand(String searchKey);
+	public ArrayList<InventoryDto> iSearchCasNo(String searchKey);
+	public ArrayList<InventoryDto> iSearchProNum(String searchKey);
+	public ArrayList<InventoryDto> iSearchMananum(String searchKey);
+	public ArrayList<InventoryDto> iSearchLocation(String searchKey);
+	
+//물품 목록 
+	public void writeInventory(String iname, String category, String brand, String pronum, String mananum, String casNo, String volume, String molecular, String exdate, String location, String stock);//새 물품 작성
 	
 }
