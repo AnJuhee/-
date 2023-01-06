@@ -278,7 +278,65 @@
                     <h5 class="modal-title" id="exampleModalToggleLabel3">등록확인</h5>                  
                   </div>
                   <div class="modal-body">
-                  검색하기 검색하기 검색하기 rjatorgkfasfasffasf
+                  
+                  <form action="apiSearch" class="col">
+           
+            <div id="total_search">
+            
+         	<div id="search" >
+            	
+              	<select id="search_select" name="searchOption">
+			            <option value="name_kor">제품 국문명</option>
+			            <option value="name_eng">제품 영문명</option>
+			            <option value="category">카테고리</option>
+			            <option value="casNo">카스번호</option>
+             		</select>
+           		
+           		<div class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 " >
+           		<div class="input-group">
+           		<input type="text" class="form-control bg-light border-0 small" placeholder="검색"
+                       aria-label="Search" aria-describedby="basic-addon2" name="searchKey">
+                <div class="input-group-append">
+                     <button class="btn btn-secondary" type="submit" >
+                     <i class="fas fa-search fa-sm"></i>
+                     </button>
+               </div>
+               </div>
+           </div>
+        	</div>
+            </div>
+          </form>
+          
+                <div class="container-fluid border rounded my-3" >
+      <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">제품 영문명</th>
+          <th scope="col">제품 국문명</th>
+          <th scope="col">카테고리</th>
+          <th scope="col">cas no.</th>        
+        </tr>
+      </thead>
+      <tbody>
+      	<c:forEach items="${adto }" var="adto">
+	        <tr class="" data-bs-toggle="collapse" href="#collapse${adto.casNo}" role="button" 
+	            aria-expanded="false" aria-controls="${adto.casNo}" >
+	          <td>${adto.name_eng}</td>
+	          <td>${adto.name_kor}</td>
+	          <td>${adto.factor}</td>
+	          <td>${adto.casNo}</td>
+	        </tr>
+        </c:forEach>  
+        </tbody>
+        </table>
+      </div>
+                  
+                  
+                  
+                  
+                  
+                  
+                  
                   </div>
                   <div class="modal-footer">
                     <button class="btn btn-primary" data-bs-target="#Modal_add" data-bs-toggle="modal" data-bs-dismiss="modal">이전</button>

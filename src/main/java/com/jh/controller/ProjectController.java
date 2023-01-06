@@ -13,10 +13,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jh.dao.IDao;
-import com.jh.dto.Criteria;
+import com.jh.dto.HAZARDOUS_FACTORSDto;
 import com.jh.dto.InventoryDto;
 import com.jh.dto.MemberDto;
-import com.jh.dto.PageMakerDto;
 import com.jh.dto.ProjectDto;
 import com.jh.dto.ReportDto;      
 
@@ -358,6 +357,32 @@ public class ProjectController {
 		} 		
 		
 		model.addAttribute("idto", idto);
+		
+		
+		return "goods_list";
+	}
+	
+	@RequestMapping("/apiSearch")
+	public String apiSearch(HttpServletRequest request, Model model) {
+		
+		String searchOption = request.getParameter("searchOption");
+		String searchKey = request.getParameter("searchKey");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		ArrayList<HAZARDOUS_FACTORSDto> adto = null;
+		
+		if(searchOption.equals("name_kor")) {
+			adto = dao.aSearchNameK(searchKey);
+		} else if(searchOption.equals("name_eng")) {
+			adto = dao.aSearchNameE(searchKey);
+		} else if(searchOption.equals("category")) {
+			adto = dao.aSearchCategory(searchKey);
+		} else if(searchOption.equals("casNo")) {
+			adto = dao.aSearchCasNo(searchKey);
+		} 		
+		
+		model.addAttribute("adto", adto);
 		
 		
 		return "goods_list";

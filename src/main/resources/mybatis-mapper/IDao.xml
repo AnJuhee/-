@@ -124,6 +124,10 @@
 	<select id="inventorylist" resultType="com.jh.dto.InventoryDto">
 		select * from inventory order by inum desc 
 	</select>
+	
+	<select id="apilist" resultType="com.jh.dto.HAZARDOUS_FACTORSDto">
+		select * from HAZARDOUS_FACTORS
+	</select>
 
 
 </mapper>

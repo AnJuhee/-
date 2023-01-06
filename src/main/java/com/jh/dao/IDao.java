@@ -2,6 +2,7 @@ package com.jh.dao;
 
 import java.util.ArrayList;
 
+import com.jh.dto.HAZARDOUS_FACTORSDto;
 import com.jh.dto.InventoryDto;
 import com.jh.dto.MemberDto;
 import com.jh.dto.ProjectDto;
@@ -45,7 +46,13 @@ public interface IDao {
 	public ArrayList<InventoryDto> iSearchMananum(String searchKey);
 	public ArrayList<InventoryDto> iSearchLocation(String searchKey);
 	
+	public ArrayList<HAZARDOUS_FACTORSDto> aSearchCasNo(String searchKey);
+	public ArrayList<HAZARDOUS_FACTORSDto> aSearchNameK(String searchKey);
+	public ArrayList<HAZARDOUS_FACTORSDto> aSearchNameE(String searchKey);
+	public ArrayList<HAZARDOUS_FACTORSDto> aSearchCategory(String searchKey);
+	
 //물품 목록 
 	public void writeInventory(String iname, String category, String brand, String pronum, String mananum, String casNo, String volume, String molecular, String exdate, String location, String stock);//새 물품 작성
 	public ArrayList<InventoryDto> inventorylist(); //물품 리스트 보기
+	public ArrayList<HAZARDOUS_FACTORSDto> apilist(); //api 리스트 보기
 }
