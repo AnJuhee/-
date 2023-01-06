@@ -332,13 +332,17 @@ public class ProjectController {
 		String searchOption = request.getParameter("searchOption");
 		//title, content, writer 3개중에 한개의 값을 저장
 		String searchKey = request.getParameter("searchKey");
+		
+		System.out.println(searchKey);
 		//유저가 입력한 제목/내용/글쓴이 에 포함된 검색 키워드 낱말
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
 		ArrayList<InventoryDto> idto = null;
 		
 		if(searchOption.equals("iname")) {
-			idto = dao.iSearchName(searchKey);			
+			idto = dao.iSearchName(searchKey);	
+			
+			System.out.println(idto.get(0).getInum());
 		} else if(searchOption.equals("category")) {
 			idto = dao.iSearchCategory(searchKey);
 		} else if(searchOption.equals("brand")) {
@@ -353,8 +357,8 @@ public class ProjectController {
 			idto = dao.iSearchLocation(searchKey);
 		} 		
 		
-		
 		model.addAttribute("idto", idto);
+		
 		
 		return "goods_list";
 	}

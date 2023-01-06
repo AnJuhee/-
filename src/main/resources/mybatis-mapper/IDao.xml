@@ -87,31 +87,32 @@
 	</select>
 	
 <!-- 물품 검색 SQL -->
-	<select id="iSearchName" resultType="com.jh.dto.ProjectDto">
+	<select id="iSearchName" resultType="com.jh.dto.InventoryDto">
 		SELECT * FROM inventory WHERE iname LIKE '%' || #{param1} || '%' ORDER BY inum DESC
 	</select>
 	
-	<select id="iSearchCategory" resultType="com.jh.dto.ProjectDto">
+	<select id="iSearchCategory" resultType="com.jh.dto.InventoryDto">
 		select * from inventory where category like '%' || #{param1} || '%' order by inum desc
 	</select>
 	
-	<select id="iSearchBrand" resultType="com.jh.dto.ProjectDto">
+	<select id="iSearchBrand" resultType="com.jh.dto.InventoryDto">
 		SELECT * FROM inventory WHERE brand LIKE '%' || #{param1} || '%' ORDER BY inum DESC
 	</select>
 	
-	<select id="iSearchCasNo" resultType="com.jh.dto.ProjectDto">
+	<select id="iSearchCasNo" resultType="com.jh.dto.InventoryDto">
 		select * from inventory where casNo like '%' || #{param1} || '%' order by inum desc
 	</select>
 	
-	<select id="iSearchProNum" resultType="com.jh.dto.ProjectDto">
+	<select id="iSearchProNum" resultType="com.jh.dto.InventoryDto">
 		SELECT * FROM inventory WHERE pronum LIKE '%' || #{param1} || '%' ORDER BY inum DESC
 	</select>
 	
-	<select id="iSearchMananum" resultType="com.jh.dto.ProjectDto">
-		select * from inventory where mananum like '%' || #{param1} || '%' order by inum desc
+	<select id="iSearchMananum" resultType="com.jh.dto.InventoryDto">
+	select * from inventory where mananum like '%' || #{param1} || '%' order by
+	inum desc
 	</select>
 	
-	<select id="iSearchLocation" resultType="com.jh.dto.ProjectDto">
+	<select id="iSearchLocation" resultType="com.jh.dto.InventoryDto">
 		select * from inventory where location like '%' || #{param1} || '%' order by inum desc
 	</select>
 	

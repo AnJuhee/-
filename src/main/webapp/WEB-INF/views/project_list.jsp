@@ -24,29 +24,50 @@
     <link href="${pageContext.request.contextPath}/resources/css/sb-admin-2.min.css" rel="stylesheet">
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+   
+    <script>
+        $( function() {
+            $( ".datepicker" ).datepicker({
+                dateFormat : 'yy-mm-dd',
+                monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+              dayNamesMin: ['일','월','화','수','목','금','토'],
+                autoSize: false,                  //오토리사이즈(body등 상위태그의 설정에 따른다)
+                changeMonth: true,                  //월변경가능
+                changeYear: true,                  //년변경가능
+                showMonthAfterYear: true,
+                yearRange: '2001:2050'            //년 뒤에 월 표시
+            });
+        } );
+    </script>
 
 </head>
 
 <body>
 <div id="wrapper">
 <!-- 사이드바 자리 -->
-	<%@ include file="include/sidebar.jsp" %>
-	<!-- 사이드바 자리 -->
-	
-	<!-- 페이지 전체부분 (topbar 포함) -->
-	<div id="content-wrapper" class="d-flex flex-column">
-	
-	<!-- topbar 자리 -->
-		<%@ include file="include/topbar.jsp" %>	
-	<!-- topbar 자리 -->
-	
-	<div class="container ">        
+   <%@ include file="include/sidebar.jsp" %>
+   <!-- 사이드바 자리 -->
+   
+   <!-- 페이지 전체부분 (topbar 포함) -->
+   <div id="content-wrapper" class="d-flex flex-column">
+   
+   <!-- topbar 자리 -->
+      <%@ include file="include/topbar.jsp" %>   
+   <!-- topbar 자리 -->
+   
+   <div class="container ">        
       <h1 class="">프로젝트</h1>
     </div>
-	
+   
 
     <div class="container border rounded py-2">
-        <!-- 컨테이너 시작 건드리지마 -->	
+        <!-- 컨테이너 시작 건드리지마 -->   
         
         <div class="row">
         <div class="col" id="total">▷ 총 ${pCount }개의 게시물이 있습니다.</div>
@@ -58,17 +79,17 @@
            
             <div id="total_search">
             
-         	<div id="search" >
-            	
-              	<select id="search_select" name="searchOption">
-			            <option value="title">과제명</option>
-			            <option value="contents">책임자</option>
-			            
-             		</select>
-           		
-           		<div class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 " >
-           		<div class="input-group">
-           		<input type="text" class="form-control bg-light border-0 small" placeholder="검색"
+            <div id="search" >
+               
+                 <select id="search_select" name="searchOption">
+                     <option value="title">과제명</option>
+                     <option value="contents">책임자</option>
+                     
+                   </select>
+                 
+                 <div class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 " >
+                 <div class="input-group">
+                 <input type="text" class="form-control bg-light border-0 small" placeholder="검색"
                        aria-label="Search" aria-describedby="basic-addon2" name="searchKey">
                 <div class="input-group-append">
                      <button class="btn btn-secondary" type="submit" >
@@ -77,18 +98,101 @@
                </div>
                </div>
            </div>
-        	</div>
+           </div>
             </div>
           </form>     
           
           <div class="col">
           <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button class="btn btn-secondary mr-1" type="button" onclick="script:window.location='project'">추가</button>
+            <button class="btn btn-secondary mr-1" type="submit" data-bs-toggle="modal" data-bs-target="#Modal_add" >추가</button>
             <button class="btn btn-secondary mr-1" type="submit">설정</button>
           </div>
           </div>
           
          </div>
+         
+         
+         <form id="" action="projectOK" >
+        <!-- 모달 -->
+          <div class="modal fade " id="Modal_add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static" >
+            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable "  >
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">프로젝트 등록</h5>                
+                </div>
+                <div class="modal-body">
+
+
+                  <div class=" my-3 ">
+                    <div class="row mb-2">
+                        <div class="form-floating col">
+                            <label class="ml-2" for="floatingInput_writer">과제이름</label>
+                            <input type="text" class="form-control" id="floatingInput_writer" placeholder="이름" name="project">                          
+                        </div>                   
+                    </div>
+
+                    <div class="row mb-2">
+
+
+                        <div class="form-floating col">
+                            <label class="ml-2" for="floatingInput_date">과제 시작 </label>
+                            <input type="datetime" class="form-control datepicker" id="datepicker1" placeholder="" name="startdate">                         
+                        </div>
+
+                        <div class="form-floating col">
+                          <label class="ml-2" for="floatingInput_date">과제 종료 </label>
+                          <input type="datetime" class="form-control datepicker" id="datepicker2" placeholder="" name="finishdate">                          
+                        </div>
+
+                    </div>
+
+
+                    <div class="row mb-2">
+                        <div class="form-floating col">
+                          <label class="ml-2" for="floatingInput_name">부서명</label>
+                          <input type="text" class="form-control" id="floatingInput_name" placeholder="이름" name="team">                          
+                        </div>    
+
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="form-floating col">
+                          <label class="ml-2" for="floatingInput_name">책임자</label>
+                          <input type="text" class="form-control" id="floatingInput_name" placeholder="이름" name="leader">                          
+                        </div>    
+
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="form-floating col">
+                          <label class="ml-2" for="floatingInput_name">연구원</label>
+                          <input type="text" class="form-control" id="floatingInput_name" placeholder="이름" name="researcher">                          
+                        </div>
+                    </div>                  
+                  </div>
+
+                  <div class="" >
+                      <textarea class="form-control" placeholder="관련 보고서" id="floatingTextarea" style="height: 400px;"></textarea>            
+                  </div>
+
+
+                </div><!--모달바디 끝-->
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                  <button class="btn btn-primary" type="submit" >저장</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--모달 끝-->
+        </form>
+
+
+         
+         
+         
+         
       
       <div class="container border rounded my-3" >
       <table class="table table-hover">
@@ -183,7 +287,7 @@
 
     <!--아래여백-->
     <div class="my-5">
-	</div>
+   </div>
     <!--아래여백-->
 
 </div> 
@@ -194,7 +298,7 @@
     
     
     <!-- Bootstrap core JavaScript-->
-    <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
+    
     <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
@@ -203,12 +307,7 @@
     <!-- Custom scripts for all pages-->
     <script src="${pageContext.request.contextPath}/resources/js/sb-admin-2.min.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="${pageContext.request.contextPath}/resources/vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="${pageContext.request.contextPath}/resources/js/demo/chart-area-demo.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/js/demo/chart-pie-demo.js"></script>
+    
 
 
 </body>
