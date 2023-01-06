@@ -88,11 +88,11 @@
 	
 <!-- 물품 검색 SQL -->
 	<select id="iSearchName" resultType="com.jh.dto.ProjectDto">
-		SELECT * FROM inventory WHERE iname LIKE '%' || #{param1} || '%' ORDER BY inum DESC
+		SELECT * FROM inventory WHERE iname LIKE '%' || #{param1} || '%' ORDER BY iname DESC
 	</select>
 	
 	<select id="iSearchCategory" resultType="com.jh.dto.ProjectDto">
-		select * from inventory where category like '%' || #{param1} || '%' order by inum desc
+		select * from inventory where category like '%' || #{param1} || '%' order by iname desc
 	</select>
 	
 	<select id="iSearchBrand" resultType="com.jh.dto.ProjectDto">
@@ -117,9 +117,12 @@
 	
 <!-- 물품 목록 -->
 	<insert id="writeInventory">
-		INSERT INTO inventory(inum, iname, category, brand, pronum, mananum, casNo, volume, molecular, exdate, location, stock) VALUES (inventory_seq.nextval,#{param1},#{param2},#{param3},#{param4},#{param5},#{param6},#{param7},#{param8}, #{param9}, #{param10}, #{param11})
-	</insert>
+      INSERT INTO inventory(inum, iname, category, brand, pronum, mananum, casNo, volume, molecular, exdate, location, stock) VALUES (inventory_seq.nextval,#{param1,jdbcType=VARCHAR},#{param2,jdbcType=VARCHAR},#{param3,jdbcType=VARCHAR},#{param4,jdbcType=VARCHAR},#{param5,jdbcType=VARCHAR},#{param6,jdbcType=VARCHAR},#{param7,jdbcType=VARCHAR},#{param8,jdbcType=VARCHAR}, #{param9,jdbcType=VARCHAR}, #{param10,jdbcType=VARCHAR}, #{param11,jdbcType=VARCHAR})
+   </insert>
 	
+	<select id="inventorylist" resultType="com.jh.dto.InventoryDto">
+		select * from inventory order by inum desc 
+	</select>
 
 
 </mapper>

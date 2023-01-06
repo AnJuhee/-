@@ -12,14 +12,14 @@ import lombok.NoArgsConstructor;
 public class InventoryDto {
 
 	private int inum;
-	private String casno;
+	private String casNo;
 	private String iname;
-	private String catecory;
+	private String category;
 	private String brand;
 	private String pronum;
 	private String mananum;
 	private int volume;
-	private int srtock;
+	private int stock;
 	private Timestamp exdate;
 	private Timestamp regdate;
 	private String location;

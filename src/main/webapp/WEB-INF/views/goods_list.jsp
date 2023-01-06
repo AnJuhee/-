@@ -64,7 +64,7 @@
          	<div id="search" >
             	
               	<select id="search_select" name="searchOption">
-			            <option value="name">제품명</option>
+			            <option value="iname">제품명</option>
 			            <option value="category">카테고리</option>
 			            <option value="brand">브랜드</option>
 			            <option value="casNo">카스번호</option>
@@ -261,7 +261,7 @@
                   </div>
                   <div class="modal-footer">
                     <button class="btn btn-primary" data-bs-target="#Modal_add" data-bs-toggle="modal" data-bs-dismiss="modal" type="button">이전</button>
-                    <button class="btn btn-primary" data-bs-target="#ModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">저장</button>
+                    <button class="btn btn-primary" data-bs-target="#ModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal" type="submit">저장</button>
                   </div>
                   
                 </div>
@@ -320,9 +320,9 @@
         
 	        <tr class="" data-bs-toggle="collapse" href="#collapse${idto.inum}" role="button" 
 	            aria-expanded="false" aria-controls="${idto.inum}" >
-	          <th scope="row">${idto.inum}</th>
-	          <td>진행중</td>
-	          <td>${idto.catecory}</td>
+	          <th scope="row">${idto.inum }</th>
+	          <td>${idto.iname}</td>
+	          <td>${idto.category}</td>
 	          <td>${idto.brand}</td>
 	          <td>${idto.pronum}</td>
 	          <td>${idto.mananum}</td>

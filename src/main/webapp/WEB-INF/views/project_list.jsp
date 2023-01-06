@@ -48,6 +48,10 @@
     <div class="container border rounded py-2">
         <!-- 컨테이너 시작 건드리지마 -->	
         
+        <div class="row">
+        <div class="col" id="total">▷ 총 ${pCount }개의 게시물이 있습니다.</div>
+        </div>  
+         
            
         <div class="row ">
           <form action="projectSearch" class="col">

@@ -146,9 +146,9 @@ public class ProjectController {
 	public String projectSearch(HttpServletRequest request, Model model) {
 		
 		String searchOption = request.getParameter("searchOption");
-		//title, content, writer 3개중에 한개의 값을 저장
+		
 		String searchKey = request.getParameter("searchKey");
-		//유저가 입력한 제목/내용/글쓴이 에 포함된 검색 키워드 낱말
+		
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
 		ArrayList<ProjectDto> pdto = null;
@@ -292,25 +292,15 @@ public class ProjectController {
 	}
 	
 	@RequestMapping("/goods_list")
-	public String goods_list(HttpServletRequest request) {
-		
-		String inum = request.getParameter("inum");
-		String iname = request.getParameter("iname");
-		String category = request.getParameter("category");
-		String brand = request.getParameter("brand");
-		String pronum = request.getParameter("pronum");
-		String mananum = request.getParameter("mananum");
-		String casNo = request.getParameter("casNo");
-		String volume = request.getParameter("volume");
-		String molecular = request.getParameter("molecular");
-		String exdate = request.getParameter("exdate");
-		String location = request.getParameter("location");
-		String stock = request.getParameter("stock");
+	public String goods_list(HttpServletRequest request, Model model) {
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
-		dao.writeInventory(iname, category, brand, pronum, mananum, casNo, volume, molecular, exdate, location, stock);
+		ArrayList<InventoryDto> idto= dao.inventorylist();
 		
+		model.addAttribute("idto", idto);
+		
+	
 		return "goods_list";
 	}
 	
@@ -347,7 +337,7 @@ public class ProjectController {
 		
 		ArrayList<InventoryDto> idto = null;
 		
-		if(searchOption.equals("name")) {
+		if(searchOption.equals("iname")) {
 			idto = dao.iSearchName(searchKey);			
 		} else if(searchOption.equals("category")) {
 			idto = dao.iSearchCategory(searchKey);
