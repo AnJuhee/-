@@ -88,11 +88,11 @@
 	
 <!-- 물품 검색 SQL -->
 	<select id="iSearchName" resultType="com.jh.dto.ProjectDto">
-		SELECT * FROM inventory WHERE iname LIKE '%' || #{param1} || '%' ORDER BY iname DESC
+		SELECT * FROM inventory WHERE iname LIKE '%' || #{param1} || '%' ORDER BY inum DESC
 	</select>
 	
 	<select id="iSearchCategory" resultType="com.jh.dto.ProjectDto">
-		select * from inventory where category like '%' || #{param1} || '%' order by iname desc
+		select * from inventory where category like '%' || #{param1} || '%' order by inum desc
 	</select>
 	
 	<select id="iSearchBrand" resultType="com.jh.dto.ProjectDto">

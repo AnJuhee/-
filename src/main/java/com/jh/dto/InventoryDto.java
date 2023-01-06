@@ -20,7 +20,7 @@ public class InventoryDto {
 	private String mananum;
 	private int volume;
 	private int stock;
-	private Timestamp exdate;
+	private String exdate;
 	private Timestamp regdate;
 	private String location;
 	private int molecular;
