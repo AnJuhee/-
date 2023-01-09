@@ -128,6 +128,27 @@
 	<select id="apilist" resultType="com.jh.dto.HAZARDOUS_FACTORSDto">
 		select * from HAZARDOUS_FACTORS
 	</select>
-
+	
+<!-- 물품 api  게시판 검색 SQL -->
+	<select id="aSearchCasNo" resultType="com.jh.dto.HAZARDOUS_FACTORSDto">
+		SELECT * FROM HAZARDOUS_FACTORS WHERE casNo LIKE '%' || #{param1} || '%' ORDER BY name_eng DESC
+	</select>
+	
+	<select id="aSearchNameK" resultType="com.jh.dto.HAZARDOUS_FACTORSDto">
+		select * from HAZARDOUS_FACTORS where name_kor like '%' || #{param1} || '%' order by name_eng desc
+	</select>
+	
+	<select id="aSearchNameE" resultType="com.jh.dto.HAZARDOUS_FACTORSDto">
+		SELECT * FROM HAZARDOUS_FACTORS WHERE name_eng LIKE '%' || #{param1} || '%' ORDER BY name_eng DESC
+	</select>
+	
+	<select id="aSearchCategory" resultType="com.jh.dto.HAZARDOUS_FACTORSDto">
+		SELECT * FROM HAZARDOUS_FACTORS WHERE factor LIKE '%' || #{param1} || '%' ORDER BY name_eng DESC
+	</select>
+	
+<!-- 데시보드 관련 
+	<select id="latest" resultType="com.jh.dto.ProjectDto">
+		select * from project where rownum <=5 order by regdate desc; 
+	</select>-->
 
 </mapper>

@@ -307,29 +307,29 @@
             </div>
           </form>
           
-                <div class="container-fluid border rounded my-3" >
-      <table class="table table-hover">
-      <thead>
-        <tr>
-          <th scope="col">제품 영문명</th>
-          <th scope="col">제품 국문명</th>
-          <th scope="col">카테고리</th>
-          <th scope="col">cas no.</th>        
-        </tr>
-      </thead>
-      <tbody>
-      	<c:forEach items="${adto }" var="adto">
-	        <tr class="" data-bs-toggle="collapse" href="#collapse${adto.casNo}" role="button" 
-	            aria-expanded="false" aria-controls="${adto.casNo}" >
-	          <td>${adto.name_eng}</td>
-	          <td>${adto.name_kor}</td>
-	          <td>${adto.factor}</td>
-	          <td>${adto.casNo}</td>
+	      <div class="container-fluid border rounded my-3" >
+	      <table class="table table-hover">
+	      <thead>
+	        <tr>
+	          <th scope="col">제품 영문명</th>
+	          <th scope="col">제품 국문명</th>
+	          <th scope="col">카테고리</th>
+	          <th scope="col">cas no.</th>        
 	        </tr>
-        </c:forEach>  
-        </tbody>
-        </table>
-      </div>
+	      </thead>
+	      <tbody>
+	      	<c:forEach items="${adto }" var="adto">
+		        <tr class="" data-bs-toggle="collapse" href="#collapse${adto.casNo}" role="button" 
+		            aria-expanded="false" aria-controls="${adto.casNo}" >
+		          <td>${adto.name_eng}</td>
+		          <td>${adto.name_kor}</td>
+		          <td>${adto.factor}</td>
+		          <td>${adto.casNo}</td>
+		        </tr>
+	        </c:forEach>  
+	        </tbody>
+	        </table>
+	      </div>
                   
                   
                   

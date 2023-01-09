@@ -296,9 +296,10 @@ public class ProjectController {
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
 		ArrayList<InventoryDto> idto= dao.inventorylist();
+		ArrayList<HAZARDOUS_FACTORSDto> adto= dao.apilist();
 		
 		model.addAttribute("idto", idto);
-		
+		model.addAttribute("adto", adto);
 	
 		return "goods_list";
 	}

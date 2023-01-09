@@ -55,4 +55,7 @@ public interface IDao {
 	public void writeInventory(String iname, String category, String brand, String pronum, String mananum, String casNo, String volume, String molecular, String exdate, String location, String stock);//새 물품 작성
 	public ArrayList<InventoryDto> inventorylist(); //물품 리스트 보기
 	public ArrayList<HAZARDOUS_FACTORSDto> apilist(); //api 리스트 보기
+	
+//데시보드
+	public ArrayList<ProjectDto> latest(); //최신글 가져오기
 }
