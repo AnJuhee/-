@@ -25,6 +25,10 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 
+   <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+   
+   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
   
 
     <!--드래그앤드롭-->
@@ -55,21 +59,21 @@
 
 <div id="wrapper">
 
-	<!-- 사이드바 자리 -->
-	<%@ include file="include/sidebar.jsp" %>
-	<!-- 사이드바 자리 -->
-	
-	<!-- 페이지 전체부분 (topbar 포함) -->
-	<div id="content-wrapper" class="d-flex flex-column">
-	
-	<!-- topbar 자리 -->
-		<%@ include file="include/topbar.jsp" %>	
-	<!-- topbar 자리 -->
+   <!-- 사이드바 자리 -->
+   <%@ include file="include/sidebar.jsp" %>
+   <!-- 사이드바 자리 -->
+   
+   <!-- 페이지 전체부분 (topbar 포함) -->
+   <div id="content-wrapper" class="d-flex flex-column">
+   
+   <!-- topbar 자리 -->
+      <%@ include file="include/topbar.jsp" %>   
+   <!-- topbar 자리 -->
 
    
 
     <div class=" container border rounded py-2 " ondrop="drop(event)" ondragover="allowDrop(event)">
-        <!-- 컨테이너 시작 건드리지마 -->	
+        <!-- 컨테이너 시작 건드리지마 -->   
         
         
         <div class="row">
@@ -107,14 +111,16 @@
                         <!--과제--> 
                         <c:forEach items="${ddto}" var="ddto">
                         <div class="card border my-2" role="button" data-bs-toggle="collapse" href="#project_content${ddto.projectid }" aria-expanded="false" aria-controls="project_content" id="">
-                        <p class="ml-2">${ddto.project}</p>
+                           <div class="col">
+                              ${ddto.project}
+                           </div>
                         </div>
                         <!--과제-->
 
                         <!--과제 내용-->                   
                         <div class="collapse" id="project_content${ddto.projectid }">
                           <div class="card card-body ">
-                            Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                            ${ddto.project}, 컨텐츠 내용 가져오기                         
                           </div>
                         </div>
                         <!--과제 내용 끝-->                       
@@ -122,7 +128,7 @@
                        
                        </c:forEach>
                    </div>         
-                   <!-- 카드바디 끝 -->	
+                   <!-- 카드바디 끝 -->   
                 
                    </div>
             </div>
@@ -131,10 +137,10 @@
            
             
             <!--최근 프로젝트 카드-->
-            <c:forEach items="${dto1 }" var="dto1">
+            <c:forEach items="${dto1 }" var="dto1" >
             <div class="col" draggable="true" ondragstart="drag(event)" id="drag2">
             
-                <div class="card shadow mb-4 ">
+                <div class="card shadow mb-4 " id="projectid">
                     <!-- 카드헤더 드롭다운 -->
                     <div
                         class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -157,22 +163,26 @@
                         </div>
                         
                     </div>
+                    
+                    
 
                     <!-- 카드 바디 -->
-                    <div class="card-body">                        
+                    <div class="card-body" >                        
                         <!--최근프로젝트 과제이름 시작-->
                        
                         
                         
-                        <div class="card mb-2 bold">
+                        <div class="card bold col">
+                              <div class="mt-2">
                                 <h5 class=" font-weight-bold">${dto1.project }
-                                    <span class="float-right">D-365</span>
-                                </h5>                     
+                                    <span class="float-right dday">D-365</span>
+                                </h5>
+                                </div>                     
                         </div> 
                         <!--최근프로젝트 과제이름 끝-->
 
                         <!--최근프로젝트 과제 내용 시작-->
-                        <div class="card font-weight-bold mb-2 bold">
+                        <div class="card font-weight-bold mb-2 bold col">
                              Server ㅇㄴㄹㄴㅇㄹ Migrationg fasdgasdgas
                              difugsadhgashgdfaghsdfjghs
                              adjfasd
@@ -183,20 +193,21 @@
                         <!--최근프로젝트 과제 내용 끝-->
                          
                         <!--최근프로젝트 진행 바-->                                            
-                        <div class=" progress mb-2"> 
-                            <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                        <div class=" progress mb-2" > 
+                            <div class="progress progress-bar bg-danger" role="progressbar" aria-label="Example with label" style="width: 0%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                             </div>  
+                           <input type="hidden"  class="startdate" value="${dto1.startdate }">
+                          <input type="hidden" class="enddate"  value="${dto1.finishdate }">
                         </div>
                        
                         
-                        <div class="card bold">
-                         <li>책임자 &nbsp;&nbsp;&nbsp;&nbsp; ${dto1.leader }
-                         </li>
-                         <li>연구원 &nbsp;&nbsp;&nbsp;&nbsp; ${dto1.researcher}
-                         </li>
+                        <div class="card bold col">
+                         <li>책임자  &nbsp;&nbsp;&nbsp;&nbsp; ${dto1.leader } </li>
+                         <li>연구원 : &nbsp;&nbsp;&nbsp;&nbsp; ${dto1.researcher} </li>
                          </div>
                         
-                        </c:forEach>
+                       
+                        
                         
                     </div>
                     <!--카드바디끝-->
@@ -204,6 +215,7 @@
                
             </div>
             <!--최근 프로젝트 카드-->
+            </c:forEach>
 
         </div>
 
@@ -276,24 +288,78 @@
 
     <!--아래여백-->
     <div class="my-5">
-	</div>
+   </div>
     <!--아래여백-->
 
 </div>       
 
 
+   <script src="${pageContext.request.contextPath}/resources/vendor/jquery-easing/jquery.easing.min.js"></script> 
+        <script>
+        $(function(){
+            $("div[id^='projectid']").each(function(i,e){
+            
+              var sdate = $(e).find('.startdate').val(); // input 에다가 넣었으니까 val로 하면됌
+              var edate = $(e).find('.enddate').val();
+              var diff = diffDay(sdate, edate);
+              $(e).find(".dday").html(diff.dday);
+              $(e).find(".progress-bar").html(diff.res_progress+"%").animate({"width": diff.res_progress +"%"}, {duration : 100, easing : "linear"});
+              
+            });
+        });
+        
+
+        function diffDay(startdate, enddate) { //컬럼이름 자리
+          var sdate =  startdate.split("-"); //yyyy-mm-dd 리스트로 만들기 .split("-")
+          var edate =  enddate.split("-");
+          var today = new Date().toJSON().substr(0,10).split("-");
+
+          var _sdate = new Date(sdate[0],sdate[1],sdate[2]).getTime(); // timestamp  만들기
+          var _edate = new Date(edate[0],edate[1],edate[2]).getTime(); //종료날짜
+          var _today = new Date(today[0],today[1],today[2]).getTime(); //오늘날짜
+          
+          var gap = _edate - _sdate; //종료일-시작일
+          var progress_gap = _edate - _today; //종료일-오늘
+
+          var day = Math.ceil(gap / (1000 * 60 * 60 * 24)); // 총 연구기간 며칠인지 계산
+          var progress_day = Math.ceil(progress_gap / (1000 * 60 * 60 * 24)); // 오늘부터 남은기간 계산
+          // progress_day1 = day - progress_day; 
+
+
+          var progress_per,res_progress = 100;
+          
+          var tmp_date = (progress_day*-1);
+          var _dday = "D"+(tmp_date*1); 
+          // var _dday = "D"+(progress_day*-1); //디데이 나오게하는 자리          
+        
+          if(tmp_date > 0) {
+            _dday = "D+"+(progress_day*-1);
+          } else if(tmp_date < 0) {                        
+            res_progress = Math.floor(((day-progress_day) / day) * 100); // 버림  ,  Math.ceil 올림  , Math.round 반올림
+          }
+          else  {
+            _dday = "D-day";
+          }
+
+          var obj = {"dday" : _dday, "res_progress" : res_progress};
+          
+          return obj;
+          // 연구 시작 ~ 끝 전체 일자 _dday
+          // $(ele).html("전체 "+day+"일 중 "+progress_day+"일이 지났습니다. ("+res_progress+"% 진행 중)");
+          
+        }
+          
+        </script>
+
     
 
     
     
     
-    <!-- Bootstrap core JavaScript-->
-    <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
+    <!-- Bootstrap core JavaScript-->   
     <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="${pageContext.request.contextPath}/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
-
+   
     <!-- Custom scripts for all pages-->
     <script src="${pageContext.request.contextPath}/resources/js/sb-admin-2.min.js"></script>
 
