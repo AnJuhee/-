@@ -232,7 +232,8 @@
            
            <tr>
         <td colspan="7" class="collapse" id="collapse${pdto.projectid }" >
-          <div class="card card-body " role="button" onclick="script:window.location='report_list'" >
+          <div class="card card-body " role="button" >
+          	<a href="projectView?projectid=${pdto.projectid }">
             <div class="">
             ---연구자는 김근호 안주희.<br>
             ---오늘은 던킨도너츠 먹고싶네요<br>
@@ -241,6 +242,7 @@
 
             부서이름도 필요합니다
           </div>
+          </a>
           </div>
         </td>
         </tr>  

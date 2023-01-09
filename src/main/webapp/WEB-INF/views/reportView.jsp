@@ -112,7 +112,7 @@
                 </div>
 
                 <div class="form-floating col">
-                    <input type="datetime" class="form-control" id="demo-mobile-picker-input" placeholder="기록일자" name="rdate" readonly="readonly" value="${rdto.rdate }">
+                    <input type="datetime" class="form-control datepicker" id="demo-mobile-picker-input" placeholder="기록일자" name="rdate" readonly="readonly" value="${rdto.rdate }">
                     <label class="ml-2" for="floatingInput_date">작성일자</label>
                 </div>
 
@@ -129,7 +129,7 @@
                 </div>
 
                 <div class="form-floating col">
-                    <input type="datetime" class="form-control" id="demo-mobile-picker-input" placeholder="확인일자" name="cdate" readonly="readonly" value="${rdto.cdate }">
+                    <input type="datetime" class="form-control datepicker" id="demo-mobile-picker-input" placeholder="확인일자" name="cdate" readonly="readonly" value="${rdto.cdate }">
                     <label class="ml-2" for="floatingInput_date">확인 일자</label>
                 </div>
 
@@ -180,42 +180,62 @@
 </div> 
 
 
-    <script>
-        
-        mobiscroll.setOptions({
-        locale: mobiscroll.localeEn,  
-        theme: 'windows',             
-        themeVariant: 'light'         
-    });
-
-    mobiscroll.datepicker('#demo-mobile-picker-input', {
-        controls: ['calendar']        
-    });
-    
-    var instance = mobiscroll.datepicker('#demo-mobile-picker-button', {
-        controls: ['calendar'],       
-        showOnClick: false,           
-        showOnFocus: false,           
-    });
-    
-    instance.setVal(new Date(), true);
-    
-    mobiscroll.datepicker('#demo-mobile-picker-mobiscroll', {
-        controls: ['calendar']        
-    });
-    
-    mobiscroll.datepicker('#demo-mobile-picker-inline', {
-        controls: ['calendar'],       
-        display: 'inline'             
-    });
-    
-    document
-        .getElementById('show-mobile-date-picker')
-        .addEventListener('click', function () {
-            instance.open();
-            return false;
+    <script src="${pageContext.request.contextPath}/resources/vendor/jquery-easing/jquery.easing.min.js"></script> 
+        <script>
+        $(function(){
+            $("tr[id^='projectid']").each(function(i,e){
+            
+              var sdate = $(e).find('.startdate').html();
+              var edate = $(e).find('.enddate').html();
+              var diff = diffDay(sdate, edate);
+              $(e).find(".dday").html(diff.dday);
+              $(e).find(".progress-bar").html(diff.res_progress+"%").animate({"width": diff.res_progress +"%"}, {duration : 100, easing : "linear"});
+              
+            });
         });
-    </script>
+        
+
+        function diffDay(startdate, enddate) { //컬럼이름 자리
+          var sdate =  startdate.split("-"); //yyyy-mm-dd 리스트로 만들기 .split("-")
+          var edate =  enddate.split("-");
+          var today = new Date().toJSON().substr(0,10).split("-");
+
+          var _sdate = new Date(sdate[0],sdate[1],sdate[2]).getTime(); // timestamp  만들기
+          var _edate = new Date(edate[0],edate[1],edate[2]).getTime(); //종료날짜
+          var _today = new Date(today[0],today[1],today[2]).getTime(); //오늘날짜
+          
+          var gap = _edate - _sdate; //종료일-시작일
+          var progress_gap = _edate - _today; //종료일-오늘
+
+          var day = Math.ceil(gap / (1000 * 60 * 60 * 24)); // 총 연구기간 며칠인지 계산
+          var progress_day = Math.ceil(progress_gap / (1000 * 60 * 60 * 24)); // 오늘부터 남은기간 계산
+          // progress_day1 = day - progress_day; 
+
+
+          var progress_per,res_progress = 100;
+          
+          var tmp_date = (progress_day*-1);
+          var _dday = "D"+(tmp_date*1); 
+          // var _dday = "D"+(progress_day*-1); //디데이 나오게하는 자리          
+        
+          if(tmp_date > 0) {
+            _dday = "D+"+(progress_day*-1);
+          } else if(tmp_date < 0) {                        
+            res_progress = Math.floor(((day-progress_day) / day) * 100); // 버림  ,  Math.ceil 올림  , Math.round 반올림
+          }
+          else  {
+            _dday = "D-day";
+          }
+
+          var obj = {"dday" : _dday, "res_progress" : res_progress};
+          
+          return obj;
+          // 연구 시작 ~ 끝 전체 일자 _dday
+          // $(ele).html("전체 "+day+"일 중 "+progress_day+"일이 지났습니다. ("+res_progress+"% 진행 중)");
+          
+        }
+          
+        </script>
 
 
 

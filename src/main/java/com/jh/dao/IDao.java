@@ -19,7 +19,7 @@ public interface IDao {
 	public void writeProject(String project, String startdate, String finishdate, String team, String leader, String researcher);//새 프로젝트 작성
 	public ArrayList<ProjectDto> projectlist(); //프로젝트 리스트 보기
 	public int projectAllCount();//프로젝트 글의 총 개수
-	public ReportDto projectView(String projectid); //선택한 글 보기
+	public ProjectDto projectView(String projectid); //선택한 글 보기
 	public void projectDelete(String projectid); //보고서 글 삭제
 
 	
