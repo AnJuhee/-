@@ -162,6 +162,38 @@ public class ProjectController {
 		return "projectView";
 	}
 	
+	@RequestMapping("/projectModify")
+	public String projectModify(HttpServletRequest request, Model model) {
+		
+		String projectid = request.getParameter("projectid");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		ProjectDto pdto = dao.projectView(projectid);
+		
+		model.addAttribute("pdto", pdto);
+		
+		return "projectModify";
+	}
+	
+	@RequestMapping("/projectModifyOk")
+	public String projectModifyOk(HttpServletRequest request) {
+		
+		String projectid = request.getParameter("projectid");
+		String project = request.getParameter("project");
+		String startdate = request.getParameter("startdate");
+		String finishdate = request.getParameter("finishdate");
+		String team = request.getParameter("team");
+		String leader = request.getParameter("leader");
+		String researcher = request.getParameter("researcher");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		dao.projectModify(projectid, project, startdate, finishdate, team, leader, researcher);
+		
+		return "redirect:project_list";
+	}
+	
 	@RequestMapping("/projectSearch")
 	public String projectSearch(HttpServletRequest request, Model model) {
 		

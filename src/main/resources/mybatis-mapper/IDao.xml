@@ -44,6 +44,10 @@
 		delete from project where projectid=#{param1} 
 	</delete>
 	
+	<update id="projectModify">
+		UPDATE project SET project=#{param2}, startdate=#{param3}, finishdate=#{param4}, team=#{param5}, leader=#{param6}, researcher=#{param7} WHERE projectid=#{param1}
+	</update>
+	
 	
 <!-- 연구노트(보고서) -->	
 	<insert id="writeReport">

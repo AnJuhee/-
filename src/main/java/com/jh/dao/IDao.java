@@ -21,6 +21,7 @@ public interface IDao {
 	public int projectAllCount();//프로젝트 글의 총 개수
 	public ProjectDto projectView(String projectid); //선택한 글 보기
 	public void projectDelete(String projectid); //보고서 글 삭제
+	public void projectModify(String projectid, String project, String startdate, String finishdate, String team, String leader, String researcher);//프로젝트 수정
 
 	
 //연구노트(보고서)

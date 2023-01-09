@@ -151,7 +151,7 @@
         <!--버튼-->
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <button class="btn btn-secondary me-md-2" type="submit">수정완료</button>
-            <button class="btn btn-secondary" type="button" onclick="history.go(-1)">취소</button>
+            <button class="btn btn-secondary" type="button" onclick="history.go(-1)">수정취소</button>
         </div>
         <!--버튼-->
         </form>    
