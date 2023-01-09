@@ -94,7 +94,15 @@ public class ProjectController {
 	}
 	
 	@RequestMapping("/dashboard")
-	public String dashboard() {
+	public String dashboard(Model model) {
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		ArrayList<ProjectDto> ddto =  dao.latest();
+		ArrayList<ProjectDto> dto1 =  dao.latest1();
+		
+		model.addAttribute("ddto", ddto);
+		model.addAttribute("dto1", dto1);
 		
 		return "dashboard";
 	}
@@ -140,6 +148,19 @@ public class ProjectController {
 		
 		return "redirect:project_list";
 	}
+	@RequestMapping("/projectView")
+	public String projectView(HttpServletRequest request, Model model) {
+		
+		String projectid = request.getParameter("projectid");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		ReportDto pdto = dao.projectView(projectid);
+		
+		model.addAttribute("pdto", pdto);
+		
+		return "projectView";
+	}
 	
 	@RequestMapping("/projectSearch")
 	public String projectSearch(HttpServletRequest request, Model model) {
@@ -163,6 +184,16 @@ public class ProjectController {
 		model.addAttribute("pCount", pdto.size());//검색 결과 게시물의 개수 반환
 		
 		return "project_list";
+	}
+	
+	@RequestMapping("/projectDelete")
+	public String projectDelete(HttpServletRequest request) {
+		
+		String projectid = request.getParameter("projectid");
+		IDao dao = sqlSession.getMapper(IDao.class);
+		dao.projectDelete(projectid);
+		
+		return "redirect:project_list";
 	}
 	
 	@RequestMapping("report")
@@ -264,6 +295,7 @@ public class ProjectController {
 		
 		return "redirect:report_list";
 	}
+	
 	@RequestMapping("/reportSearch")
 	public String reportSearch(HttpServletRequest request, Model model) {
 		

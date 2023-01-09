@@ -36,6 +36,14 @@
  		select count(*) from project
 	</select>
 	
+	<select id="projectView" resultType="com.jh.dto.ProjectDto">
+		select * from project where projectid=#{param1}
+	</select>
+	
+	<delete id="projectDelete">
+		delete from project where projectid=#{param1} 
+	</delete>
+	
 	
 <!-- 연구노트(보고서) -->	
 	<insert id="writeReport">
@@ -146,9 +154,13 @@
 		SELECT * FROM HAZARDOUS_FACTORS WHERE factor LIKE '%' || #{param1} || '%' ORDER BY name_eng DESC
 	</select>
 	
-<!-- 데시보드 관련 
+<!-- 데시보드 관련 -->
 	<select id="latest" resultType="com.jh.dto.ProjectDto">
-		select * from project where rownum <=5 order by regdate desc; 
-	</select>-->
+		 select * from project where <![CDATA[ rownum <= 3 ]]>
+	</select>
+	
+	<select id="latest1" resultType="com.jh.dto.ProjectDto">
+		 select * from project where <![CDATA[ rownum <= 1 ]]>
+	</select>
 
 </mapper>

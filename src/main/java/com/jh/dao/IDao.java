@@ -19,6 +19,9 @@ public interface IDao {
 	public void writeProject(String project, String startdate, String finishdate, String team, String leader, String researcher);//새 프로젝트 작성
 	public ArrayList<ProjectDto> projectlist(); //프로젝트 리스트 보기
 	public int projectAllCount();//프로젝트 글의 총 개수
+	public ReportDto projectView(String projectid); //선택한 글 보기
+	public void projectDelete(String projectid); //보고서 글 삭제
+
 	
 //연구노트(보고서)
 	public void writeReport(String title, String contents, String writer, String rdate, String rsign, String leadercheck, String cdate, String csign);//새 보고서 작성
@@ -57,5 +60,6 @@ public interface IDao {
 	public ArrayList<HAZARDOUS_FACTORSDto> apilist(); //api 리스트 보기
 	
 //데시보드
-	public ArrayList<ProjectDto> latest(); //최신글 가져오기
+	public ArrayList<ProjectDto> latest(); //최신글 3개만 가져오기
+	public ArrayList<ProjectDto> latest1(); //최신글 1개만 가져오기
 }

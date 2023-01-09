@@ -212,26 +212,21 @@
           <c:forEach items="${pdto }" var="pdto">
           
            <tr class="" data-bs-toggle="collapse" href="#collapse${pdto.projectid }" role="button" 
-            aria-expanded="false" aria-controls="${pdto.projectid }" >
+            aria-expanded="false" aria-controls="${pdto.projectid }" id="projectid" >
              <th scope="row">${pdto.projectid }</th>
              <td>진행중</td>
              <td>${pdto.project }</td>
              <td>${pdto.leader }</td>
-             <td>${pdto.startdate }</td>
-             <td>${pdto.finishdate }</td>
+             <td class="startdate">${pdto.startdate }</td>
+             <td class="enddate">${pdto.finishdate }</td>
              <td>
-                <div class="row no-gutters align-items-center">
-                   <div class="col">
-                       <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">100%</div>
-                   </div>
-                   <div class="col">
-                       <div class="progress progress-sm mr-2">
-                           <div class="progress-bar bg-info" role="progressbar" style="width: 100%" aria-valuenow="50" aria-valuemin="0"
-                               aria-valuemax="100">
-                           </div>
-                       </div>
-                   </div>
-               </div>
+                <div class="row no-gutters align-items-center">                  
+                <div class="col">
+                  <div class="progress mt-1">
+                    <div class="progress-bar bg-secondary " role="progressbar" aria-label="Example with label" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>                  
+              </div>
                </td>
            </tr>
            
@@ -292,6 +287,62 @@
 
 </div> 
 
+   <script src="${pageContext.request.contextPath}/resources/vendor/jquery-easing/jquery.easing.min.js"></script> 
+        <script>
+        $(function(){
+            $("tr[id^='projectid']").each(function(i,e){
+            
+              var sdate = $(e).find('.startdate').html();
+              var edate = $(e).find('.enddate').html();
+              var diff = diffDay(sdate, edate);
+              $(e).find(".dday").html(diff.dday);
+              $(e).find(".progress-bar").html(diff.res_progress+"%").animate({"width": diff.res_progress +"%"}, {duration : 100, easing : "linear"});
+              
+            });
+        });
+        
+
+        function diffDay(startdate, enddate) { //컬럼이름 자리
+          var sdate =  startdate.split("-"); //yyyy-mm-dd 리스트로 만들기 .split("-")
+          var edate =  enddate.split("-");
+          var today = new Date().toJSON().substr(0,10).split("-");
+
+          var _sdate = new Date(sdate[0],sdate[1],sdate[2]).getTime(); // timestamp  만들기
+          var _edate = new Date(edate[0],edate[1],edate[2]).getTime(); //종료날짜
+          var _today = new Date(today[0],today[1],today[2]).getTime(); //오늘날짜
+          
+          var gap = _edate - _sdate; //종료일-시작일
+          var progress_gap = _edate - _today; //종료일-오늘
+
+          var day = Math.ceil(gap / (1000 * 60 * 60 * 24)); // 총 연구기간 며칠인지 계산
+          var progress_day = Math.ceil(progress_gap / (1000 * 60 * 60 * 24)); // 오늘부터 남은기간 계산
+          // progress_day1 = day - progress_day; 
+
+
+          var progress_per,res_progress = 100;
+          
+          var tmp_date = (progress_day*-1);
+          var _dday = "D"+(tmp_date*1); 
+          // var _dday = "D"+(progress_day*-1); //디데이 나오게하는 자리          
+        
+          if(tmp_date > 0) {
+            _dday = "D+"+(progress_day*-1);
+          } else if(tmp_date < 0) {                        
+            res_progress = Math.floor(((day-progress_day) / day) * 100); // 버림  ,  Math.ceil 올림  , Math.round 반올림
+          }
+          else  {
+            _dday = "D-day";
+          }
+
+          var obj = {"dday" : _dday, "res_progress" : res_progress};
+          
+          return obj;
+          // 연구 시작 ~ 끝 전체 일자 _dday
+          // $(ele).html("전체 "+day+"일 중 "+progress_day+"일이 지났습니다. ("+res_progress+"% 진행 중)");
+          
+        }
+          
+        </script>
     
 
     
@@ -302,7 +353,7 @@
     <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="${pageContext.request.contextPath}/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+    
 
     <!-- Custom scripts for all pages-->
     <script src="${pageContext.request.contextPath}/resources/js/sb-admin-2.min.js"></script>

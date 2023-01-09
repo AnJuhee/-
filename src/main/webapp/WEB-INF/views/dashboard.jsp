@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -104,36 +105,22 @@
                    <div class="card-body">
 
                         <!--과제--> 
-                        <div class="card border my-2" role="button" data-bs-toggle="collapse" href="#project_content" aria-expanded="false" aria-controls="project_content" id="">
-                        <p class="ml-2">과제이름 어쩌고 냠냠냠</p>
+                        <c:forEach items="${ddto}" var="ddto">
+                        <div class="card border my-2" role="button" data-bs-toggle="collapse" href="#project_content${ddto.projectid }" aria-expanded="false" aria-controls="project_content" id="">
+                        <p class="ml-2">${ddto.project}</p>
                         </div>
                         <!--과제-->
 
                         <!--과제 내용-->                   
-                        <div class="collapse" id="project_content">
+                        <div class="collapse" id="project_content${ddto.projectid }">
                           <div class="card card-body ">
                             Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
                           </div>
                         </div>
-                        <!--과제 내용 끝-->
+                        <!--과제 내용 끝-->                       
                        
-                       <div class="card border my-2" role="button" data-bs-toggle="collapse" href="#project_content1" aria-expanded="false" aria-controls="project_content1" id="">
-                           다음 점심 메뉴는 서브웨이입니다.
-                       </div>
-                           
-                       <div class="collapse" id="project_content1">
-                          <div class="card card-body ">
-                            사브레 누가 훔쳐먹었니<br>
-                            유통기한 5462년 26542월 265422일 265422시 22분<br>
-                            찾아주세요<br>
-                            토레다먹고싶엉<br>
-                          </div>
-                        </div>                       
                        
-                       <div class="card border my-2" id="">
-                       asfasfsafasfasfasf
-                       </div>
-                       
+                       </c:forEach>
                    </div>         
                    <!-- 카드바디 끝 -->	
                 
@@ -144,12 +131,16 @@
            
             
             <!--최근 프로젝트 카드-->
+            <c:forEach items="${dto1 }" var="dto1">
             <div class="col" draggable="true" ondragstart="drag(event)" id="drag2">
+            
                 <div class="card shadow mb-4 ">
                     <!-- 카드헤더 드롭다운 -->
                     <div
                         class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">최근 프로젝트</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">
+                        <a href="projectView?projectid'${dto1.projectid}'">최근 프로젝트</a></h6>
+                        
                         <div class="dropdown no-arrow">
                             <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -164,13 +155,17 @@
                                 <a class="dropdown-item" href="#">Something else here</a>
                             </div>
                         </div>
+                        
                     </div>
 
                     <!-- 카드 바디 -->
                     <div class="card-body">                        
                         <!--최근프로젝트 과제이름 시작-->
+                       
+                        
+                        
                         <div class="card mb-2 bold">
-                                <h5 class=" font-weight-bold">과제명 
+                                <h5 class=" font-weight-bold">${dto1.project }
                                     <span class="float-right">D-365</span>
                                 </h5>                     
                         </div> 
@@ -195,18 +190,18 @@
                        
                         
                         <div class="card bold">
-                         <li>책임자
+                         <li>책임자 &nbsp;&nbsp;&nbsp;&nbsp; ${dto1.leader }
                          </li>
-                         <li>연구원
+                         <li>연구원 &nbsp;&nbsp;&nbsp;&nbsp; ${dto1.researcher}
                          </li>
                          </div>
-                       
                         
+                        </c:forEach>
                         
                     </div>
                     <!--카드바디끝-->
                 </div>                         
-                
+               
             </div>
             <!--최근 프로젝트 카드-->
 
