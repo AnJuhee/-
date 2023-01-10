@@ -66,7 +66,7 @@
     </div>
    
 
-    <div class="container border rounded py-2">
+    <div class="container border rounded py-2" >
         <!-- 컨테이너 시작 건드리지마 -->   
         
         <div class="row">
@@ -248,25 +248,40 @@
         </tr>  
         </c:forEach>   
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-            
-        
-        
-        
-        
         </tbody>
-      </div>    
-                
+        
+        
+        </table>
+        
+        
+        </div>
+        
+        
+        <div align="center">
+        <table>
+        
+        <tr>
+			<td colspan="5" align="center">
+				<c:if test="${pageMaker.prev }">
+					<a href="project_list?pageNum=${pageMaker.startPage-5 }">◀</a>&nbsp;&nbsp;&nbsp;
+				</c:if>										
+				<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="num">
+					<c:choose>
+					<c:when test="${currPage == num}">
+					<u>${num}</u>&nbsp;&nbsp;&nbsp;
+					</c:when>
+					<c:otherwise>
+					<a href="project_list?pageNum=${num}">${num}</a>&nbsp;&nbsp;&nbsp;
+					</c:otherwise>
+					</c:choose>																					
+				</c:forEach>
+				<c:if test="${pageMaker.next }">
+					<a href="project_list?pageNum=${pageMaker.startPage+5 }">▶</a>
+				</c:if>	
+			</td>
+		</tr>
+       </table>
+       </div>         
             
             
          

@@ -104,7 +104,10 @@ public class ProjectController {
 		ArrayList<ProjectDto> dto1 =  dao.latest1();
 		int che = dao.CountChe();
 		int bio = dao.CountLa();
+		List<InventoryDto> ex = dao.inventoryInfo();
 		
+		
+		model.addAttribute("ex", ex);
 		model.addAttribute("che", che );
 		model.addAttribute("bio", bio);
 		model.addAttribute("ddto", ddto);
@@ -120,12 +123,29 @@ public class ProjectController {
 		return "aside";
 	}
 	@RequestMapping("/project_list")
-	public String projectlist(Model model) {
+	public String projectlist(Model model, Criteria cri, HttpServletRequest request) {
+		
+		int pageNumInt = 0;
+		if(request.getParameter("pageNum") == null) {
+			pageNumInt = 1;
+			cri.setPageNum(pageNumInt);
+			
+		} else {
+			pageNumInt = Integer.parseInt(request.getParameter("pageNum"));
+			cri.setPageNum(pageNumInt);
+		}
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
-		ArrayList<ProjectDto> pdto =  dao.projectlist();
+		ArrayList<ProjectDto> pdto =  dao.projectlist(cri);
 		int pCount = dao.projectAllCount();
+		
+		cri.setStartNum(cri.getPageNum()-1 * cri.getAmount());//해당 페이지의 시작번호를 설정
+		
+		PageDto pageDto = new PageDto(cri, pCount);
+		
+		model.addAttribute("pageMaker", pageDto);
+		model.addAttribute("currPage", pageNumInt);
 		
 		model.addAttribute("pdto", pdto);
 		model.addAttribute("pCount",pCount);
@@ -392,12 +412,32 @@ public class ProjectController {
 	}
 	
 	@RequestMapping("/goods_list")
-	public String goods_list(HttpServletRequest request, Model model) {
+	public String goods_list(HttpServletRequest request, Model model, Criteria cri) {
+		
+		int pageNumInt = 0;
+		if(request.getParameter("pageNum") == null) {
+			pageNumInt = 1;
+			cri.setPageNum(pageNumInt);
+			
+		} else {
+			pageNumInt = Integer.parseInt(request.getParameter("pageNum"));
+			cri.setPageNum(pageNumInt);
+		}
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
-		ArrayList<InventoryDto> idto= dao.inventorylist();
+		int iCount = dao.projectAllCount();
+		
+		ArrayList<InventoryDto> idto = dao.inventorylist(cri);
 //		ArrayList<HAZARDOUS_FACTORSDto> adto= dao.apilist();
+		
+		cri.setStartNum(cri.getPageNum()-1 * cri.getAmount());//해당 페이지의 시작번호를 설정
+		
+		PageDto pageDto = new PageDto(cri, iCount);
+		
+		model.addAttribute("pageMaker", pageDto);
+		model.addAttribute("currPage", pageNumInt);
+		model.addAttribute("iCount",iCount);
 		
 		model.addAttribute("idto", idto);
 //		model.addAttribute("adto", adto);
@@ -428,14 +468,13 @@ public class ProjectController {
 	}
 	
 	@RequestMapping("/inventorySearch")
-	public String inventorySearch(HttpServletRequest request, Model model) {
+	public String inventorySearch(Model model, HttpServletRequest request) {
 		
 		String searchOption = request.getParameter("searchOption");
 		//title, content, writer 3개중에 한개의 값을 저장
 		String searchKey = request.getParameter("searchKey");
 		
-		System.out.println(searchKey);
-		//유저가 입력한 제목/내용/글쓴이 에 포함된 검색 키워드 낱말
+
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
 		ArrayList<InventoryDto> idto = null;
@@ -456,10 +495,9 @@ public class ProjectController {
 			idto = dao.iSearchMananum(searchKey);
 		} else if(searchOption.equals("location")) {
 			idto = dao.iSearchLocation(searchKey);
-		} 		
+		} 	
 		
 		model.addAttribute("idto", idto);
-		
 		
 		return "goods_list";
 	}

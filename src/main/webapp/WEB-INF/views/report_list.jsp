@@ -46,7 +46,7 @@
       <h1 class="">보고서</h1>
     </div>
 
-    <div class="container border rounded py-2">
+    <div class="container border rounded py-2" >
         <!-- 컨테이너 시작 건드리지마 -->	
         
             
@@ -129,7 +129,19 @@
          </c:forEach> 
         </tbody>
         
-        <tr>
+        	
+        
+        
+        
+        </table>
+        
+        
+      </div>  
+      
+      
+      <div align="center">
+      <table>
+       <tr>
 			<td colspan="5" align="center">
 				<c:if test="${pageMaker.prev }">
 					<a href="report_list?pageNum=${pageMaker.startPage-5 }">◀</a>&nbsp;&nbsp;&nbsp;
@@ -145,28 +157,12 @@
 					</c:choose>																					
 				</c:forEach>
 				<c:if test="${pageMaker.next }">
-					<a href="list?pageNum=${pageMaker.startPage+5 }">▶</a>
+					<a href="project_list?pageNum=${pageMaker.startPage+5 }">▶</a>
 				</c:if>	
 			</td>
-		</tr>	
-        
-        
-        
+		</tr> 
         </table>
-        
-        
-      </div>  
-      
-      
-      
-       
-                
-            
-            
-         
-        
-        
-        
+        </div>
         
         
         

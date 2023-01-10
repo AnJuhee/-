@@ -290,6 +290,12 @@
 
    <div> 화학인자개수  :  ${che }</div>
    <div> 생물체   :  ${bio }   </div> 
+   
+   <div> 
+   <c:forEach items="${ex }" var="ex">
+   		유효기간 : ${ex.exdate } ㅜ 일케밖에 못하겠음<br>
+   </c:forEach>
+   </div>
         
         
         

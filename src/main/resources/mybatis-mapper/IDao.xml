@@ -29,7 +29,11 @@
 	</insert>
 	
 	<select id="projectlist" resultType="com.jh.dto.ProjectDto">
-		select * from project order by projectid desc
+		SELECT * FROM
+			(SELECT A.*,Floor((ROWNUM-1)/#{amount}+1)PAGE,ROWNUM
+			FROM
+			(SELECT * FROM project ORDER BY projectid DESC)A) 
+		WHERE PAGE= #{pageNum} 
 	</select>
 	
 	<select id="projectAllCount" resultType="int">
@@ -132,13 +136,13 @@
 	</select>
 	
 	<select id="iSearchMananum" resultType="com.jh.dto.InventoryDto">
-	select * from inventory where mananum like '%' || #{param1} || '%' order by
-	inum desc
+	select * from inventory where mananum like '%' || #{param1} || '%' order by inum desc
 	</select>
 	
 	<select id="iSearchLocation" resultType="com.jh.dto.InventoryDto">
 		select * from inventory where location like '%' || #{param1} || '%' order by inum desc
 	</select>
+	
 	
 <!-- 물품 목록 -->
 	<insert id="writeInventory">
@@ -146,12 +150,21 @@
    </insert>
 	
 	<select id="inventorylist" resultType="com.jh.dto.InventoryDto">
-		select * from inventory order by inum desc 
+		SELECT * FROM
+			(SELECT A.*,Floor((ROWNUM-1)/#{amount}+1)PAGE,ROWNUM
+			FROM
+			(SELECT * FROM inventory ORDER BY inum DESC)A) 
+		WHERE PAGE= #{pageNum}  
 	</select>
 	
 	<select id="apilist" resultType="com.jh.dto.HAZARDOUS_FACTORSDto">
 		select * from HAZARDOUS_FACTORS
 	</select>
+	
+	<select id="inventoryAllCount" resultType="int">
+ 		select count(*) from inventory
+	</select>
+	
 	
 <!-- 물품 api  게시판 검색 SQL -->
 	<select id="aSearchCasNo" resultType="com.jh.dto.HAZARDOUS_FACTORSDto">
@@ -170,6 +183,7 @@
 		SELECT * FROM HAZARDOUS_FACTORS WHERE factor LIKE '%' || #{param1} || '%' ORDER BY name_eng DESC
 	</select>
 	
+	
 <!-- 데시보드 관련 -->
 	<select id="latest" resultType="com.jh.dto.ProjectDto">
 		 select * from project where <![CDATA[ rownum <= 5 ]]>
@@ -185,6 +199,10 @@
 	
 	<select id="CountLa" resultType="int">
  		select count(*) from HAZARDOUS_FACTORS where factor = '생물체'
+	</select>
+	
+	<select id="inventoryInfo" resultType="com.jh.dto.InventoryDto">
+		select * from inventory order by inum desc
 	</select>
 
 	

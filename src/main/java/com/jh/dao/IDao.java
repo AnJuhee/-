@@ -19,7 +19,7 @@ public interface IDao {
 	
 //연구노트(프로젝트)
 	public void writeProject(String project, String startdate, String finishdate, String team, String leader, String researcher);//새 프로젝트 작성
-	public ArrayList<ProjectDto> projectlist(); //프로젝트 리스트 보기
+	public ArrayList<ProjectDto> projectlist(Criteria cri); //프로젝트 리스트 보기
 	public int projectAllCount();//프로젝트 글의 총 개수
 	public ProjectDto projectView(String projectid); //선택한 글 보기
 	public void projectDelete(String projectid); //보고서 글 삭제
@@ -61,12 +61,14 @@ public interface IDao {
 	
 //물품 목록 
 	public void writeInventory(String iname, String category, String brand, String pronum, String mananum, String casNo, String volume, String molecular, String exdate, String location, String stock);//새 물품 작성
-	public ArrayList<InventoryDto> inventorylist(); //물품 리스트 보기
+	public ArrayList<InventoryDto> inventorylist(Criteria cri); //물품 리스트 보기
 	public ArrayList<HAZARDOUS_FACTORSDto> apilist(); //api 리스트 보기
+	public int inventoryAllCount();//보고서 글의 총 개수
 	
 //데시보드
 	public ArrayList<ProjectDto> latest(); //최신글 3개만 가져오기
 	public ArrayList<ProjectDto> latest1(); //최신글 1개만 가져오기
 	public int CountChe();//화악인자개수
 	public int CountLa();//생물체
+	public List<InventoryDto> inventoryInfo(); //인벤토리 정보들 가져오기
 }
