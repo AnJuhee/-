@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -127,6 +128,30 @@
           </tr> 
          </c:forEach> 
         </tbody>
+        
+        <tr>
+			<td colspan="5" align="center">
+				<c:if test="${pageMaker.prev }">
+					<a href="report_list?pageNum=${pageMaker.startPage-5 }">◀</a>&nbsp;&nbsp;&nbsp;
+				</c:if>										
+				<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="num">
+					<c:choose>
+					<c:when test="${currPage == num}">
+					<u>${num}</u>&nbsp;&nbsp;&nbsp;
+					</c:when>
+					<c:otherwise>
+					<a href="report_list?pageNum=${num}">${num}</a>&nbsp;&nbsp;&nbsp;
+					</c:otherwise>
+					</c:choose>																					
+				</c:forEach>
+				<c:if test="${pageMaker.next }">
+					<a href="list?pageNum=${pageMaker.startPage+5 }">▶</a>
+				</c:if>	
+			</td>
+		</tr>	
+        
+        
+        
         </table>
         
         

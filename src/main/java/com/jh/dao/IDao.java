@@ -1,7 +1,9 @@
 package com.jh.dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import com.jh.dto.Criteria;
 import com.jh.dto.HAZARDOUS_FACTORSDto;
 import com.jh.dto.InventoryDto;
 import com.jh.dto.MemberDto;
@@ -26,14 +28,13 @@ public interface IDao {
 	
 //연구노트(보고서)
 	public void writeReport(String title, String contents, String writer, String rdate, String rsign, String leadercheck, String cdate, String csign, String projectid);//새 보고서 작성
-	public ArrayList<ReportDto> reportlist(); //보고서 리스트 보기
+	public List<ReportDto> reportlist(Criteria cri); //보고서 리스트 보기
 	public ReportDto reportView(String rnum); //선택한 글 보기
 	public void reportDelete(String rnum); //보고서 글 삭제
 	public void reportModify(String rnum, String title, String contents, String writer, String rdate, String rsign, String leadercheck, String cdate, String csign);//보고서 수정
 	public int reportAllCount();//보고서 글의 총 개수
 	
-	public ArrayList<ProjectDto> pSearch();
-	public int checkProjectid(String projectid);
+	public ArrayList<ProjectDto> pSearch(); 
 	
 //게시판 검색 관련(보고서)
 	public ArrayList<ReportDto> rSearchTitle(String searchKey);
@@ -66,4 +67,6 @@ public interface IDao {
 //데시보드
 	public ArrayList<ProjectDto> latest(); //최신글 3개만 가져오기
 	public ArrayList<ProjectDto> latest1(); //최신글 1개만 가져오기
+	public int CountChe();//화악인자개수
+	public int CountLa();//생물체
 }

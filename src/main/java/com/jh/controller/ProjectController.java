@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.jh.dto.Criteria;
+import com.jh.dto.PageDto;
 import com.jh.dao.IDao;
 import com.jh.dto.HAZARDOUS_FACTORSDto;
 import com.jh.dto.InventoryDto;
@@ -100,9 +102,14 @@ public class ProjectController {
 		
 		ArrayList<ProjectDto> ddto =  dao.latest();
 		ArrayList<ProjectDto> dto1 =  dao.latest1();
+		int che = dao.CountChe();
+		int bio = dao.CountLa();
 		
+		model.addAttribute("che", che );
+		model.addAttribute("bio", bio);
 		model.addAttribute("ddto", ddto);
 		model.addAttribute("dto1", dto1);
+		
 		
 		return "dashboard";
 	}
@@ -266,15 +273,32 @@ public class ProjectController {
 	
 	
 	@RequestMapping("/report_list")
-	public String report_list(Model model) {
+	public String report_list(Model model, Criteria cri, HttpServletRequest request) {
+		
+		int pageNumInt = 0;
+		if(request.getParameter("pageNum") == null) {
+			pageNumInt = 1;
+			cri.setPageNum(pageNumInt);
+			
+		} else {
+			pageNumInt = Integer.parseInt(request.getParameter("pageNum"));
+			cri.setPageNum(pageNumInt);
+		}
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
-		ArrayList<ReportDto> rdto= dao.reportlist();
 		int rCount = dao.reportAllCount();
 		
+		cri.setStartNum(cri.getPageNum()-1 * cri.getAmount());//해당 페이지의 시작번호를 설정
+		
+		PageDto pageDto = new PageDto(cri, rCount);
+		
+		List<ReportDto> rdto = dao.reportlist(cri);
+		
 		model.addAttribute("rCount", rCount);
+		model.addAttribute("pageMaker", pageDto);
 		model.addAttribute("rdto", rdto);
+		model.addAttribute("currPage", pageNumInt);
 		
 		return "report_list";
 	}

@@ -55,7 +55,11 @@
 	</insert>
 
 	<select id="reportlist" resultType="com.jh.dto.ReportDto">
-		select * from report order by rnum desc 
+		SELECT * FROM
+			(SELECT A.*,Floor((ROWNUM-1)/#{amount}+1)PAGE,ROWNUM
+			FROM
+			(SELECT * FROM report ORDER BY rnum DESC)A) 
+		WHERE PAGE= #{pageNum} 
 	</select>
 	
 	<select id="reportView" resultType="com.jh.dto.ReportDto">
@@ -173,6 +177,14 @@
 	
 	<select id="latest1" resultType="com.jh.dto.ProjectDto">
 		 select * from project where <![CDATA[ rownum <= 1 ]]>
+	</select>
+	
+	<select id="CountChe" resultType="int">
+ 		select count(*) from HAZARDOUS_FACTORS where factor = '화학인자'
+	</select>
+	
+	<select id="CountLa" resultType="int">
+ 		select count(*) from HAZARDOUS_FACTORS where factor = '생물체'
 	</select>
 
 	

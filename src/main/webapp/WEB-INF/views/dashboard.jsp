@@ -29,6 +29,20 @@
    
    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    
+    <!-- Bootstrap core JavaScript-->   
+    <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+   
+    <!-- Custom scripts for all pages-->
+    <script src="${pageContext.request.contextPath}/resources/js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="${pageContext.request.contextPath}/resources/vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="${pageContext.request.contextPath}/resources/js/demo/chart-area-demo.js"></script>
+    
   
 
     <!--드래그앤드롭-->
@@ -247,20 +261,20 @@
                     <!-- Card Body -->
                     <div class="card-body">
                             <div>
-                            유효기간
+                            재고관리
                             </div>
                         <div class="chart-pie pt-4 pb-2">
                             <canvas id="myPieChart"></canvas>
                         </div>
                         <div class="mt-4 text-center small">
                             <span class="mr-2">
-                                <i class="fas fa-circle text-primary"></i> 화학약품
+                                <i class="fas fa-circle text-primary"></i> 화학인자
                             </span>
                             <span class="mr-2">
-                                <i class="fas fa-circle text-success"></i> 생물
+                                <i class="fas fa-circle text-success"></i> 생물체
                             </span>
                             <span class="mr-2">
-                                <i class="fas fa-circle text-info"></i> 
+                                <i class="fas fa-circle text-info"></i> 보호구 
                             </span>
                         </div>
                     </div>
@@ -274,6 +288,8 @@
 
     </div>
 
+   <div> 화학인자개수  :  ${che }</div>
+   <div> 생물체   :  ${bio }   </div> 
         
         
         
@@ -350,25 +366,51 @@
         }
           
         </script>
+        
+        <script>
+      Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+      Chart.defaults.global.defaultFontColor = '#858796';
+      
+          // Pie Chart Example
+      var ctx = document.getElementById("myPieChart");
+      var myPieChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: ["화학인자", "생물체", "보호구"],
+          datasets: [{
+            data: [55, 30, 15],
+            backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
+            hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
+            hoverBorderColor: "rgba(234, 236, 244, 1)",
+          }],
+        },
+        options: {
+          maintainAspectRatio: false,
+          tooltips: {
+            backgroundColor: "rgb(255,255,255)",
+            bodyFontColor: "#858796",
+            borderColor: '#dddfeb',
+            borderWidth: 1,
+            xPadding: 15,
+            yPadding: 15,
+            displayColors: false,
+            caretPadding: 10,
+          },
+          legend: {
+            display: false
+          },
+          cutoutPercentage: 80,
+        },
+      });
+      
+      </script>
 
     
 
     
     
     
-    <!-- Bootstrap core JavaScript-->   
-    <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-   
-    <!-- Custom scripts for all pages-->
-    <script src="${pageContext.request.contextPath}/resources/js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="${pageContext.request.contextPath}/resources/vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="${pageContext.request.contextPath}/resources/js/demo/chart-area-demo.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/js/demo/chart-pie-demo.js"></script>
+    
 
     
 
