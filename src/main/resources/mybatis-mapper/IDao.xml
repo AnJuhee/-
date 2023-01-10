@@ -74,6 +74,10 @@
  		select count(*) from report
 	</select>
 	
+	<select id="pSearch" resultType="com.jh.dto.ProjectDto">
+		<![CDATA[select * from project order by projectid]]>
+	</select>
+	
 	
 <!-- 보고서  게시판 검색 SQL -->
 	<select id="rSearchTitle" resultType="com.jh.dto.ReportDto">

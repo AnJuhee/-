@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -70,28 +71,41 @@
     <div class="container py-2" >
         <!-- 컨테이너 시작 건드리지마 -->   
         <form action="reportOk" method="post">
+        	
+            	
+              	<select id="pSearch" name="pSearch">
+              	<c:forEach items="${pSearch }" var="ps">
+			            <option><c:out value="${ps.project }"/></option>
+			    </c:forEach>
+             	</select>
+           		
+           		
+        	
+        
+        
         <div class="card">
             <div class="card-body">
                 <div class="card mb-2">
                     <div class="card-body row">
                         <label class="col-2 col-form-label">과제이름</label>
-                        <label class="col col-form-label ">마라탕을 맛있게 만드는 방법</label>
+                        <label class="col col-form-label ">${pdto.project }</label>
                     </div>
                 </div>
                 <div class="card mb-2">
                     <div class="card-body row">
                         <label class="col-2 col-form-label">기간</label>
-                        <label class="col col-form-label ">2022-02-02 ~ 2023-11-11</label>
+                        <label class="col col-form-label ">${pdto.startdate }  ~  ${pdto.finishdate }</label>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-body row">
                         <label class="col-2 col-form-label">책임자</label>
-                        <label class="col col-form-label ">안주희</label>
+                        <label class="col col-form-label ">${pdto.leader }</label>
                     </div>
                 </div>
             </div>
         </div>
+        
         
         <!--위에여백-->
     <div class="my-3"></div>

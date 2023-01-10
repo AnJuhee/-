@@ -52,7 +52,7 @@
 	<!-- topbar 자리 -->
 
     <div class="container">        
-      <h1 class="">보고서 작성</h1>
+      <h1 class="">보고서 </h1>
     </div>
 
 

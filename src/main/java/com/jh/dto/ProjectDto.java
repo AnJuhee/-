@@ -17,4 +17,5 @@ public class ProjectDto {
 	private String leader;
 	private String researcher;
 	private String regdate;
+	
 }

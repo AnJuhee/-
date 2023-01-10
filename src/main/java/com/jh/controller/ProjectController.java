@@ -229,13 +229,23 @@ public class ProjectController {
 	}
 	
 	@RequestMapping("report")
-	public String report() {
+	public String report(HttpServletRequest request, Model model) {
+		
+//		String projectid = request.getParameter("projectid");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		ArrayList<ProjectDto> pSearch = dao.pSearch();
+//		ProjectDto pdto = dao.projectView(projectid);
+		
+//		model.addAttribute("pdto", pdto);
+		model.addAttribute("pSearch", pSearch);
 		
 		return "report";
 	}
 	
 	@RequestMapping("reportOk")
-	public String reportOk(HttpServletRequest request) {
+	public String reportOk(HttpServletRequest request,Model model) {
 		
 		String title = request.getParameter("title");
 		String contents = request.getParameter("contents");
@@ -245,7 +255,6 @@ public class ProjectController {
 		String rsign = request.getParameter("rsign");
 		String cdate = request.getParameter("cdate");
 		String csign = request.getParameter("csign");
-		
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
 		

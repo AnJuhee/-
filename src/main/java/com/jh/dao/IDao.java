@@ -32,6 +32,8 @@ public interface IDao {
 	public void reportModify(String rnum, String title, String contents, String writer, String rdate, String rsign, String leadercheck, String cdate, String csign);//보고서 수정
 	public int reportAllCount();//보고서 글의 총 개수
 	
+	public ArrayList<ProjectDto> pSearch();
+	
 //게시판 검색 관련(보고서)
 	public ArrayList<ReportDto> rSearchTitle(String searchKey);
 	public ArrayList<ReportDto> rSearchContents(String searchKey);
