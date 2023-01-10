@@ -119,12 +119,7 @@
           		<div class="card card-body " role="button" >
           			<a href="reportView?rnum=${rdto.rnum }" > 
            		  	<div>
-            		두부의 물기는 최대한 없게<br>
-		            <br>
-		            그래도 던킨도나쓰가 맛있지 <br>
-            
-
-            		꺅 ~~
+            			${rdto.contents }
           		  	</div>
           		 	</a>
           	    </div>
