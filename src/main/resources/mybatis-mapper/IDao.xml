@@ -51,7 +51,7 @@
 	
 <!-- 연구노트(보고서) -->	
 	<insert id="writeReport">
-		INSERT INTO report(rnum, title, contents, writer, rdate, rsign, leadercheck, cdate, csign) VALUES (report_seq.nextval,#{param1},#{param2},#{param3},#{param4},#{param5},#{param6},#{param7},#{param8})
+		INSERT INTO report(rnum, title, contents, writer, rdate, rsign, leadercheck, cdate, csign, projectid) VALUES (report_seq.nextval,#{param1},#{param2},#{param3},#{param4},#{param5},#{param6},#{param7},#{param8}, #{param9})
 	</insert>
 
 	<select id="reportlist" resultType="com.jh.dto.ReportDto">
@@ -76,6 +76,10 @@
 	
 	<select id="pSearch" resultType="com.jh.dto.ProjectDto">
 		<![CDATA[select * from project order by projectid]]>
+	</select>
+	
+	<select id="checkProjectid" resultType="int">
+		select count(*) from project where projectid=#{param1}
 	</select>
 	
 	
@@ -164,7 +168,7 @@
 	
 <!-- 데시보드 관련 -->
 	<select id="latest" resultType="com.jh.dto.ProjectDto">
-		 select * from project where <![CDATA[ rownum <= 3 ]]>
+		 select * from project where <![CDATA[ rownum <= 5 ]]>
 	</select>
 	
 	<select id="latest1" resultType="com.jh.dto.ProjectDto">

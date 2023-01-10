@@ -34,23 +34,23 @@
 <body>
 <div id="wrapper">
 <!-- 사이드바 자리 -->
-	<%@ include file="include/sidebar.jsp" %>
-	<!-- 사이드바 자리 -->
-	
-	<!-- 페이지 전체부분 (topbar 포함) -->
-	<div id="content-wrapper" class="d-flex flex-column">
-	
-	<!-- topbar 자리 -->
-		<%@ include file="include/topbar.jsp" %>	
-	<!-- topbar 자리 -->
-	
-	<div class="container ">        
+   <%@ include file="include/sidebar.jsp" %>
+   <!-- 사이드바 자리 -->
+   
+   <!-- 페이지 전체부분 (topbar 포함) -->
+   <div id="content-wrapper" class="d-flex flex-column">
+   
+   <!-- topbar 자리 -->
+      <%@ include file="include/topbar.jsp" %>   
+   <!-- topbar 자리 -->
+   
+   <div class="container ">        
       <h1 class="">물품목록</h1>
     </div>
-	
+   
 
     <div class="container border rounded py-2">
-        <!-- 컨테이너 시작 건드리지마 -->	
+        <!-- 컨테이너 시작 건드리지마 -->   
         
         
 
@@ -59,24 +59,24 @@
         <div class="row ">
           <form action="inventorySearch" class="col">
            
-            <div id="total_search">
+            <div id="inven_total_search">
             
-         	<div id="search" >
-            	
-              	<select id="search_select" name="searchOption">
-			            <option value="iname">제품명</option>
-			            <option value="category">카테고리</option>
-			            <option value="brand">브랜드</option>
-			            <option value="casNo">카스번호</option>
-			            <option value="pronum">제품번호</option>
-			            <option value="mananum">관리번호</option>
-			            <option value="location">보관위치</option>
-			            
-             		</select>
-           		
-           		<div class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 " >
-           		<div class="input-group">
-           		<input type="text" class="form-control bg-light border-0 small" placeholder="검색"
+            <div id="inven_search" >
+               
+                 <select id="search_select" name="searchOption">
+                     <option value="iname">제품명</option>
+                     <option value="category">카테고리</option>
+                     <option value="brand">브랜드</option>
+                     <option value="casNo">카스번호</option>
+                     <option value="pronum">제품번호</option>
+                     <option value="mananum">관리번호</option>
+                     <option value="location">보관위치</option>
+                     
+                   </select>
+                 
+                 <div class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 " >
+                 <div class="input-group">
+                 <input type="text" class="form-control bg-light border-0 small" placeholder="검색"
                        aria-label="Search" aria-describedby="basic-addon2" name="searchKey">
                 <div class="input-group-append">
                      <button class="btn btn-secondary" type="submit" >
@@ -85,7 +85,7 @@
                </div>
                </div>
            </div>
-        	</div>
+           </div>
             </div>
           </form>     
           
@@ -269,10 +269,11 @@
             </div>
             </form>
             <!--저장확인 모달-->
+            
   
             <!--검색하기 모달-->
-            <div class="modal fade" id="modal_search" aria-hidden="true" aria-labelledby="exampleModalToggleLabel3" tabindex="-1" data-bs-backdrop="static">
-              <div class="modal-dialog modal-dialog-centered">
+            <div class="modal fade " id="modal_search" aria-hidden="true" aria-labelledby="exampleModalToggleLabel3" tabindex="-1" data-bs-backdrop="static">
+              <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
                 <div class="modal-content">
                   <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalToggleLabel3">등록확인</h5>                  
@@ -281,20 +282,20 @@
                   
                   <form action="apiSearch" class="col">
            
-            <div id="total_search">
+            <div id="api_total_search">
             
-         	<div id="search" >
-            	
-              	<select id="search_select" name="searchOption">
-			            <option value="name_kor">제품 국문명</option>
-			            <option value="name_eng">제품 영문명</option>
-			            <option value="category">카테고리</option>
-			            <option value="casNo">카스번호</option>
-             		</select>
-           		
-           		<div class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 " >
-           		<div class="input-group">
-           		<input type="text" class="form-control bg-light border-0 small" placeholder="검색"
+            <div id="api_search" >
+               
+                 <select id="search_select" name="searchOption">
+                     <option value="name_kor">이름</option>
+                     <option value="name_eng">이름(영문)</option>
+                     <option value="category">카테고리</option>
+                     <option value="casNo">카스번호</option>
+                   </select>
+                 
+                 <div class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 " >
+                 <div class="input-group">
+                 <input type="text" class="form-control bg-light border-0 small" placeholder="검색"
                        aria-label="Search" aria-describedby="basic-addon2" name="searchKey">
                 <div class="input-group-append">
                      <button class="btn btn-secondary" type="submit" >
@@ -303,39 +304,35 @@
                </div>
                </div>
            </div>
-        	</div>
+           </div>
             </div>
           </form>
           
-	      <div class="container-fluid border rounded my-3" >
-	      <table class="table table-hover">
-	      <thead>
-	        <tr>
-	          <th scope="col">제품 영문명</th>
-	          <th scope="col">제품 국문명</th>
-	          <th scope="col">카테고리</th>
-	          <th scope="col">cas no.</th>        
-	        </tr>
-	      </thead>
-	      <tbody>
-	      	<c:forEach items="${adto }" var="adto">
-		        <tr class="" data-bs-toggle="collapse" href="#collapse${adto.casNo}" role="button" 
-		            aria-expanded="false" aria-controls="${adto.casNo}" >
-		          <td>${adto.name_eng}</td>
-		          <td>${adto.name_kor}</td>
-		          <td>${adto.factor}</td>
-		          <td>${adto.casNo}</td>
-		        </tr>
-	        </c:forEach>  
-	        </tbody>
-	        </table>
-	      </div>
+         <div class="container-fluid border rounded my-3" >
+         <table class="table table-hover">
+         <thead>
+           <tr>
+             <th scope="col">제품 영문명</th>
+             <th scope="col">제품 국문명</th>
+             <th scope="col">카테고리</th>
+             <th scope="col">cas no.</th>        
+           </tr>
+         </thead>
+         <tbody>
+            <c:forEach items="${adto }" var="adto">
+              <tr class="" data-bs-toggle="collapse" href="#collapse${adto.casNo}" role="button" 
+                  aria-expanded="false" aria-controls="${adto.casNo}" >
+                <td>${adto.name_eng}</td>
+                <td>${adto.name_kor}</td>
+                <td>${adto.factor}</td>
+                <td>${adto.casNo}</td>
+              </tr>
+           </c:forEach>  
+           </tbody>
+           </table>
+         </div>
                   
-                  
-                  
-                  
-                  
-                  
+             
                   
                   </div>
                   <div class="modal-footer">
@@ -374,39 +371,39 @@
         </tr>
       </thead>
       <tbody>
-      	<c:forEach items="${idto }" var="idto">
+         <c:forEach items="${idto }" var="idto">
         
-	        <tr class="" data-bs-toggle="collapse" href="#collapse${idto.inum}" role="button" 
-	            aria-expanded="false" aria-controls="${idto.inum}" >
-	          <th scope="row">${idto.inum }</th>
-	          <td>${idto.iname}</td>
-	          <td>${idto.category}</td>
-	          <td>${idto.brand}</td>
-	          <td>${idto.pronum}</td>
-	          <td>${idto.mananum}</td>
-	          <td>${idto.volume}</td>
-	          <td>${idto.exdate}</td>
-	          <td>${idto.location}</td>
-	          <td>${idto.stock}</td>
-	          <td>${idto.casNo}</td>
-	        </tr>
-	        
-	        <tr>
-	        <td colspan="11" class="collapse" id="collapse${idto.inum}" >
-	          <div class="card card-body " role="button">
-	            <a href="inventoryView?inum=${idto.inum }" >
-	            <div>
-	            ---연구자는 김근호 안주희.<br>
-	            ---오늘은 던킨도너츠 먹고싶네요<br>
-	            ---집 가기전에 사들고 갑니다.<br>
-	            
-	
-	            부서이름도 필요합니다
-	            </div>
-	          </a>
-	          </div>
-	        </td>
-	        </tr> 
+           <tr class="" data-bs-toggle="collapse" href="#collapse${idto.inum}" role="button" 
+               aria-expanded="false" aria-controls="${idto.inum}" >
+             <th scope="row">${idto.inum }</th>
+             <td>${idto.iname}</td>
+             <td>${idto.category}</td>
+             <td>${idto.brand}</td>
+             <td>${idto.pronum}</td>
+             <td>${idto.mananum}</td>
+             <td>${idto.volume}</td>
+             <td>${idto.exdate}</td>
+             <td>${idto.location}</td>
+             <td>${idto.stock}</td>
+             <td>${idto.casNo}</td>
+           </tr>
+           
+           <tr>
+           <td colspan="11" class="collapse" id="collapse${idto.inum}" >
+             <div class="card card-body " role="button">
+               <a href="inventoryView?inum=${idto.inum }" >
+               <div>
+               ---연구자는 김근호 안주희.<br>
+               ---오늘은 던킨도너츠 먹고싶네요<br>
+               ---집 가기전에 사들고 갑니다.<br>
+               
+   
+               부서이름도 필요합니다
+               </div>
+             </a>
+             </div>
+           </td>
+           </tr> 
         </c:forEach>  
         </tbody>
         </table>
@@ -431,13 +428,13 @@
 
     <!--아래여백-->
     <div class="my-5">
-	</div>
+   </div>
     <!--아래여백-->
 
-	</div> 
+   </div> 
 
 
-	<script>
+   <script>
 
             function openModal() {
               $(".inputs").each(function(i,e){

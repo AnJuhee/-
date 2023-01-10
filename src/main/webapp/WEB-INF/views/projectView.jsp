@@ -144,8 +144,10 @@
         <!--버튼-->
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <button class="btn btn-secondary me-md-2" type="submit">수정</button>
+            <button class="btn btn-secondary" type="button" onclick="script:window.location='report?projectid=${pdto.projectid}'">보고서추가</button>
             <button class="btn btn-secondary" type="button" onclick="script:window.location='projectDelete?projectid=${pdto.projectid}'">삭제</button>
             <button class="btn btn-secondary" type="button" onclick="history.go(-1)">목록</button>
+            
         </div>
         
         </form>

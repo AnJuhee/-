@@ -229,16 +229,16 @@ public class ProjectController {
 	}
 	
 	@RequestMapping("report")
-	public String report(HttpServletRequest request, Model model) {
+	public String report(HttpServletRequest request, Model model, HttpSession session) {
 		
-//		String projectid = request.getParameter("projectid");
+		String projectid = request.getParameter("projectid");
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
 		ArrayList<ProjectDto> pSearch = dao.pSearch();
-//		ProjectDto pdto = dao.projectView(projectid);
+		ProjectDto pdto = dao.projectView(projectid);
 		
-//		model.addAttribute("pdto", pdto);
+		model.addAttribute("pdto", pdto);
 		model.addAttribute("pSearch", pSearch);
 		
 		return "report";
@@ -255,10 +255,11 @@ public class ProjectController {
 		String rsign = request.getParameter("rsign");
 		String cdate = request.getParameter("cdate");
 		String csign = request.getParameter("csign");
+		String projectid = request.getParameter("projectid");
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
-		dao.writeReport(title, contents, writer, rdate, rsign, leadercheck, cdate, csign);
+		dao.writeReport(title, contents, writer, rdate, rsign, leadercheck, cdate, csign, projectid);
 		
 		return "redirect:report_list";
 	} 
@@ -282,11 +283,14 @@ public class ProjectController {
 	public String reportView(HttpServletRequest request, Model model, HttpSession session) {
 		
 		String rnum = request.getParameter("rnum");
+		String projectid = request.getParameter("projectid");
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
 		ReportDto rdto = dao.reportView(rnum);
+		ProjectDto pdto = dao.projectView(projectid);
 		
+		model.addAttribute("pdto", pdto);
 		model.addAttribute("rdto", rdto);
 		
 		return "reportView";
@@ -369,10 +373,10 @@ public class ProjectController {
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
 		ArrayList<InventoryDto> idto= dao.inventorylist();
-		ArrayList<HAZARDOUS_FACTORSDto> adto= dao.apilist();
+//		ArrayList<HAZARDOUS_FACTORSDto> adto= dao.apilist();
 		
 		model.addAttribute("idto", idto);
-		model.addAttribute("adto", adto);
+//		model.addAttribute("adto", adto);
 	
 		return "goods_list";
 	}
@@ -445,6 +449,7 @@ public class ProjectController {
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
 		ArrayList<HAZARDOUS_FACTORSDto> adto = null;
+		
 		
 		if(searchOption.equals("name_kor")) {
 			adto = dao.aSearchNameK(searchKey);

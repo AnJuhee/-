@@ -71,16 +71,17 @@
     <div class="container py-2" >
         <!-- 컨테이너 시작 건드리지마 -->   
         <form action="reportOk" method="post">
-        	
-            	
-              	<select id="pSearch" name="pSearch">
+        <input type="hidden" value="${pdto.projectid }" name="projectid">	
+        <!--    	
+          <select id="pSearch" name="pSearch">
               	<c:forEach items="${pSearch }" var="ps">
 			            <option><c:out value="${ps.project }"/></option>
 			    </c:forEach>
-             	</select>
+          </select>
            		
-           		
+         -->    		
         	
+        
         
         
         <div class="card">
@@ -153,7 +154,7 @@
                 </div>
 
                 <div class="form-floating col">
-                    <input type="datetime" class="form-control datepicker" id="datepicker1" placeholder="확인일자" name="cdate">
+                    <input type="datetime" class="form-control datepicker" id="datepicker2" placeholder="확인일자" name="cdate">
                     <label class="ml-2" for="floatingInput_date">확인일자</label>
                 </div>
 

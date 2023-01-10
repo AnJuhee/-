@@ -25,7 +25,7 @@ public interface IDao {
 
 	
 //연구노트(보고서)
-	public void writeReport(String title, String contents, String writer, String rdate, String rsign, String leadercheck, String cdate, String csign);//새 보고서 작성
+	public void writeReport(String title, String contents, String writer, String rdate, String rsign, String leadercheck, String cdate, String csign, String projectid);//새 보고서 작성
 	public ArrayList<ReportDto> reportlist(); //보고서 리스트 보기
 	public ReportDto reportView(String rnum); //선택한 글 보기
 	public void reportDelete(String rnum); //보고서 글 삭제
@@ -33,6 +33,7 @@ public interface IDao {
 	public int reportAllCount();//보고서 글의 총 개수
 	
 	public ArrayList<ProjectDto> pSearch();
+	public int checkProjectid(String projectid);
 	
 //게시판 검색 관련(보고서)
 	public ArrayList<ReportDto> rSearchTitle(String searchKey);

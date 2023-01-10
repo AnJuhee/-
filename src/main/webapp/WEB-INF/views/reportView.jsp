@@ -50,38 +50,41 @@
 	<!-- topbar 자리 -->
 		<%@ include file="include/topbar.jsp" %>	
 	<!-- topbar 자리 -->
+	
+	
 
     <div class="container">        
       <h1 class="">보고서 </h1>
     </div>
-
-
     <div class="container py-2" >
         <!-- 컨테이너 시작 건드리지마 -->	
         <form action="reportModify" method="post">
-        <input type="hidden" value="${rdto.rnum }" name="rnum">
+        <input type="text" value="${rdto.rnum }" name="rnum">
+        <input type="text" value="${rdto.projectid }" name="projectid">
         <div class="card">
             <div class="card-body">
                 <div class="card mb-2">
                     <div class="card-body row">
                         <label class="col-2 col-form-label">과제이름</label>
-                        <label class="col col-form-label ">마라탕을 맛있게 만드는 방법</label>
+                        <label class="col col-form-label ">${pdto.project }</label>
                     </div>
                 </div>
                 <div class="card mb-2">
                     <div class="card-body row">
                         <label class="col-2 col-form-label">기간</label>
-                        <label class="col col-form-label ">2022-02-02 ~ 2023-11-11</label>
+                        <label class="col col-form-label ">${pdto.startdate }  ~  ${pdto.finishdate }</label>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-body row">
                         <label class="col-2 col-form-label">책임자</label>
-                        <label class="col col-form-label ">안주희</label>
+                        <label class="col col-form-label ">${pdto.leader }</label>
                     </div>
                 </div>
             </div>
         </div>
+        
+        
         
         <!--위에여백-->
     <div class="my-3"></div>
