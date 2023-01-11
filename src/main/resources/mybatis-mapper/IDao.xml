@@ -67,7 +67,8 @@
 	</select>
 	
 	<select id="reportView" resultType="com.jh.dto.ReportDto">
-		select * from report where rnum=#{param1}
+		select report.* , project.* from report, project
+		where rnum = #{param1} and report.projectId = project.projectId
 	</select>
 	
 	<update id="reportModify">

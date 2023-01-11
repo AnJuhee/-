@@ -118,7 +118,7 @@
            <tr>
         	 <td colspan="7" class="collapse" id="collapse${rdto.rnum}" >
           		<div class="card card-body " role="button" >
-          			<a href="reportView?rnum=${rdto.rnum }&projectiid=${rdto.projectid}" > 
+          			<a href="reportView?rnum=${rdto.rnum }&projectid=${rdto.projectid}" > 
            		  	<div>
             			${rdto.contents }
           		  	</div>

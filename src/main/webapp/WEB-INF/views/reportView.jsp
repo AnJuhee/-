@@ -59,8 +59,8 @@
     <div class="container py-2" >
         <!-- 컨테이너 시작 건드리지마 -->	
         <form action="reportModify" method="post">
-        <input type="text" value="${rdto.rnum }" name="rnum">
-        <input type="text" value="${rdto.projectid }" name="projectid">
+        <input type="hidden" value="${rdto.rnum }" name="rnum">
+        <input type="hidden" value="${rdto.projectid }" name="projectid">
         <div class="card">
             <div class="card-body">
                 <div class="card mb-2">
