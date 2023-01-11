@@ -234,13 +234,21 @@
         <td colspan="7" class="collapse" id="collapse${pdto.projectid }" >
           <div class="card card-body " role="button" >
           	<a href="projectView?projectid=${pdto.projectid }" style="text-decoration :none;">
+          	
             <div class="">
-            ---연구자는 김근호 안주희.<br>
-            ---오늘은 던킨도너츠 먹고싶네요<br>
-            ---집 가기전에 사들고 갑니다.<br>
-            
-
-            부서이름도 필요합니다
+	            <table>
+	            
+	             
+	            <c:forEach items="${rdto }" var="rdto">
+	            <tr>
+	            <td>
+	            ▶ ${rdto.title }</a>
+	            </td>
+	            
+	            </tr> 
+	            </c:forEach>
+	            </table>
+ 
           </div>
           </a>
           </div>

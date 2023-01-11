@@ -133,12 +133,21 @@
 
     
 
-        <div class="" >
-            <textarea class="form-control" placeholder="관련 보고서" id="floatingTextarea" style="height: 400px;">
+        <div class=" my-3" >
+        	<div class="card">
+            
+            <table>
+            <div style="padding:10px">보고서</div>
+             
             <c:forEach items="${rdto }" var="rdto">
-            	<a href="reportView?rnum=${rdto.rnum }&projectid=${rdto.projectid}">${rdto.title } </a>
+            <tr>
+            <td>▶<a href="reportView?rnum=${rdto.rnum }&projectid=${rdto.projectid}" style="text-decoration:none;color:#000087"> ${rdto.title }</a></td>
+            
+            </tr> 
             </c:forEach>
-            </textarea>            
+            </table> 
+             
+            </div>        
         </div>
             
         

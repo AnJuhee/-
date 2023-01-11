@@ -125,6 +125,8 @@ public class ProjectController {
 	@RequestMapping("/project_list")
 	public String projectlist(Model model, Criteria cri, HttpServletRequest request) {
 		
+		String projectid = request.getParameter("projectid");
+		
 		int pageNumInt = 0;
 		if(request.getParameter("pageNum") == null) {
 			pageNumInt = 1;
@@ -143,6 +145,9 @@ public class ProjectController {
 		cri.setStartNum(cri.getPageNum()-1 * cri.getAmount());//해당 페이지의 시작번호를 설정
 		
 		PageDto pageDto = new PageDto(cri, pCount);
+		
+		List<ReportDto> rdto = dao.report(projectid);
+		model.addAttribute("rdto", rdto);
 		
 		model.addAttribute("pageMaker", pageDto);
 		model.addAttribute("currPage", pageNumInt);
