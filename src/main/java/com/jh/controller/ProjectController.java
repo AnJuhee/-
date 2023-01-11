@@ -183,7 +183,9 @@ public class ProjectController {
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
 		ProjectDto pdto = dao.projectView(projectid);
+		List<ReportDto> rdto = dao.report(projectid);
 		
+		model.addAttribute("rdto", rdto);
 		model.addAttribute("pdto", pdto);
 		
 		return "projectView";

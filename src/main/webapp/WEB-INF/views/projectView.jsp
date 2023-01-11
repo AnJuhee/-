@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -133,7 +134,11 @@
     
 
         <div class="" >
-            <textarea class="form-control" placeholder="관련 보고서" id="floatingTextarea" style="height: 400px;"></textarea>            
+            <textarea class="form-control" placeholder="관련 보고서" id="floatingTextarea" style="height: 400px;">
+            <c:forEach items="${rdto }" var="rdto">
+            	<a href="reportView?rnum=${rdto.rnum }&projectid=${rdto.projectid}">${rdto.title } </a>
+            </c:forEach>
+            </textarea>            
         </div>
             
         

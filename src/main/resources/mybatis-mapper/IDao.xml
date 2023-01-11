@@ -52,6 +52,10 @@
 		UPDATE project SET project=#{param2}, startdate=#{param3}, finishdate=#{param4}, team=#{param5}, leader=#{param6}, researcher=#{param7} WHERE projectid=#{param1}
 	</update>
 	
+	<select id="report" resultType="com.jh.dto.ReportDto">
+		select report.* , project.* from report, project
+			where projectid= #{param1} and report.projectid = project.projectid order by rnum
+	</select>
 	
 <!-- 연구노트(보고서) -->	
 	<insert id="writeReport">

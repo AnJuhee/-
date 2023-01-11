@@ -24,7 +24,8 @@ public interface IDao {
 	public ProjectDto projectView(String projectid); //선택한 글 보기
 	public void projectDelete(String projectid); //보고서 글 삭제
 	public void projectModify(String projectid, String project, String startdate, String finishdate, String team, String leader, String researcher);//프로젝트 수정
-
+	public List<ReportDto> report(String projectid); //관련보고서
+	
 	
 //연구노트(보고서)
 	public void writeReport(String title, String contents, String writer, String rdate, String rsign, String leadercheck, String cdate, String csign, String projectid);//새 보고서 작성
@@ -75,6 +76,7 @@ public interface IDao {
 	public int CountChe();//화악인자개수
 	public int CountLa();//생물체
 	public List<InventoryDto> inventoryInfo(); //인벤토리 정보들 가져오기
+	
 	
 	
 	

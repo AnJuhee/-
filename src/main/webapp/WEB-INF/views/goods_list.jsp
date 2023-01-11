@@ -110,25 +110,18 @@
                   </div>
                   <div class="modal-body">
                   
-                      <div class="card">
-                          <div class="card-body row">
-                              <div class="card-body ">                    
-                                  
-                              </div>
-                          
-                              <div class="card-body ">
-                                  <button type="button" class="btn btn-primary" data-bs-target="#modal_search" data-bs-toggle="modal" data-bs-dismiss="modal">검색</button>
-                              </div>
-                          </div>
-              
-                      </div>
+                      
               
                       <div class="card">
               
                           <div class="card-body row">
               
                               <div class="card-body">
+                              
                                   <div class="mb-3">
+                                     <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-n3">
+                                        <button type="button" class="btn btn-primary" data-bs-target="#modal_search" data-bs-toggle="modal" data-bs-dismiss="modal">검색</button>
+                                     </div>
                                       <label for="hamful_add_name1" class="form-label">이름</label>
                                       <input type="text" class="form-control inputs" id="hamful_add_name1" placeholder="이름을 입력해주세요" name="iname">
                                   </div>
@@ -401,12 +394,12 @@
                부서이름도 필요합니다
                
                 <div class="col">
-          		<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            		<button class="btn btn-secondary mr-1" type="button" onclick="script:window.location='inventoryModify?inum=${idto.inum}'">수정</button>
-           			<button class="btn btn-secondary mr-1" onclick="script:window.location='inventoryDelete?inum=${idto.inum}'">삭제</button>
-          		</div>
-          		</div>
-          		
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                  <button class="btn btn-secondary mr-1" type="button" onclick="script:window.location='inventoryModify?inum=${idto.inum}'">수정</button>
+                    <button class="btn btn-secondary mr-1" onclick="script:window.location='inventoryDelete?inum=${idto.inum}'">삭제</button>
+                </div>
+                </div>
+                
                </div>
              </a>
              </div>
@@ -421,25 +414,25 @@
         <table>
         
         <tr>
-			<td colspan="5" align="center">
-				<c:if test="${pageMaker.prev }">
-					<a href="inventory_list?pageNum=${pageMaker.startPage-5 }">◀</a>&nbsp;&nbsp;&nbsp;
-				</c:if>										
-				<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="num">
-					<c:choose>
-					<c:when test="${currPage == num}">
-					<u>${num}</u>&nbsp;&nbsp;&nbsp;
-					</c:when>
-					<c:otherwise>
-					<a href="inventory_list?pageNum=${num}">${num}</a>&nbsp;&nbsp;&nbsp;
-					</c:otherwise>
-					</c:choose>																					
-				</c:forEach>
-				<c:if test="${pageMaker.next }">
-					<a href="inventory_list?pageNum=${pageMaker.startPage+5 }">▶</a>
-				</c:if>	
-			</td>
-		</tr>
+         <td colspan="5" align="center">
+            <c:if test="${pageMaker.prev }">
+               <a href="inventory_list?pageNum=${pageMaker.startPage-5 }">◀</a>&nbsp;&nbsp;&nbsp;
+            </c:if>                              
+            <c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="num">
+               <c:choose>
+               <c:when test="${currPage == num}">
+               <u>${num}</u>&nbsp;&nbsp;&nbsp;
+               </c:when>
+               <c:otherwise>
+               <a href="inventory_list?pageNum=${num}">${num}</a>&nbsp;&nbsp;&nbsp;
+               </c:otherwise>
+               </c:choose>                                                               
+            </c:forEach>
+            <c:if test="${pageMaker.next }">
+               <a href="inventory_list?pageNum=${pageMaker.startPage+5 }">▶</a>
+            </c:if>   
+         </td>
+      </tr>
        </table>
        </div>
         
