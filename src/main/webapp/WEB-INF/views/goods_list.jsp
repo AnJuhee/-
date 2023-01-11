@@ -25,9 +25,28 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
     
-    <!-- Bootstrap core JavaScript-->
-    <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" >
+
+   <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+   
+    
+    <script>
+        $( function() {
+            $( ".datepicker" ).datepicker({
+                dateFormat : 'yy-mm-dd',
+                monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+              dayNamesMin: ['일','월','화','수','목','금','토'],
+                autoSize: false,                  //오토리사이즈(body등 상위태그의 설정에 따른다)
+                changeMonth: true,                  //월변경가능
+                changeYear: true,                  //년변경가능
+                showMonthAfterYear: true,
+                yearRange: '2001:2050'            //년 뒤에 월 표시
+            });
+        } );
+    </script>
 
 </head>
 
@@ -156,7 +175,7 @@
                                   </div>
                                   <div class="mb-3">
                                       <label for="hamful_add_enddate1" class="form-label">유효기간</label>
-                                      <input type="text" class="form-control inputs" id="hamful_add_enddate1" placeholder="유효기간을 입력해주세요" name="exdate">
+                                      <input type="datetime" class="form-control datepicker" id="datepicker2" placeholder="유효기간을 입력해주세요" name="exdate">
                                   </div>
                                   <div class="mb-3">
                                       <label for="hamful_add_location1" class="form-label">보관위치</label>
@@ -488,6 +507,63 @@
           $(function(){
             $(".inputs").keyup(printName);
           });
+        </script>
+        
+        <script src="${pageContext.request.contextPath}/resources/vendor/jquery-easing/jquery.easing.min.js"></script> 
+        <script>
+        $(function(){
+            $("tr[id^='projectid']").each(function(i,e){
+            
+              var sdate = $(e).find('.startdate').html();
+              var edate = $(e).find('.enddate').html();
+              var diff = diffDay(sdate, edate);
+              $(e).find(".dday").html(diff.dday);
+              $(e).find(".progress-bar").html(diff.res_progress+"%").animate({"width": diff.res_progress +"%"}, {duration : 100, easing : "linear"});
+              
+            });
+        });
+        
+
+        function diffDay(startdate, enddate) { //컬럼이름 자리
+          var sdate =  startdate.split("-"); //yyyy-mm-dd 리스트로 만들기 .split("-")
+          var edate =  enddate.split("-");
+          var today = new Date().toJSON().substr(0,10).split("-");
+
+          var _sdate = new Date(sdate[0],sdate[1],sdate[2]).getTime(); // timestamp  만들기
+          var _edate = new Date(edate[0],edate[1],edate[2]).getTime(); //종료날짜
+          var _today = new Date(today[0],today[1],today[2]).getTime(); //오늘날짜
+          
+          var gap = _edate - _sdate; //종료일-시작일
+          var progress_gap = _edate - _today; //종료일-오늘
+
+          var day = Math.ceil(gap / (1000 * 60 * 60 * 24)); // 총 연구기간 며칠인지 계산
+          var progress_day = Math.ceil(progress_gap / (1000 * 60 * 60 * 24)); // 오늘부터 남은기간 계산
+          // progress_day1 = day - progress_day; 
+
+
+          var progress_per,res_progress = 100;
+          
+          var tmp_date = (progress_day*-1);
+          var _dday = "D"+(tmp_date*1); 
+          // var _dday = "D"+(progress_day*-1); //디데이 나오게하는 자리          
+        
+          if(tmp_date > 0) {
+            _dday = "D+"+(progress_day*-1);
+          } else if(tmp_date < 0) {                        
+            res_progress = Math.floor(((day-progress_day) / day) * 100); // 버림  ,  Math.ceil 올림  , Math.round 반올림
+          }
+          else  {
+            _dday = "D-day";
+          }
+
+          var obj = {"dday" : _dday, "res_progress" : res_progress};
+          
+          return obj;
+          // 연구 시작 ~ 끝 전체 일자 _dday
+          // $(ele).html("전체 "+day+"일 중 "+progress_day+"일이 지났습니다. ("+res_progress+"% 진행 중)");
+          
+        }
+          
         </script>
         
         

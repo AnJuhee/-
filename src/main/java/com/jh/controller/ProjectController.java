@@ -125,7 +125,7 @@ public class ProjectController {
 	@RequestMapping("/project_list")
 	public String projectlist(Model model, Criteria cri, HttpServletRequest request) {
 		
-		String projectid = request.getParameter("projectid");
+//		String projectid = request.getParameter("projectid");
 		
 		int pageNumInt = 0;
 		if(request.getParameter("pageNum") == null) {
@@ -146,8 +146,8 @@ public class ProjectController {
 		
 		PageDto pageDto = new PageDto(cri, pCount);
 		
-		List<ReportDto> rdto = dao.report(projectid);
-		model.addAttribute("rdto", rdto);
+//		List<ReportDto> rdto = dao.report(projectid);
+//		model.addAttribute("rdto", rdto);
 		
 		model.addAttribute("pageMaker", pageDto);
 		model.addAttribute("currPage", pageNumInt);

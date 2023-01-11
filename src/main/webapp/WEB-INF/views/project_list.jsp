@@ -234,7 +234,7 @@
         <td colspan="7" class="collapse" id="collapse${pdto.projectid }" >
           <div class="card card-body " role="button" >
           	<a href="projectView?projectid=${pdto.projectid }" style="text-decoration :none;">
-          	
+    <!--       	
             <div class="">
 	            <table>
 	            
@@ -250,6 +250,7 @@
 	            </table>
  
           </div>
+          --> 
           </a>
           </div>
         </td>
