@@ -195,11 +195,11 @@
 	</select>
 	
 	<select id="CountChe" resultType="int">
- 		select count(*) from HAZARDOUS_FACTORS where factor = '화학인자'
+ 		select count(*) from inventory where category = '화학인자'
 	</select>
 	
 	<select id="CountLa" resultType="int">
- 		select count(*) from HAZARDOUS_FACTORS where factor = '생물체'
+ 		select count(*) from inventory where category = '생물체'
 	</select>
 	
 	<select id="inventoryInfo" resultType="com.jh.dto.InventoryDto">
