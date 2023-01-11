@@ -84,7 +84,7 @@
           
           <div class="col">
           <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button class="btn btn-secondary mr-1" type="button" onclick="script:window.location='report'">추가</button>
+            <button class="btn btn-secondary mr-1" type="button" onclick="script:window.location='project_list';alert('프로젝트를 선택해주세요')">추가</button>
             <button class="btn btn-secondary mr-1" type="submit">설정</button>
           </div>
           </div>
