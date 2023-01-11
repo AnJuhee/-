@@ -63,7 +63,11 @@ public interface IDao {
 	public void writeInventory(String iname, String category, String brand, String pronum, String mananum, String casNo, String volume, String molecular, String exdate, String location, String stock);//새 물품 작성
 	public ArrayList<InventoryDto> inventorylist(Criteria cri); //물품 리스트 보기
 	public ArrayList<HAZARDOUS_FACTORSDto> apilist(); //api 리스트 보기
-	public int inventoryAllCount();//보고서 글의 총 개수
+	public int inventoryAllCount();//물품 글의 총 개수
+	public void inventoryDelete(String inum); // 물품 삭제
+	public InventoryDto inventoryView(String inum); //물품 정보가져오기
+	public void inventoryModify(String inum, String iname, String category, String brand, String pronum, String mananum,
+			String casNo, String volume, String molecular, String exdate, String location, String stock); // 물품 수정
 	
 //데시보드
 	public ArrayList<ProjectDto> latest(); //최신글 3개만 가져오기
@@ -71,4 +75,8 @@ public interface IDao {
 	public int CountChe();//화악인자개수
 	public int CountLa();//생물체
 	public List<InventoryDto> inventoryInfo(); //인벤토리 정보들 가져오기
+	
+	
+	
+	
 }

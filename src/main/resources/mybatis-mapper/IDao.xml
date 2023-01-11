@@ -166,6 +166,18 @@
  		select count(*) from inventory
 	</select>
 	
+	<delete id="inventoryDelete">
+		delete from inventory where inum=#{param1} 
+	</delete>
+	
+	<select id="inventoryView" resultType="com.jh.dto.InventoryDto">
+		select * from inventory where inum=#{param1}
+	</select>
+	
+	<update id="inventoryModify">
+		UPDATE inventory SET iname=#{param2}, category=#{param3}, brand=#{param4}, pronum=#{param5}, mananum=#{param6}, casNo=#{param7}, volume=#{param8}, molecular=#{param9}, exdate=#{param10}, location=#{param11}, stock=#{param12} WHERE inum=#{param1}
+	</update>
+	
 	
 <!-- 물품 api  게시판 검색 SQL -->
 	<select id="aSearchCasNo" resultType="com.jh.dto.HAZARDOUS_FACTORSDto">

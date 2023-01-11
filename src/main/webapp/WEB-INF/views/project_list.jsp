@@ -233,7 +233,7 @@
            <tr>
         <td colspan="7" class="collapse" id="collapse${pdto.projectid }" >
           <div class="card card-body " role="button" >
-          	<a href="projectView?projectid=${pdto.projectid }">
+          	<a href="projectView?projectid=${pdto.projectid }" style="text-decoration :none;">
             <div class="">
             ---연구자는 김근호 안주희.<br>
             ---오늘은 던킨도너츠 먹고싶네요<br>

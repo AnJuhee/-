@@ -386,19 +386,27 @@
              <td>${idto.location}</td>
              <td>${idto.stock}</td>
              <td>${idto.casNo}</td>
-           </tr>
+             
+            </tr>
            
            <tr>
            <td colspan="11" class="collapse" id="collapse${idto.inum}" >
              <div class="card card-body " role="button">
-               <a href="inventoryView?inum=${idto.inum }" >
+               <a href="inventoryModify?inum=${idto.inum }" style="text-decoration :none;" >
                <div>
                ---연구자는 김근호 안주희.<br>
                ---오늘은 던킨도너츠 먹고싶네요<br>
                ---집 가기전에 사들고 갑니다.<br>
                
-   
                부서이름도 필요합니다
+               
+                <div class="col">
+          		<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            		<button class="btn btn-secondary mr-1" type="button" onclick="script:window.location='inventoryModify?inum=${idto.inum}'">수정</button>
+           			<button class="btn btn-secondary mr-1" onclick="script:window.location='inventoryDelete?inum=${idto.inum}'">삭제</button>
+          		</div>
+          		</div>
+          		
                </div>
              </a>
              </div>

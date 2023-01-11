@@ -528,4 +528,52 @@ public class ProjectController {
 		
 		return "goods_list";
 	}
+	
+	@RequestMapping("/inventoryDelete")
+	public String inventoryDelete(HttpServletRequest request ) {
+		
+		String inum = request.getParameter("inum");
+		IDao dao = sqlSession.getMapper(IDao.class);
+		dao.inventoryDelete(inum);
+		
+		return "redirect:goods_list";
+		
+	}
+	
+	@RequestMapping("/inventoryModify")
+	public String inventoryModify(HttpServletRequest request, Model model) {
+		
+		String inum = request.getParameter("inum");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		InventoryDto idto = dao.inventoryView(inum);
+		
+		model.addAttribute("idto", idto);
+		
+		return "inventoryModify";
+	}
+	
+	@RequestMapping("/inventoryModifyOk")
+	public String inventoryModifyOk(HttpServletRequest request) {
+		
+		String inum = request.getParameter("inum");
+		String iname = request.getParameter("iname");
+		String category = request.getParameter("category");
+		String brand = request.getParameter("brand");
+		String pronum = request.getParameter("pronum");
+		String mananum = request.getParameter("mananum");
+		String casNo = request.getParameter("casNo");
+		String volume = request.getParameter("volume");
+		String molecular = request.getParameter("molecular");
+		String exdate = request.getParameter("exdate");
+		String location = request.getParameter("location");
+		String stock = request.getParameter("stock");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		dao.inventoryModify(inum, iname, category, brand, pronum, mananum, casNo, volume, molecular, exdate, location, stock);
+		
+		return "redirect:goods_list";
+	}
 }
