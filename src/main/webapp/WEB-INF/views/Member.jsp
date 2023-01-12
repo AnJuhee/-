@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>join2_labname</title>
+    <title>회원정보 보기</title>
 
     <!-- Custom fonts for this template-->
     <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -29,37 +29,47 @@
 <body>
 
     <!--위에여백-->
-    <div class="my-5"></div>
+    <div class="my-5">
+	</div>
     <!--위에여백-->
 
     <div class="container border rounded  py-2" style="width: 40rem; ">
         <!-- 컨테이너 시작 건드리지마 -->	
         
             
-        <form action="joinOk2" method="post">
-        <input type="hidden" value="${mdto.email }" name="email">
-  
-          <div>
-          <h1 class="h3 my-3 mb-3 fw-normal">연구실 입력</h1>
-          연구실, 부서, 그룹 등의 이름을 입력하세요.
-        </div>
-        
+        <form action="joinOk1" method="post">
+            <!--  <img class="mb-4" src="/docs/5.2/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
+              <div>
+              <h1 class="h3 my-5 mb-3 fw-normal text-center">회원정보 보기</h1>
+              </div>
+     
+              <div class="form-floating my-3">
+                <input type="email" class="form-control" id="floatingInput" placeholder="이메일(계정)" name="email" value="${mdto.email }" readonly="readonly">      
+              </div>   
+              
+              <div class="form-floating my-3">
+                <input type="text" class="form-control" id="floatingInput" placeholder="이름" name="name" value="${mdto.name }" readonly="readonly">      
+              </div>      
+              
+              <div class="form-floating my-3">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="비밀번호(8자리 이상)" name="pw" value=${mdto.pw } readonly="readonly">      
+              </div>
+              
+              <div class="form-floating my-3">
+                <input type="text" class="form-control" id="floatingInput" placeholder="연구실" name="rgroup" value="${mdto.rgroup }" readonly="readonly">      
+              </div>
+              
+              
+              
+              <div class="my-4">
+              <button class="w-100 btn btn-lg btn-success" type="submit" onclick="script:window.location='MemberModify'">수정 하기</button>
+              <button class="btn btn-secondary" type="button" onclick="history.go(-1)">목록</button>
+              <button class="btn btn-secondary" type="button" onclick="script:window.location='MemberDelete?email=${mdto.email}'">탈퇴하기</button>
+              
+              <br>
+                 </div>
              
-          
-          <div class="form-floating my-3">
-            <input type="text" class="form-control" id="floatingInput" placeholder="이름" name="rgroup" value="">      
-          </div>      
-          
-          
-          
-          
-          
-          <div class="my-4">
-            <button class=" btn btn-lg btn-success" type="submit">완료</button>
-          <br>
-           </div>
-         
-        </form>
+            </form>
             
             
                 

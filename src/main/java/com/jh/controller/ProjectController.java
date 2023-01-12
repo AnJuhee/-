@@ -53,7 +53,6 @@ public class ProjectController {
 			MemberDto ldto = dao.loginInfo(email);
 			
 			model.addAttribute("ldto", ldto);
-			model.addAttribute("email", email);
 		}
 		
 		return "forward:dashboard";
@@ -74,20 +73,40 @@ public class ProjectController {
 	}
 	
 	@RequestMapping("/joinOk1")
-	public String joinOk1(HttpServletRequest request) {
+	public String joinOk1(HttpServletRequest request,Model model,HttpSession session) {
 		
 		String email = request.getParameter("email");
 		String name = request.getParameter("name");
 		String pw = request.getParameter("pw");
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		int checkIdFlag = dao.checkUserIdAndPw(email, pw);
+		
+		model.addAttribute("checkIdFlag", checkIdFlag);
+		
+		if(checkIdFlag == 1) { //참이면 로그인 성공
+			session.setAttribute("email", email);
+			MemberDto ldto = dao.loginInfo(email);
+		
+			model.addAttribute("ldto", ldto);
+		}
+		
 		dao.MemberJoin(email, name, pw);
 		
-		return "dashboard";
+		return "forward:dashboard";
 	}
 	
 	@RequestMapping("/join2")
-	public String join2() {
+	public String join2(HttpServletRequest request, Model model) {
+		
+		String email = request.getParameter("email");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+
+		MemberDto mdto = dao.loginInfo(email);
+		
+		model.addAttribute("email", mdto);
 		
 		return "join2";
 	}
@@ -95,7 +114,14 @@ public class ProjectController {
 	@RequestMapping("/joinOk2")
 	public String joinOk2(HttpServletRequest request) {
 		
-		return "redirect:join3";
+		String email = request.getParameter("email");
+		String rgroup = request.getParameter("rgroup");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+
+		dao.rgroup(email, rgroup);
+		
+		return "redirect:dashboard";
 	}
 	
 	@RequestMapping("/join3")
@@ -104,8 +130,24 @@ public class ProjectController {
 		return "join3";
 	}
 	
+	@RequestMapping("/Member")
+	public String member(HttpServletRequest request, Model model) {
+		
+		String email = request.getParameter("email");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		MemberDto mdto = dao.MemberView(email);
+		
+		model.addAttribute("email", mdto);
+		
+		return "Member";
+	}
+	
 	@RequestMapping("/dashboard")
-	public String dashboard(Model model) {
+	public String dashboard(Model model,HttpSession session, HttpServletRequest request, String email) {
+		
+		String email1 = (String) session.getAttribute("email");
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
@@ -113,9 +155,10 @@ public class ProjectController {
 		ArrayList<ProjectDto> dto1 =  dao.latest1();
 		int che = dao.CountChe();
 		int bio = dao.CountLa();
-		List<InventoryDto> ex = dao.inventoryInfo();
-		
-		
+		List<InventoryDto> ex = dao.inventoryInfo();		
+		MemberDto ldto = dao.loginInfo(email1);
+	
+		model.addAttribute("ldto", ldto);
 		model.addAttribute("ex", ex);
 		model.addAttribute("che", che );
 		model.addAttribute("bio", bio);

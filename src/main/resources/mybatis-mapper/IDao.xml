@@ -21,6 +21,14 @@
 	<select id="loginInfo" resultType="com.jh.dto.MemberDto">
 		select * from join where email=#{param1}
 	</select>
+	
+	<update id="rgroup">
+		UPDATE join SET rgroup=#{param2} WHERE email=#{param1} 
+	</update>
+	
+	<select id="MemberView" resultType="com.jh.dto.MemberDto">
+		select * from join where email=#{param1}
+	</select>
 
 
 <!-- 연구노트(프로젝트) -->

@@ -89,7 +89,6 @@
     <div class=" container border rounded py-2 " ondrop="drop(event)" ondragover="allowDrop(event)">
         <!-- 컨테이너 시작 건드리지마 -->   
         
-        
         <div class="row">
 
         <!-- 왼쪽에 위치하게 -->
