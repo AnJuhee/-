@@ -233,11 +233,9 @@
            <tr>
         <td colspan="7" class="collapse" id="collapse${pdto.projectid }" >
           <div class="card card-body " role="button" >
-          	
-          	
-   <a href="projectView?projectid=${pdto.projectid }" style="text-decoration :none;">
+          	 	<a href="projectView?projectid=${pdto.projectid }" style="text-decoration :none;">
    
-   -------보고서
+  				 -------보고서
     <!--       	
             <div class="">
 	            <table>

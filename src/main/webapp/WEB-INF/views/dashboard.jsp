@@ -287,13 +287,18 @@
         
 
     </div>
-
+    
+   <input type="hidden" id="devtest" value="${che },${bio }">
+   
+   <!-- 
    <div> 화학인자개수  :  ${che }</div>
-   <div> 생물체   :  ${bio }   </div> 
+   <div> 생물체   :  ${bio }   </div>
+    --> 
    
    <div> 
    <c:forEach items="${ex }" var="ex">
-   		유효기간 : ${ex.exdate } ㅜ 일케밖에 못하겠음<br>
+      <input type="text" class="goodsend" value="${ex.exdate }">
+         
    </c:forEach>
    </div>
         
@@ -384,7 +389,7 @@
         data: {
           labels: ["화학인자", "생물체", "보호구"],
           datasets: [{
-            data: [55, 30, 15],
+            data: $("#devtest").val().split(","),
             backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
             hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
             hoverBorderColor: "rgba(234, 236, 244, 1)",
@@ -410,6 +415,49 @@
       });
       
       </script>
+      
+      <script>
+          $(function(){
+            var d_cnt = {'0' : 0, '1': 0, '2': 0, '3': 0,'4':0}; // 이쪽 이거 나중에 그래프 추가할때도 매칭 잘 시켜주면댐
+            // 이제부터 0: 만료, 1: 7일, 2: 30일, 3: 100일, 4: 1년 // 여기랑
+
+            $("[class^='goodsend']").each(function(i,e){
+              var _goodsend = $(e).val();
+              var target = $(e).attr("class").replace("goodsend","goodsdday");
+              var regex = RegExp(/^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/); //yyyy-mm-dd 식에서만 실행
+              // 여기서 같이 하면 댈듯?
+              let _dday = diffDay(_goodsend);
+              if(_dday <= 365 && _dday > 100 ) { d_cnt['4'] += 1;} // d_cnt['4'] 여기 인덱스 카운팅 0 은 만료 1일 7일 맞추면댐  완ㄹ료
+              else if(_dday >= 30 ) { d_cnt['3'] += 1;} // 7보다 작은거 30일보다 작은거 이 순서 지금은 큰거로 시작해서 반대임이거 0~4 인데 4~0 으로 받는거 헤갈리면 역순으로 하면댐 
+              else if(_dday >= 7 ) { d_cnt['2'] += 1;}
+              else if(_dday >= 0 ) { d_cnt['1'] += 1;}
+              else if(_dday <= 0) { d_cnt['0'] += 1;}              
+              $(`.${target}`).html(diffDay(_goodsend));
+            });
+            $(".progress-count").find('.progress-bar').each(function(i,e){
+              let pcnt = d_cnt[i] >= 100 ? 100 : d_cnt[i]; // 아니면 여기?
+              $(".progress-count").find(".float-right:eq("+i+")").html(pcnt);
+              $(".progress-count").find(".progress-bar:eq("+i+")").css("width",pcnt+"%");
+            }); // ㅇ인덱스 보라는게 어떤거임
+            //console.log(d_cnt) 끝? 끝난듯 다시다시 100 넘어가면 카운트 안해야 할거같은데 100 아니고 365 넘어가는거
+          })   
+          function diffDay1(goodsend) { //컬럼이름 자리
+            var gend =  goodsend.split("-"); //yyyy-mm-dd 리스트로 만들기 .split("-")            
+            var today = new Date().toJSON().substr(0,10).split("-");
+  
+            var _gend = new Date(gend[0],gend[1],gend[2]).getTime(); // timestamp  만들기            
+            var _today = new Date(today[0],today[1],today[2]).getTime(); //오늘날짜
+                       
+            var gend_gap = _gend - _today; //종료일-오늘            
+            
+                    
+            
+            var gdday = Math.ceil(gend_gap / (1000 * 60 * 60 * 24)); 
+
+            return gdday;
+          }
+            
+          </script>
 
     
 

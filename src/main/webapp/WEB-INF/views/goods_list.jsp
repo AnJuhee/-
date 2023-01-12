@@ -332,8 +332,8 @@
          </thead>
          <tbody>
             <c:forEach items="${adto }" var="adto">
-              <tr class="" data-bs-toggle="collapse" href="#collapse${adto.casNo}" role="button" 
-                  aria-expanded="false" aria-controls="${adto.casNo}" >
+              <tr class="" data-bs-toggle="modal" href="#Modal_add${adto.casNo}" role="button" 
+                  aria-expanded="false" >
                 <td>${adto.name_eng}</td>
                 <td>${adto.name_kor}</td>
                 <td>${adto.factor}</td>
