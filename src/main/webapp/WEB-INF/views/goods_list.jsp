@@ -73,7 +73,9 @@
         
         
 
-       <div class="row"></div>
+       <div class="row">
+       <div class="col" id="total">▷ 총 ${iCount }개의 제품이 있습니다.</div>
+       </div>
         
         <div class="row ">
           <form action="inventorySearch" class="col">
@@ -408,8 +410,7 @@
                <div>
                ---관리번호 : ${idto.mananum }<br>
                ---제품번호  : ${idto.pronum }<br>
-               ---카스번호 : ${idto.casNo }<br>
-               
+               ---카스번호 : ${idto.casNo }
                 <div class="col">
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                   <button class="btn btn-secondary mr-1" type="button" onclick="script:window.location='inventoryModify?inum=${idto.inum}'">수정</button>
@@ -574,6 +575,7 @@
 
     <!-- Core plugin JavaScript-->
     <script src="${pageContext.request.contextPath}/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Custom scripts for all pages-->
     <script src="${pageContext.request.contextPath}/resources/js/sb-admin-2.min.js"></script>

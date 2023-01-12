@@ -42,9 +42,6 @@
         
             <div class="form-floating">
             
-            	<input type="hidden" value="${ldto.name }" name="name">
-            	<input type="hidden" value="${ldto.rgroup }" name="rgroup">
-            
               <input type="email" class="form-control" id="floatingInput" placeholder="이메일(계정)" name="email">
               
             </div>

@@ -2,10 +2,7 @@
     pageEncoding="UTF-8"%>
 
 
-		<% 
-		String sessionId = (String) session.getAttribute("email");
-		//로그인 중이라면 로그인한 아이디가 저장되고 비로그인 중이면 sessionId==null 임
-		%>
+		
 
 
 
@@ -19,11 +16,8 @@
                     <i class="fas fa-laugh-wink"></i>
                 </div>
                 <div class="sidebar-brand-text mx-3">
-	<% if(sessionId == null) { %>
-                김필
-                <%} else { %> 
-                <%= sessionId %>
-                <%} %><sup>2</sup></div>
+				  ${ldto.name }님
+				<sup>2</sup></div>
             </a>
 
             <!-- Divider -->

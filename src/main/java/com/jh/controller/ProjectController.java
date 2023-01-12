@@ -37,25 +37,34 @@ public class ProjectController {
 	@RequestMapping("/loginOk")
 	public String loginOk(HttpServletRequest request, HttpSession session, Model model) {
 		
-		String rgroup = request.getParameter("rgroup");
+		
 		String email = request.getParameter("email");
 		String pw = request.getParameter("pw");
-		String name = request.getParameter("name");
-
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
-		MemberDto ldto = dao.loginInfo(email);
-		int checkIdFlag = dao.checkUserIdAndPw(email, pw); //mid,mpw 둘 다 있으면 1(로그인), 하나라도 없으면 0(로그인 x)
+		
+		int checkIdFlag = dao.checkUserIdAndPw(email, pw);
+		//email, pw 둘 다 있으면 1(로그인), 하나라도 없으면 0(로그인 x)
+		
+		model.addAttribute("checkIdFlag", checkIdFlag);
 		
 		if(checkIdFlag == 1) { //참이면 로그인 성공
 			session.setAttribute("email", email);
-			session.setAttribute("rgroup", rgroup);
-			session.setAttribute("name", name);
+			MemberDto ldto = dao.loginInfo(email);
+			
+			model.addAttribute("ldto", ldto);
+			model.addAttribute("email", email);
 		}
 		
+		return "forward:dashboard";
+	}
+	
+	@RequestMapping(value = "/logout")
+	public String logout(HttpSession session) {
 		
-		model.addAttribute("ldto", ldto);
-		return "redirect:dashboard";
+		session.invalidate();
+		
+		return "login";
 	}
 	
 	@RequestMapping("/join1")

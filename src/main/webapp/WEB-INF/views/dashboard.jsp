@@ -273,14 +273,82 @@
                             <span class="mr-2">
                                 <i class="fas fa-circle text-success"></i> 생물체
                             </span>
+                            <!-- 
                             <span class="mr-2">
                                 <i class="fas fa-circle text-info"></i> 보호구 
                             </span>
+                             -->
                         </div>
                     </div>
                 </div>
             </div>
              <!--재고관리 카드 끝-->
+             
+             
+                          
+              <!--유효기간 카드 시작-->
+          <div class="col" draggable="true" ondragstart="drag(event)" id="drag4">
+              <div class="card shadow mb-4 ">
+                  <!-- Card Header - Dropdown -->
+                  <div
+                      class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                      <h6 class="m-0 font-weight-bold text-primary">유효기간</h6>
+                      <div class="dropdown no-arrow">
+                          <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                              aria-labelledby="dropdownMenuLink">
+                              <div class="dropdown-header">Dropdown Header:</div>
+                              <a class="dropdown-item" href="#">Action</a>
+                              <a class="dropdown-item" href="#">Another action</a>
+                              <div class="dropdown-divider"></div>
+                              <a class="dropdown-item" href="#">Something else here</a>
+                          </div>
+                      </div>
+                  </div>
+                  
+                  <!-- Card Body -->
+                  <div class="card-body progress-count">
+                   
+                      
+            <h4 class="small font-weight-bold">만료<span
+                    class="float-right">20%</span></h4>
+            <div class="progress mb-4">
+                <div class="progress-bar bg-danger" role="progressbar" style="width: 20%"
+                    aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <h4 class="small font-weight-bold">7일<span
+                    class="float-right">40%</span></h4>
+            <div class="progress mb-4">
+                <div class="progress-bar bg-warning" role="progressbar" style="width: 40%"
+                    aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <h4 class="small font-weight-bold">30일<span
+                    class="float-right">60%</span></h4>
+            <div class="progress mb-4">
+                <div class="progress-bar" role="progressbar" style="width: 60%"
+                    aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <h4 class="small font-weight-bold">100일<span
+                    class="float-right">80%</span></h4>
+            <div class="progress mb-4">
+                <div class="progress-bar bg-info" role="progressbar" style="width: 80%"
+                    aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <h4 class="small font-weight-bold">1년<span
+                    class="float-right">Complete!</span></h4>
+            <div class="progress">
+                <div class="progress-bar bg-success" role="progressbar" style="width: 100%"
+                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+                  </div>
+              </div>
+          </div>
+           <!--유효기간 카드 끝-->
+           
+           
             
          
         </div>
@@ -297,9 +365,11 @@
    
    <div> 
    <c:forEach items="${ex }" var="ex">
-      <input type="text" class="goodsend" value="${ex.exdate }">
-         
+      <input type="hidden" class="goodsend${ex.inum }" value="${ex.exdate }">
+      <input type="hidden" class="goodsdday${ex.inum }" value="">      
    </c:forEach>
+   
+   
    </div>
         
         
@@ -426,13 +496,13 @@
               var target = $(e).attr("class").replace("goodsend","goodsdday");
               var regex = RegExp(/^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/); //yyyy-mm-dd 식에서만 실행
               // 여기서 같이 하면 댈듯?
-              let _dday = diffDay(_goodsend);
+              let _dday = diffDay2(_goodsend);
               if(_dday <= 365 && _dday > 100 ) { d_cnt['4'] += 1;} // d_cnt['4'] 여기 인덱스 카운팅 0 은 만료 1일 7일 맞추면댐  완ㄹ료
               else if(_dday >= 30 ) { d_cnt['3'] += 1;} // 7보다 작은거 30일보다 작은거 이 순서 지금은 큰거로 시작해서 반대임이거 0~4 인데 4~0 으로 받는거 헤갈리면 역순으로 하면댐 
               else if(_dday >= 7 ) { d_cnt['2'] += 1;}
               else if(_dday >= 0 ) { d_cnt['1'] += 1;}
               else if(_dday <= 0) { d_cnt['0'] += 1;}              
-              $(`.${target}`).html(diffDay(_goodsend));
+              $("."+target).val(diffDay2(_goodsend));
             });
             $(".progress-count").find('.progress-bar').each(function(i,e){
               let pcnt = d_cnt[i] >= 100 ? 100 : d_cnt[i]; // 아니면 여기?
@@ -441,7 +511,7 @@
             }); // ㅇ인덱스 보라는게 어떤거임
             //console.log(d_cnt) 끝? 끝난듯 다시다시 100 넘어가면 카운트 안해야 할거같은데 100 아니고 365 넘어가는거
           })   
-          function diffDay1(goodsend) { //컬럼이름 자리
+          function diffDay2(goodsend) { //컬럼이름 자리
             var gend =  goodsend.split("-"); //yyyy-mm-dd 리스트로 만들기 .split("-")            
             var today = new Date().toJSON().substr(0,10).split("-");
   
