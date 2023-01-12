@@ -433,7 +433,7 @@ public class ProjectController {
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
-		int iCount = dao.projectAllCount();
+		int iCount = dao.inventoryAllCount();
 		
 		ArrayList<InventoryDto> idto = dao.inventorylist(cri);
 //		ArrayList<HAZARDOUS_FACTORSDto> adto= dao.apilist();

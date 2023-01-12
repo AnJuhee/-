@@ -141,7 +141,7 @@
                                      <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-n3">
                                         <button type="button" class="btn btn-primary" data-bs-target="#modal_search" data-bs-toggle="modal" data-bs-dismiss="modal">검색</button>
                                      </div>
-                                      <label for="hamful_add_name1" class="form-label">이름</label>
+                                      <label for="hamful_add_name1" class="form-label"> * 이름</label>
                                       <input type="text" class="form-control inputs" id="hamful_add_name1" placeholder="이름을 입력해주세요" name="iname">
                                   </div>
                                   <div class="mb-3">
@@ -162,7 +162,7 @@
                                       <input type="text" class="form-control inputs" id="hamful_add_managenumber1" placeholder="관리번호를 입력해주세요" name="mananum">
                                   </div>
                                   <div class="mb-3">
-                                      <label for="hamful_add_casno1" class="form-label">CAS no</label>
+                                      <label for="hamful_add_casno1" class="form-label"> * CAS no</label>
                                       <input type="text" class="form-control inputs" id="hamful_add_casno1" placeholder="CAS no를 입력해주세요" name="casNo">
                                   </div>
                                   <div class="mb-3">
@@ -174,7 +174,7 @@
                                       <input type="text" class="form-control inputs" id="hamful_add_mol1" placeholder="분자량을 입력해주세요" name="molecular">
                                   </div>
                                   <div class="mb-3">
-                                      <label for="hamful_add_enddate1" class="form-label">유효기간</label>
+                                      <label for="hamful_add_enddate1" class="form-label"> * 유효기간</label>
                                       <input type="datetime" class="form-control datepicker" id="datepicker2" placeholder="유효기간을 입력해주세요" name="exdate">
                                   </div>
                                   <div class="mb-3">
@@ -406,11 +406,9 @@
              <div class="card card-body " role="button">
                <a href="inventoryModify?inum=${idto.inum }" style="text-decoration :none;" >
                <div>
-               ---연구자는 김근호 안주희.<br>
-               ---오늘은 던킨도너츠 먹고싶네요<br>
-               ---집 가기전에 사들고 갑니다.<br>
-               
-               부서이름도 필요합니다
+               ---관리번호 : ${idto.mananum }<br>
+               ---제품번호  : ${idto.pronum }<br>
+               ---카스번호 : ${idto.casNo }<br>
                
                 <div class="col">
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -435,7 +433,7 @@
         <tr>
          <td colspan="5" align="center">
             <c:if test="${pageMaker.prev }">
-               <a href="inventory_list?pageNum=${pageMaker.startPage-5 }">◀</a>&nbsp;&nbsp;&nbsp;
+               <a href="goods_list?pageNum=${pageMaker.startPage-5 }">◀</a>&nbsp;&nbsp;&nbsp;
             </c:if>                              
             <c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="num">
                <c:choose>
@@ -443,12 +441,12 @@
                <u>${num}</u>&nbsp;&nbsp;&nbsp;
                </c:when>
                <c:otherwise>
-               <a href="inventory_list?pageNum=${num}">${num}</a>&nbsp;&nbsp;&nbsp;
+               <a href="goods_list?pageNum=${num}">${num}</a>&nbsp;&nbsp;&nbsp;
                </c:otherwise>
                </c:choose>                                                               
             </c:forEach>
             <c:if test="${pageMaker.next }">
-               <a href="inventory_list?pageNum=${pageMaker.startPage+5 }">▶</a>
+               <a href="goods_list?pageNum=${pageMaker.startPage+5 }">▶</a>
             </c:if>   
          </td>
       </tr>
