@@ -33,6 +33,10 @@
 	<update id="MemberModify">
 		UPDATE join SET name=#{param2}, pw=#{param3}, rgroup=#{param4} WHERE email=#{param1} 
 	</update>
+	
+	<delete id="MemberDelete">
+		delete from join where email=#{param1} 
+	</delete>
 
 
 <!-- 연구노트(프로젝트) -->

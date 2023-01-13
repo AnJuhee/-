@@ -18,6 +18,7 @@ public interface IDao {
 	public MemberDto loginInfo(String email); //로그인한 사람 정보 & 회원정보
 	public void rgroup(String email, String rgroup); //이메일로 찾아서 연구실 추가하기
 	public void MemberModify(String email, String name, String pw, String rgroup);
+	public void MemberDelete(String email); //탈퇴
 
 	
 //연구노트(프로젝트)
@@ -79,6 +80,7 @@ public interface IDao {
 	public int CountChe();//화악인자개수
 	public int CountLa();//생물체
 	public List<InventoryDto> inventoryInfo(); //인벤토리 정보들 가져오기
+	
 	
 	
 	

@@ -175,6 +175,16 @@ public class ProjectController {
 		return "redirect:Member";
 	}
 	
+	@RequestMapping("/MemberDelete")
+	public String MemberDelete(HttpServletRequest request) {
+		
+		String email = request.getParameter("email");
+		IDao dao = sqlSession.getMapper(IDao.class);
+		dao.MemberDelete(email);
+		
+		return "rediect:login";
+	}
+	
 	@RequestMapping("/dashboard")
 	public String dashboard(Model model,HttpSession session, HttpServletRequest request, String email) {
 		
@@ -616,7 +626,7 @@ public class ProjectController {
 		model.addAttribute("adto", adto);
 		
 		
-		return "goods_list";
+		return "api_list";
 	}
 	
 	@RequestMapping("/inventoryDelete")

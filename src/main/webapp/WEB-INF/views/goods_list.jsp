@@ -25,7 +25,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
     
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" >
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" >
 
    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     
@@ -100,7 +100,7 @@
                  <input type="text" class="form-control bg-light border-0 small" placeholder="검색"
                        aria-label="Search" aria-describedby="basic-addon2" name="searchKey">
                 <div class="input-group-append">
-                     <button class="btn btn-secondary" type="submit" >
+                     <button class="btn btn-secondary" type="button" >
                      <i class="fas fa-search fa-sm"></i>
                      </button>
                </div>
@@ -300,7 +300,7 @@
             
             <div id="api_search" >
                
-                 <select id="search_select" name="searchOption">
+                 <select id="api_select" name="searchOption">
                      <option value="name_kor">이름</option>
                      <option value="name_eng">이름(영문)</option>
                      <option value="category">카테고리</option>
@@ -310,9 +310,9 @@
                  <div class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 " >
                  <div class="input-group">
                  <input type="text" class="form-control bg-light border-0 small" placeholder="검색"
-                       aria-label="Search" aria-describedby="basic-addon2" name="searchKey">
+                       aria-label="Search" aria-describedby="basic-addon2" name="searchKey" id="stext">
                 <div class="input-group-append">
-                     <button class="btn btn-secondary" type="submit" >
+                     <button class="btn btn-secondary" type="button" onclick="search_text()" > 
                      <i class="fas fa-search fa-sm"></i>
                      </button>
                </div>
@@ -322,29 +322,7 @@
             </div>
           </form>
           
-         <div class="container-fluid border rounded my-3" >
-         <table class="table table-hover">
-         <thead>
-           <tr>
-             <th scope="col">제품 영문명</th>
-             <th scope="col">제품 국문명</th>
-             <th scope="col">카테고리</th>
-             <th scope="col">cas no.</th>        
-           </tr>
-         </thead>
-         <tbody>
-            <c:forEach items="${adto }" var="adto">
-              <tr class="" data-bs-toggle="modal" href="#Modal_add${adto.casNo}" role="button" 
-                  aria-expanded="false" >
-                <td>${adto.name_eng}</td>
-                <td>${adto.name_kor}</td>
-                <td>${adto.factor}</td>
-                <td>${adto.casNo}</td>
-              </tr>
-           </c:forEach>  
-           </tbody>
-           </table>
-         </div>
+         <div class="container border rounded my-3" id="slist_area"><!-- 검색결과 --></div>
                   
              
                   
@@ -367,7 +345,7 @@
           
         </div>
       
-      <div class="container-fluid border rounded my-3" >
+      <div class="container border rounded my-3" >
       <table class="table table-hover">
       <thead>
         <tr>
@@ -510,6 +488,16 @@
         
         <script src="${pageContext.request.contextPath}/resources/vendor/jquery-easing/jquery.easing.min.js"></script> 
         <script>
+        function search_text() {
+           var options = $("#api_select").val();
+           var searchKey = $("#stext").val();
+           
+           var url = "apiSearch?searchOption="+options+"&searchKey="+searchKey;
+           
+           $.get(url, function(result){
+              $("#slist_area").html(result);   
+           },'html');
+        }
         $(function(){
             $("tr[id^='projectid']").each(function(i,e){
             
@@ -575,7 +563,7 @@
 
     <!-- Core plugin JavaScript-->
     <script src="${pageContext.request.contextPath}/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+   <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Custom scripts for all pages-->
     <script src="${pageContext.request.contextPath}/resources/js/sb-admin-2.min.js"></script>
