@@ -131,17 +131,48 @@ public class ProjectController {
 	}
 	
 	@RequestMapping("/Member")
-	public String member(HttpServletRequest request, Model model) {
+	public String member(HttpServletRequest request, Model model,HttpSession session) {
 		
-		String email = request.getParameter("email");
+		String email = (String) session.getAttribute("email");
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
-		MemberDto mdto = dao.MemberView(email);
+		MemberDto mdto = dao.loginInfo(email);
 		
-		model.addAttribute("email", mdto);
+		model.addAttribute("mdto", mdto);
+		model.addAttribute("ldto", mdto);
 		
 		return "Member";
+	}
+	@RequestMapping("/MemberModify")
+	public String MemberModify(HttpServletRequest request, Model model,HttpSession session) {
+		
+		String email = (String) session.getAttribute("email");
+
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		MemberDto mdto = dao.loginInfo(email);
+		
+		model.addAttribute("mdto", mdto);
+		model.addAttribute("ldto", mdto);
+		
+		return "MemberModify";
+	}
+	
+	@RequestMapping("/MemberModifyOK")
+	public String MemberModifyOk(HttpServletRequest request) {
+		
+		String email = request.getParameter("email");
+		String name = request.getParameter("name");
+		String pw = request.getParameter("pw");
+		String rgroup = request.getParameter("rgroup");
+
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		dao.MemberModify(email, name, pw, rgroup);
+
+		
+		return "redirect:Member";
 	}
 	
 	@RequestMapping("/dashboard")

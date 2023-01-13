@@ -13,7 +13,20 @@
     <meta name="author" content="">
 
     <title>데시보드</title>
-
+ 
+    <%
+//	    int checkIdFlag = Integer.parseInt(request.getAttribute("checkIdFlag").toString());
+ // 	if(checkIdFlag  == 0) {
+	%>
+ <!-- <script type="text/javascript">
+		alert("입력하신 아이디의 비밀번호가 일치하지 않습니다. 다시 확인해 주세요.");
+		history.go(-1);
+	  </script> 
+--> 
+	<%
+//		}
+	%>
+ 
     <!-- Custom fonts for this template-->
     <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link

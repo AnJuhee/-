@@ -29,6 +29,10 @@
 	<select id="MemberView" resultType="com.jh.dto.MemberDto">
 		select * from join where email=#{param1}
 	</select>
+	
+	<update id="MemberModify">
+		UPDATE join SET name=#{param2}, pw=#{param3}, rgroup=#{param4} WHERE email=#{param1} 
+	</update>
 
 
 <!-- 연구노트(프로젝트) -->

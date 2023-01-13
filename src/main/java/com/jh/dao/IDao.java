@@ -15,9 +15,9 @@ public interface IDao {
 //로그인&회원가입
 	public void MemberJoin(String email, String name, String pw); //회원가입
 	public int checkUserIdAndPw(String email, String pw); //사이드바 위에 이름가져오기
-	public MemberDto loginInfo(String email); //로그인한 사람 정보
+	public MemberDto loginInfo(String email); //로그인한 사람 정보 & 회원정보
 	public void rgroup(String email, String rgroup); //이메일로 찾아서 연구실 추가하기
-	public MemberDto MemberView(String email); //회원정보
+	public void MemberModify(String email, String name, String pw, String rgroup);
 
 	
 //연구노트(프로젝트)

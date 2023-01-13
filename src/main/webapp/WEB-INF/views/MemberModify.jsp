@@ -27,6 +27,7 @@
 </head>
 
 <body>
+
 <div id="wrapper">
 	<!-- 사이드바 자리 -->
 	<%@ include file="include/sidebar.jsp" %>
@@ -39,7 +40,6 @@
 		<%@ include file="include/topbar.jsp" %>	
 	<!-- topbar 자리 -->
 
-
     <!--위에여백-->
     <div class="my-5">
 	</div>
@@ -49,7 +49,7 @@
         <!-- 컨테이너 시작 건드리지마 -->	
         
             
-        <form action="MemberModify" method="post">
+        <form action="MemberModifyOK" method="post">
             <!--  <img class="mb-4" src="/docs/5.2/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
               <div>
               <h1 class="h3 my-5 mb-3 fw-normal text-center">회원정보 보기</h1>
@@ -60,26 +60,25 @@
               </div>   
               
               <div class="form-floating my-3">
-                <input type="text" class="form-control" id="floatingInput" placeholder="이름" name="name" value="${mdto.name }" readonly="readonly">      
+                <input type="text" class="form-control" id="floatingInput" placeholder="이름" name="name" value="${mdto.name }">      
               </div>      
               
               <div class="form-floating my-3">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="비밀번호(8자리 이상)" name="pw" value=${mdto.pw } readonly="readonly">      
+                <input type="password" class="form-control" id="floatingPassword" placeholder="비밀번호(8자리 이상)" name="pw" value=${mdto.pw } >      
               </div>
               
               <div class="form-floating my-3">
-                <input type="text" class="form-control" id="floatingInput" placeholder="연구실" name="rgroup" value="${mdto.rgroup }" readonly="readonly">      
+                <input type="text" class="form-control" id="floatingInput" placeholder="연구실" name="rgroup" value="${mdto.rgroup }" >      
               </div>
               
               
               
               <div class="my-4">
+              <button class="btn btn-secondary" type="submit" onclick="script:window.location='MemberModify'">완료</button>
+              <button class="btn btn-secondary" type="button" onclick="history.go(-1)">취소</button>
               
-              <button class="btn btn-secondary" type="submit" >수정</button>
-              <button class="btn btn-secondary" type="button" onclick="script:window.location='MemberDelete?email=${mdto.email}'">탈퇴</button>
-              <button class="btn btn-secondary" type="button" onclick="script:window.location='dashboard'">메인</button>
-            
-			  </div>
+              <br>
+                 </div>
              
             </form>
             
@@ -97,13 +96,10 @@
         
         <!-- 컨테이너 끝 -->      
         </div>
-        </div>
+	</div>
+	
 
 
-    
-
-    
-    
     
     <!-- Bootstrap core JavaScript-->
     <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
@@ -121,10 +117,8 @@
     <!-- Page level custom scripts -->
     <script src="${pageContext.request.contextPath}/resources/js/demo/chart-area-demo.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/demo/chart-pie-demo.js"></script>
-
+    
 </div>
-
-
 </body>
 
 </html>
