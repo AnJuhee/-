@@ -61,6 +61,7 @@
         <form action="reportModify" method="post">
         <input type="hidden" value="${rdto.rnum }" name="rnum">
         <input type="hidden" value="${rdto.projectid }" name="projectid">
+        
         <div class="card">
             <div class="card-body">
                 <div class="card mb-2">

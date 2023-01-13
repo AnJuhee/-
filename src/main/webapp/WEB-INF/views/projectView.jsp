@@ -27,7 +27,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" >
 
-	<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+   <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
@@ -51,16 +51,16 @@
 </head>
 
 <body id="wrapper">
-	<!-- 사이드바 자리 -->
-	<%@ include file="include/sidebar.jsp" %>
-	<!-- 사이드바 자리 -->
-	
-	<!-- 페이지 전체부분 (topbar 포함) -->
-	<div id="content-wrapper" class="d-flex flex-column">
-	
-	<!-- topbar 자리 -->
-		<%@ include file="include/topbar.jsp" %>	
-	<!-- topbar 자리 -->
+   <!-- 사이드바 자리 -->
+   <%@ include file="include/sidebar.jsp" %>
+   <!-- 사이드바 자리 -->
+   
+   <!-- 페이지 전체부분 (topbar 포함) -->
+   <div id="content-wrapper" class="d-flex flex-column">
+   
+   <!-- topbar 자리 -->
+      <%@ include file="include/topbar.jsp" %>   
+   <!-- topbar 자리 -->
 
     <div class="container">        
       <h1 class="">프로젝트</h1>
@@ -68,7 +68,7 @@
 
 
     <div class="container py-2" >
-        <!-- 컨테이너 시작 건드리지마 -->	
+        <!-- 컨테이너 시작 건드리지마 -->   
         
         
         
@@ -134,7 +134,7 @@
     
 
         <div class=" my-3" >
-        	<div class="card">
+           <div class="card">
             
             <table>
             <div style="padding:10px">보고서</div>
@@ -152,7 +152,7 @@
             
         
         
-	<div class="my-3"></div>
+   <div class="my-3"></div>
         
 
         <!--버튼-->
@@ -192,7 +192,7 @@
 
     <!--아래여백-->
     <div class="my-5">
-	</div>
+   </div>
     <!--아래여백-->
 
 </div> 

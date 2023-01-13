@@ -13,20 +13,7 @@
     <meta name="author" content="">
 
     <title>데시보드</title>
- 
-    <%
-//	    int checkIdFlag = Integer.parseInt(request.getAttribute("checkIdFlag").toString());
- // 	if(checkIdFlag  == 0) {
-	%>
- <!-- <script type="text/javascript">
-		alert("입력하신 아이디의 비밀번호가 일치하지 않습니다. 다시 확인해 주세요.");
-		history.go(-1);
-	  </script> 
---> 
-	<%
-//		}
-	%>
- 
+
     <!-- Custom fonts for this template-->
     <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -79,7 +66,7 @@
         }
         </script>
 
-
+   <style>.my-3 {margin-top: 0px !important;}</style>
 </head>
 
 <body>
@@ -101,6 +88,7 @@
 
     <div class=" container border rounded py-2 " ondrop="drop(event)" ondragover="allowDrop(event)">
         <!-- 컨테이너 시작 건드리지마 -->   
+        
         
         <div class="row">
 
@@ -133,10 +121,10 @@
                     
                    <!-- 카드바디 -->
                    <div class="card-body">
-
+                  
                         <!--과제--> 
                         <c:forEach items="${ddto}" var="ddto">
-                        <div class="card border my-2" role="button" data-bs-toggle="collapse" href="#project_content${ddto.projectid }" aria-expanded="false" aria-controls="project_content" id="">
+                        <div style="margin-bottom:0px !important" class="card border my-2" role="button" data-bs-toggle="collapse" href="#project_content${ddto.projectid }" aria-expanded="false" aria-controls="project_content" onclick="get_project_list('${ddto.projectid }')">
                            <div class="col">
                               ${ddto.project}
                            </div>
@@ -144,10 +132,8 @@
                         <!--과제-->
 
                         <!--과제 내용-->                   
-                        <div class="collapse" id="project_content${ddto.projectid }">
-                          <div class="card card-body ">
-                            ${ddto.project}, 컨텐츠 내용 가져오기                         
-                          </div>
+                        <div class="collapse " id="project_content${ddto.projectid }">
+                        <!--   <div class="card card-body " id="plist_area${ddto.projectid }">보고서</div> -->
                         </div>
                         <!--과제 내용 끝-->                       
                        
@@ -405,6 +391,11 @@
 
    <script src="${pageContext.request.contextPath}/resources/vendor/jquery-easing/jquery.easing.min.js"></script> 
         <script>
+        function get_project_list(idx) {
+         $.get("projectView_act?projectid="+idx+"&flag=0", function(result){
+            $("#project_content"+idx).html(result);
+         },'html');
+      }
         $(function(){
             $("div[id^='projectid']").each(function(i,e){
             

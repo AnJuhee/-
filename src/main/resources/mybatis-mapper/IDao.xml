@@ -52,7 +52,6 @@
 		WHERE PAGE= #{pageNum} 
 	</select>
 	
-	
 	<select id="projectAllCount" resultType="int">
  		select count(*) from project
 	</select>
@@ -238,6 +237,47 @@
 	<select id="inventoryInfo" resultType="com.jh.dto.InventoryDto">
 		select * from inventory order by inum desc
 	</select>
+	
+	<update id="updatelastproject">
+      UPDATE join SET latest_id=#{param2} where email=#{param1} 
+   </update>
+	
+<!-- 프로젝트 검색 리스트 관련 -->
+	<select id="projectSearchPlist" parameterType="com.jh.dto.Criteria2" resultType="com.jh.dto.ProjectDto">
+      SELECT * FROM
+         (SELECT A.*,Floor((ROWNUM-1)/#{amount}+1)PAGE,ROWNUM
+         FROM
+         (SELECT * FROM project WHERE project LIKE '%' || #{searchKey} || '%' ORDER BY projectid DESC)A)
+      WHERE PAGE = #{pageNum}
+    </select>
+    
+    <select id="projectSearchClist" parameterType="com.jh.dto.Criteria2" resultType="com.jh.dto.ProjectDto">
+      SELECT * FROM
+         (SELECT A.*,Floor((ROWNUM-1)/#{amount}+1)PAGE,ROWNUM
+         FROM
+         (SELECT * FROM project WHERE contents LIKE '%' || #{searchKey} || '%' ORDER BY projectid DESC)A)
+      WHERE PAGE = #{pageNum}
+    </select>
+    
+    <select id="projectSearchWlist" parameterType="com.jh.dto.Criteria2" resultType="com.jh.dto.ProjectDto">
+      SELECT * FROM
+         (SELECT A.*,Floor((ROWNUM-1)/#{amount}+1)PAGE,ROWNUM
+         FROM
+         (SELECT * FROM project WHERE writer LIKE '%' || #{searchKey} || '%' ORDER BY projectid DESC)A)
+      WHERE PAGE = #{pageNum}
+    </select>
+    
+    <select id="projectSearchPCount" resultType="int">
+         SELECT COUNT(*) FROM project WHERE project LIKE '%' || #{param1} || '%'
+    </select>
+    
+    <select id="projectSearchCCount" resultType="int">
+         SELECT COUNT(*) FROM project WHERE contents LIKE '%' || #{param1} || '%'
+    </select>
+    
+    <select id="projectSearchWCount" resultType="int">
+         SELECT COUNT(*) FROM project WHERE writer LIKE '%' || #{param1} || '%'
+    </select>
 
 	
 </mapper>

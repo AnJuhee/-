@@ -15,4 +15,5 @@ public class MemberDto {
 	private String name;
 	private String pw;
 	private String rgroup;
+	private String latest_id;
 }

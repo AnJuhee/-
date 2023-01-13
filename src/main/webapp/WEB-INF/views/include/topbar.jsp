@@ -1,12 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
             
-            
-            <%
-			String sessionId = (String) session.getAttribute("rgroup");	
-			%>
+ 
 
             <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -45,23 +43,17 @@
                                     설정
                                 </a>
                                 
-                                <%
-								if(sessionId == null) {
-								%>
+                                
 	                                <a class="dropdown-item" href="join2?email=${ldto.email }">
 	                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
 	                                    연구실 추가
 	                                </a>
-                                <%
-								} else {	
-								%>
+                                
 									<a class="dropdown-item" href="#">
 	                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-	                                    연구실 멤버
+	                                    연구실 멤버 보기
 	                                </a>
-	                           <% 
-								} 
-								%>  
+	                            
 								
 
                                 

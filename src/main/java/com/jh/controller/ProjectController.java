@@ -1,9 +1,13 @@
 package com.jh.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
@@ -13,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jh.dto.Criteria;
+import com.jh.dto.Criteria2;
 import com.jh.dto.PageDto;
 import com.jh.dao.IDao;
 import com.jh.dto.HAZARDOUS_FACTORSDto;
@@ -35,8 +40,7 @@ public class ProjectController {
 	}
 	
 	@RequestMapping("/loginOk")
-	public String loginOk(HttpServletRequest request, HttpSession session, Model model) {
-		
+	public String loginOk(HttpServletRequest request, HttpServletResponse response, HttpSession session, Model model) throws IOException {
 		
 		String email = request.getParameter("email");
 		String pw = request.getParameter("pw");
@@ -53,6 +57,13 @@ public class ProjectController {
 			MemberDto ldto = dao.loginInfo(email);
 			
 			model.addAttribute("ldto", ldto);
+		} else {
+			response.setContentType("text/html; charset=UTF-8");      
+	        PrintWriter out = response.getWriter();
+	        out.println("<script>alert('입력하신 아이디와 비밀번호가 일치하지 않습니다. 다시 확인해주세요.'); history.go(-1);</script>");
+	        out.flush(); 
+			
+	        return "login";
 		}
 		
 		return "forward:dashboard";
@@ -297,6 +308,25 @@ public class ProjectController {
 		return "projectView";
 	}
 	
+	@RequestMapping("/projectView_act")
+	   public String projectView_act(HttpServletRequest request, Model model) {
+	      
+	      String projectid = request.getParameter("projectid");
+	      String flags = request.getParameter("flag");
+	      
+	      IDao dao = sqlSession.getMapper(IDao.class);
+	      
+	      ProjectDto pdto = dao.projectView(projectid);
+	      List<ReportDto> rdto = dao.report(projectid);
+	      
+	      model.addAttribute("rdto", rdto);
+	      model.addAttribute("pdto", pdto);
+	      if(Integer.parseInt(flags) == 1) {
+	         model.addAttribute("flag", true);
+	      }
+	      return "projectDto";
+	   }
+	
 	@RequestMapping("/projectModify")
 	public String projectModify(HttpServletRequest request, Model model,HttpSession session) {
 		
@@ -448,25 +478,31 @@ public class ProjectController {
 	}
 
 	@RequestMapping("/reportView")
-	public String reportView(HttpServletRequest request, Model model, HttpSession session) {
-		
-		String rnum = request.getParameter("rnum");
-		String projectid = request.getParameter("projectid");
-		
-		IDao dao = sqlSession.getMapper(IDao.class);
-		
-		String email1 = (String) session.getAttribute("email");
-		MemberDto ldto = dao.loginInfo(email1);
-		model.addAttribute("ldto", ldto);
-		
-		ReportDto rdto = dao.reportView(rnum);
-		ProjectDto pdto = dao.projectView(projectid);
-		
-		model.addAttribute("pdto", pdto);
-		model.addAttribute("rdto", rdto);
-		
-		return "reportView";
-	}
+	   public String reportView(HttpServletRequest request, Model model, HttpSession session) {
+	      
+		 String email = (String) session.getAttribute("email");
+	      String rnum = request.getParameter("rnum");
+	      String projectid = request.getParameter("projectid");
+	      
+	      IDao dao = sqlSession.getMapper(IDao.class);
+	      
+	      
+	      MemberDto ldto = dao.loginInfo(email);
+		  model.addAttribute("ldto", ldto);
+
+	      ReportDto rdto = dao.reportView(rnum);
+	      ProjectDto pdto = dao.projectView(projectid);
+	      
+	      dao.updatelastproject(email, projectid);
+	      
+	      
+	      model.addAttribute("pdto", pdto);
+	      model.addAttribute("rdto", rdto);
+	      
+	            
+	      
+	      return "reportView";
+	   }
 	
 	@RequestMapping("/reportModify")
 	public String reportModify(HttpServletRequest request, Model model,HttpSession session) {

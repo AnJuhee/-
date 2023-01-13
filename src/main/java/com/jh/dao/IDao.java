@@ -82,10 +82,16 @@ public interface IDao {
 	public int CountLa();//생물체
 	public List<InventoryDto> inventoryInfo(); //인벤토리 정보들 가져오기
 	
+	public void updatelastproject(String email, String latest_id);
+	
 	
 //프로젝트 검색 리스트
+	public ArrayList<ProjectDto> projectSearchPlist(Criteria2 cri2); //프로젝트 제목 검색 후 리스트 보기
+	public ArrayList<ProjectDto> projectSearchClist(Criteria2 cri2); //프로젝트 내용 검색 후 리스트 보기
+	public ArrayList<ProjectDto> projectSearchWlist(Criteria2 cri2); //프로젝트 작성자 검색 후 리스트 보기
+	public int projectSearchPCount(String project);//프로젝트 제목 검색 글의 총 개수
+	public int projectSearchCCount(String contents);//프로젝트 내용 검색 글의 총 개수
+	public int projectSearchWCount(String writer);//프로젝트 작성자 검색 글의 총 개수
 	
-	public ArrayList<ProjectDto> projectlist2(Criteria2 cri); //프로젝트  검색 후 리스트 보기
-	public int projectAllCount2();//프로젝트 검색 글의 총 개수
 	
 }

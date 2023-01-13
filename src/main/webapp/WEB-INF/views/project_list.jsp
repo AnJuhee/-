@@ -212,7 +212,7 @@
           <c:forEach items="${pdto }" var="pdto">
           
            <tr class="" data-bs-toggle="collapse" href="#collapse${pdto.projectid }" role="button" 
-            aria-expanded="false" aria-controls="${pdto.projectid }" id="projectid" >
+            aria-expanded="false" aria-controls="${pdto.projectid }" id="projectid${pdto.projectid }" onclick="get_project_list('${pdto.projectid }')" >
              <th scope="row">${pdto.projectid }</th>
              <td>진행중</td>
              <td>${pdto.project }</td>
@@ -232,29 +232,7 @@
            
            <tr>
         <td colspan="7" class="collapse" id="collapse${pdto.projectid }" >
-          <div class="card card-body " role="button" >
-          	 	<a href="projectView?projectid=${pdto.projectid }" style="text-decoration :none;">
-   
-  				 -------보고서
-    <!--       	
-            <div class="">
-	            <table>
-	            
-	             
-	            <c:forEach items="${rdto }" var="rdto">
-	            <tr>
-	            <td>
-	            ▶ ${rdto.title }</a>
-	            </td>
-	            
-	            </tr> 
-	            </c:forEach>
-	            </table>
- 
-          </div>
-          --> 
-          </a>
-          </div>
+          <div class="card card-body " role="button" id="plist_area${pdto.projectid }"><!-- 보고서 나오는 곳 --></div>
         </td>
         </tr>  
         </c:forEach>   
@@ -272,25 +250,25 @@
         <table>
         
         <tr>
-			<td colspan="5" align="center">
-				<c:if test="${pageMaker.prev }">
-					<a href="project_list?pageNum=${pageMaker.startPage-5 }">◀</a>&nbsp;&nbsp;&nbsp;
-				</c:if>										
-				<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="num">
-					<c:choose>
-					<c:when test="${currPage == num}">
-					<u>${num}</u>&nbsp;&nbsp;&nbsp;
-					</c:when>
-					<c:otherwise>
-					<a href="project_list?pageNum=${num}">${num}</a>&nbsp;&nbsp;&nbsp;
-					</c:otherwise>
-					</c:choose>																					
-				</c:forEach>
-				<c:if test="${pageMaker.next }">
-					<a href="project_list?pageNum=${pageMaker.startPage+5 }">▶</a>
-				</c:if>	
-			</td>
-		</tr>
+         <td colspan="5" align="center">
+            <c:if test="${pageMaker.prev }">
+               <a href="project_list?pageNum=${pageMaker.startPage-5 }">◀</a>&nbsp;&nbsp;&nbsp;
+            </c:if>                              
+            <c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="num">
+               <c:choose>
+               <c:when test="${currPage == num}">
+               <u>${num}</u>&nbsp;&nbsp;&nbsp;
+               </c:when>
+               <c:otherwise>
+               <a href="project_list?pageNum=${num}">${num}</a>&nbsp;&nbsp;&nbsp;
+               </c:otherwise>
+               </c:choose>                                                               
+            </c:forEach>
+            <c:if test="${pageMaker.next }">
+               <a href="project_list?pageNum=${pageMaker.startPage+5 }">▶</a>
+            </c:if>   
+         </td>
+      </tr>
        </table>
        </div>         
             
@@ -317,6 +295,7 @@
 
    <script src="${pageContext.request.contextPath}/resources/vendor/jquery-easing/jquery.easing.min.js"></script> 
         <script>
+        
         $(function(){
             $("tr[id^='projectid']").each(function(i,e){
             
@@ -329,7 +308,11 @@
             });
         });
         
-
+      function get_project_list(idx) {
+         $.get("projectView_act?projectid="+idx+"&flag=1", function(result){
+            $("#plist_area"+idx).html(result);
+         },'html');
+      }
         function diffDay(startdate, enddate) { //컬럼이름 자리
           var sdate =  startdate.split("-"); //yyyy-mm-dd 리스트로 만들기 .split("-")
           var edate =  enddate.split("-");
