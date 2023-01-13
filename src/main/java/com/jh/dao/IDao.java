@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.jh.dto.Criteria;
+import com.jh.dto.Criteria2;
 import com.jh.dto.HAZARDOUS_FACTORSDto;
 import com.jh.dto.InventoryDto;
 import com.jh.dto.MemberDto;
@@ -82,8 +83,9 @@ public interface IDao {
 	public List<InventoryDto> inventoryInfo(); //인벤토리 정보들 가져오기
 	
 	
+//프로젝트 검색 리스트
 	
-	
-	
+	public ArrayList<ProjectDto> projectlist2(Criteria2 cri); //프로젝트  검색 후 리스트 보기
+	public int projectAllCount2();//프로젝트 검색 글의 총 개수
 	
 }

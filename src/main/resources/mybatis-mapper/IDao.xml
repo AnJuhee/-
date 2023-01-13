@@ -52,6 +52,7 @@
 		WHERE PAGE= #{pageNum} 
 	</select>
 	
+	
 	<select id="projectAllCount" resultType="int">
  		select count(*) from project
 	</select>
