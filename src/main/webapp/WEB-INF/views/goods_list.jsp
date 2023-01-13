@@ -100,7 +100,7 @@
                  <input type="text" class="form-control bg-light border-0 small" placeholder="검색"
                        aria-label="Search" aria-describedby="basic-addon2" name="searchKey">
                 <div class="input-group-append">
-                     <button class="btn btn-secondary" type="button" >
+                     <button class="btn btn-secondary" type="submit" >
                      <i class="fas fa-search fa-sm"></i>
                      </button>
                </div>

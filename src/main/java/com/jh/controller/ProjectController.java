@@ -216,7 +216,7 @@ public class ProjectController {
 		return "aside";
 	}
 	@RequestMapping("/project_list")
-	public String projectlist(Model model, Criteria cri, HttpServletRequest request) {
+	public String projectlist(Model model, Criteria cri, HttpServletRequest request, HttpSession session) {
 		
 //		String projectid = request.getParameter("projectid");
 		
@@ -231,6 +231,10 @@ public class ProjectController {
 		}
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		String email1 = (String) session.getAttribute("email");
+		MemberDto ldto = dao.loginInfo(email1);
+		model.addAttribute("ldto", ldto);
 		
 		ArrayList<ProjectDto> pdto =  dao.projectlist(cri);
 		int pCount = dao.projectAllCount();
@@ -274,11 +278,15 @@ public class ProjectController {
 		return "redirect:project_list";
 	}
 	@RequestMapping("/projectView")
-	public String projectView(HttpServletRequest request, Model model) {
+	public String projectView(HttpServletRequest request, Model model,HttpSession session) {
 		
 		String projectid = request.getParameter("projectid");
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		String email1 = (String) session.getAttribute("email");
+		MemberDto ldto = dao.loginInfo(email1);
+		model.addAttribute("ldto", ldto);
 		
 		ProjectDto pdto = dao.projectView(projectid);
 		List<ReportDto> rdto = dao.report(projectid);
@@ -290,11 +298,15 @@ public class ProjectController {
 	}
 	
 	@RequestMapping("/projectModify")
-	public String projectModify(HttpServletRequest request, Model model) {
+	public String projectModify(HttpServletRequest request, Model model,HttpSession session) {
 		
 		String projectid = request.getParameter("projectid");
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		String email1 = (String) session.getAttribute("email");
+		MemberDto ldto = dao.loginInfo(email1);
+		model.addAttribute("ldto", ldto);
 		
 		ProjectDto pdto = dao.projectView(projectid);
 		
@@ -322,13 +334,17 @@ public class ProjectController {
 	}
 	
 	@RequestMapping("/projectSearch")
-	public String projectSearch(HttpServletRequest request, Model model) {
+	public String projectSearch(HttpServletRequest request, Model model, HttpSession session) {
 		
 		String searchOption = request.getParameter("searchOption");
 		
 		String searchKey = request.getParameter("searchKey");
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		String email1 = (String) session.getAttribute("email");
+		MemberDto ldto = dao.loginInfo(email1);
+		model.addAttribute("ldto", ldto);
 		
 		ArrayList<ProjectDto> pdto = null;
 		
@@ -362,6 +378,10 @@ public class ProjectController {
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
+		String email1 = (String) session.getAttribute("email");
+		MemberDto ldto = dao.loginInfo(email1);
+		model.addAttribute("ldto", ldto);
+		
 		ArrayList<ProjectDto> pSearch = dao.pSearch();
 		ProjectDto pdto = dao.projectView(projectid);
 		
@@ -393,7 +413,7 @@ public class ProjectController {
 	
 	
 	@RequestMapping("/report_list")
-	public String report_list(Model model, Criteria cri, HttpServletRequest request) {
+	public String report_list(Model model, Criteria cri, HttpServletRequest request,HttpSession session) {
 		
 		int pageNumInt = 0;
 		if(request.getParameter("pageNum") == null) {
@@ -406,6 +426,10 @@ public class ProjectController {
 		}
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		String email1 = (String) session.getAttribute("email");
+		MemberDto ldto = dao.loginInfo(email1);
+		model.addAttribute("ldto", ldto);
 		
 		int rCount = dao.reportAllCount();
 		
@@ -431,6 +455,10 @@ public class ProjectController {
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
+		String email1 = (String) session.getAttribute("email");
+		MemberDto ldto = dao.loginInfo(email1);
+		model.addAttribute("ldto", ldto);
+		
 		ReportDto rdto = dao.reportView(rnum);
 		ProjectDto pdto = dao.projectView(projectid);
 		
@@ -441,11 +469,15 @@ public class ProjectController {
 	}
 	
 	@RequestMapping("/reportModify")
-	public String reportModify(HttpServletRequest request, Model model) {
+	public String reportModify(HttpServletRequest request, Model model,HttpSession session) {
 		
 		String rnum = request.getParameter("rnum");
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		String email1 = (String) session.getAttribute("email");
+		MemberDto ldto = dao.loginInfo(email1);
+		model.addAttribute("ldto", ldto);
 		
 		ReportDto rdto = dao.reportView(rnum);
 		
@@ -486,13 +518,17 @@ public class ProjectController {
 	}
 	
 	@RequestMapping("/reportSearch")
-	public String reportSearch(HttpServletRequest request, Model model) {
+	public String reportSearch(HttpServletRequest request, Model model, HttpSession session) {
 		
 		String searchOption = request.getParameter("searchOption");
 		//title, content, writer 3개중에 한개의 값을 저장
 		String searchKey = request.getParameter("searchKey");
 		//유저가 입력한 제목/내용/글쓴이 에 포함된 검색 키워드 낱말
 		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		String email1 = (String) session.getAttribute("email");
+		MemberDto ldto = dao.loginInfo(email1);
+		model.addAttribute("ldto", ldto);
 		
 		ArrayList<ReportDto> rdto = null;
 		
@@ -512,7 +548,7 @@ public class ProjectController {
 	}
 	
 	@RequestMapping("/goods_list")
-	public String goods_list(HttpServletRequest request, Model model, Criteria cri) {
+	public String goods_list(HttpServletRequest request, Model model, Criteria cri,HttpSession session) {
 		
 		int pageNumInt = 0;
 		if(request.getParameter("pageNum") == null) {
@@ -525,6 +561,10 @@ public class ProjectController {
 		}
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		String email1 = (String) session.getAttribute("email");
+		MemberDto ldto = dao.loginInfo(email1);
+		model.addAttribute("ldto", ldto);
 		
 		int iCount = dao.inventoryAllCount();
 		
@@ -568,16 +608,19 @@ public class ProjectController {
 	}
 	
 	@RequestMapping("/inventorySearch")
-	public String inventorySearch(Model model, HttpServletRequest request) {
+	public String inventorySearch(Model model, HttpServletRequest request, HttpSession session) {
 		
 		String searchOption = request.getParameter("searchOption");
 		//title, content, writer 3개중에 한개의 값을 저장
 		String searchKey = request.getParameter("searchKey");
 		
-
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
 		ArrayList<InventoryDto> idto = null;
+		
+		String email1 = (String) session.getAttribute("email");
+		MemberDto ldto = dao.loginInfo(email1);
+		model.addAttribute("ldto", ldto);
 		
 		if(searchOption.equals("iname")) {
 			idto = dao.iSearchName(searchKey);	
@@ -641,11 +684,15 @@ public class ProjectController {
 	}
 	
 	@RequestMapping("/inventoryModify")
-	public String inventoryModify(HttpServletRequest request, Model model) {
+	public String inventoryModify(HttpServletRequest request, Model model, HttpSession session) {
 		
 		String inum = request.getParameter("inum");
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		String email1 = (String) session.getAttribute("email");
+		MemberDto ldto = dao.loginInfo(email1);
+		model.addAttribute("ldto", ldto);
 		
 		InventoryDto idto = dao.inventoryView(inum);
 		
