@@ -195,12 +195,7 @@
 
                         <!--최근프로젝트 과제 내용 시작-->
                         <div class="card font-weight-bold mb-2 bold col">
-                             Server ㅇㄴㄹㄴㅇㄹ Migrationg fasdgasdgas
-                             difugsadhgashgdfaghsdfjghs
-                             adjfasd
-                             sdafsadfsad
-                             fasdfasdfasdfasdfasdf
-                             asdfasdf 
+                             test
                         </div>
                         <!--최근프로젝트 과제 내용 끝-->
                          

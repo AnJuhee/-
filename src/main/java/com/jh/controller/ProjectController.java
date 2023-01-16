@@ -105,7 +105,7 @@ public class ProjectController {
 		
 		dao.MemberJoin(email, name, pw);
 		
-		return "forward:dashboard";
+		return "redirect:dashboard";
 	}
 	
 	@RequestMapping("/join2")
