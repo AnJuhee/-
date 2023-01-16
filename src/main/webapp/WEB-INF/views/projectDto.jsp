@@ -7,10 +7,14 @@
     <table>
     
    <c:if test="${flag == true}">
-       <div style="padding:10px">
-          보고서 
-          <a href="projectView?projectid=${pdto.projectid }"><button class="btn btn-secondary btn-sm mr-1">이름 뭘로하지? 그냥 두고 나중에 바꿀게</button></a>
-       </div>
+       <div class="row">
+          <div class="col m-2 mt-3   " >
+            보고서 목록                        
+          </div>
+          <div class="col m-2 d-grid gap-2 d-md-flex justify-content-md-end ">
+            <a href="projectView?projectid=${pdto.projectid }"><button class=" btn btn-secondary  ">이동</button></a>
+          </div>
+        </div>
     </c:if> 
     <c:forEach items="${rdto }" var="rdto">
     <tr>
