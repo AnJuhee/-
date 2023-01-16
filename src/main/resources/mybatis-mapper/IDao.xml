@@ -219,11 +219,11 @@
 	
 <!-- 데시보드 관련 -->
 	<select id="latest" resultType="com.jh.dto.ProjectDto">
-		 select * from project where <![CDATA[ rownum <= 5 ]]>
+		 select * from project where <![CDATA[ rownum <= 5 ]]> order by projectid desc
 	</select>
 	
 	<select id="latest1" resultType="com.jh.dto.ProjectDto">
-		 select * from project where <![CDATA[ rownum <= 1 ]]>
+		 select * from project where <![CDATA[ rownum <= 1 ]]> order by projectid desc
 	</select>
 	
 	<select id="CountChe" resultType="int">
