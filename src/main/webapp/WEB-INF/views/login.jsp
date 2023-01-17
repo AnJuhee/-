@@ -3,8 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -28,11 +28,11 @@
 
 <!--위에여백-->
     <div class="my-5">
-	</div>
+   </div>
     <!--위에여백-->
 
     <div class="container border rounded  py-2" style="width: 40rem; ">
-        <!-- 컨테이너 시작 건드리지마 -->	
+        <!-- 컨테이너 시작 건드리지마 -->   
         
             
         <form action="loginOk" method="post">
@@ -55,11 +55,14 @@
             <br>
             
             
-                <div class="checkbox mb-3">
-                    <label>
+                <div class="checkbox mb-3 row">
+                    <label class="col mt-2">
                     <input type="checkbox" value="remember-me"> 로그인 상태 유지
-                    <button class=" btn btn-lg btn-primary" type="button" onclick="script:window.location='join1'">회원가입</button>
+                    
                     </label>
+                    <div class="col d-grid gap-2 d-md-flex justify-content-md-end">
+                       <button class=" btn btn-lg btn-primary" type="button" onclick="script:window.location='join1'">회원가입</button>
+                    </div>
                 </div>
                 
            

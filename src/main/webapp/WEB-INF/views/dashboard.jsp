@@ -193,11 +193,7 @@
                         </div> 
                         <!--최근프로젝트 과제이름 끝-->
 
-                        <!--최근프로젝트 과제 내용 시작-->
-                        <div class="card font-weight-bold mb-2 bold col">
-                             test
-                        </div>
-                        <!--최근프로젝트 과제 내용 끝-->
+                       
                          
                         <!--최근프로젝트 진행 바-->                                            
                         <div class=" progress mb-2" > 
